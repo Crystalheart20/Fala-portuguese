@@ -291,12 +291,6 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 
 <!-- CHAT -->
 <div class="chat-page" id="page-chat">
-  <div class="api-key-bar" id="apiKeyBar">
-    <label>🔑 Anthropic API Key</label>
-    <input class="api-key-input" type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." />
-    <button class="api-key-save" onclick="saveApiKey()">Save key</button>
-    <span style="font-size:11px;color:var(--gold);opacity:.8;">Saved in your browser only. Never shared.</span>
-  </div>
   <div class="scenario-panel">
     <h3>Choose a scenario</h3>
     <div class="scenario-scroll" id="scenarioScroll"></div>
@@ -338,7 +332,6 @@ function showPage(id){
   if(target){
     target.style.display = id==='chat' ? 'flex' : 'block';
     target.classList.add('active');
-    if(id==='chat') renderApiKeyBar();
   }
 }
 
@@ -718,24 +711,25 @@ async function sendMessage(){
   const text=input.value.trim();
   if(!text||isTyping)return;
   if(!currentScenario){alert('Please choose a scenario first.');return;}
-  const apiKey=localStorage.getItem('fpt_apikey');
-  if(!apiKey){alert('Please enter your Anthropic API key above.');return;}
   input.value='';input.style.height='auto';
   appendMsg('user',text);
   chatHistory.push({role:'user',content:text});
   isTyping=true;document.getElementById('chatSend').disabled=true;
   showTyping();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:currentScenario.system,messages:chatHistory.slice(-14)})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system: currentScenario.system,
+        messages: chatHistory.slice(-14)
+      })
     });
     const data=await res.json();
     removeTyping();
-    if(data.error){appendMsg('assistant',`⚠️ API error: ${data.error.message}`);}
-    else{const reply=data.content[0].text;chatHistory.push({role:'assistant',content:reply});appendMsg('assistant',reply);}
-  }catch(err){removeTyping();appendMsg('assistant','⚠️ Connection error. Check your internet and API key.');}
+    if(data.error){appendMsg('assistant',`⚠️ Error: ${data.error}`);}
+    else{chatHistory.push({role:'assistant',content:data.reply});appendMsg('assistant',data.reply);}
+  }catch(err){removeTyping();appendMsg('assistant','⚠️ Connection error. Please try again.');}
   isTyping=false;document.getElementById('chatSend').disabled=false;input.focus();
 }
 
@@ -743,21 +737,6 @@ function handleChatKey(e){
   if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}
   const ta=document.getElementById('chatInput');
   ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,100)+'px';
-}
-
-function saveApiKey(){
-  const key=document.getElementById('apiKeyInput').value.trim();
-  if(!key.startsWith('sk-')){alert('That does not look like a valid Anthropic API key.');return;}
-  localStorage.setItem('fpt_apikey',key);
-  document.getElementById('apiKeyBar').style.background='#e8f5ee';
-  document.getElementById('apiKeyBar').innerHTML='<span style="font-size:13px;font-weight:600;color:var(--green);">✓ API key saved — ready to chat!</span> <button onclick="clearKey()" style="background:none;border:none;font-size:12px;color:var(--ink-muted);cursor:pointer;margin-left:10px;">Change key</button>';
-}
-function clearKey(){localStorage.removeItem('fpt_apikey');location.reload();}
-function renderApiKeyBar(){
-  if(localStorage.getItem('fpt_apikey')){
-    document.getElementById('apiKeyBar').style.background='#e8f5ee';
-    document.getElementById('apiKeyBar').innerHTML='<span style="font-size:13px;font-weight:600;color:var(--green);">✓ API key ready</span> <button onclick="clearKey()" style="background:none;border:none;font-size:12px;color:var(--ink-muted);cursor:pointer;margin-left:10px;">Change key</button>';
-  }
 }
 
 // ── INIT ─────────────────────────────────────────
