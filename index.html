@@ -326,9 +326,43 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
   .chat-input-row{padding:10px 14px;}
   .pronun-arena{max-width:100%;}
 }
+/* ── USER PROFILES ── */
+.profile-screen{position:fixed;inset:0;background:var(--surface-2);z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;}
+.profile-screen.hidden{display:none;}
+.profile-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;max-width:400px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.08);}
+.profile-box h1{font-family:'DM Serif Display',serif;font-size:28px;color:var(--green);margin-bottom:6px;}
+.profile-box .brand-sub{font-size:14px;color:var(--ink-muted);margin-bottom:28px;}
+.profile-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.profile-btn{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .15s;text-align:left;font-family:'DM Sans',sans-serif;width:100%;}
+.profile-btn:hover{border-color:var(--green);background:var(--green-pale);}
+.profile-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.profile-info .pname{font-size:15px;font-weight:600;color:var(--ink);display:block;}
+.profile-info .psub{font-size:12px;color:var(--ink-muted);}
+.profile-streak{font-size:12px;font-weight:600;color:var(--gold);margin-left:auto;flex-shrink:0;}
+.add-profile-row{display:flex;gap:8px;}
+.add-profile-input{flex:1;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 13px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--surface-2);}
+.add-profile-input:focus{outline:none;border-color:var(--green);}
+.add-profile-btn{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+.add-profile-btn:hover{opacity:.88;}
+.nav-user{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--ink-mid);cursor:pointer;background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:4px 10px 4px 6px;transition:all .15s;flex-shrink:0;}
+.nav-user:hover{border-color:var(--green);color:var(--green);}
+.nav-user-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
 </style>
 </head>
 <body>
+
+<!-- PROFILE SELECTOR SCREEN -->
+<div class="profile-screen" id="profileScreen">
+  <div class="profile-box">
+    <h1>FalaPT</h1>
+    <p class="brand-sub">Who is practising today?</p>
+    <div class="profile-list" id="profileList"></div>
+    <div class="add-profile-row">
+      <input class="add-profile-input" id="newProfileName" placeholder="Add new user..." maxlength="20" onkeydown="if(event.key==='Enter')addProfile()"/>
+      <button class="add-profile-btn" onclick="addProfile()">+ Add</button>
+    </div>
+  </div>
+</div>
 
 <nav>
   <div class="nav-brand">Fala<span>PT</span></div>
@@ -341,7 +375,13 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
     <button class="nav-tab" onclick="showPage('chat')">💬 Chat</button>
     <button class="nav-tab" onclick="showPage('progress')">📊 Progress</button>
   </div>
-  <div class="nav-streak">🔥 <span id="streakNum">1</span></div>
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+    <div class="nav-streak">🔥 <span id="streakNum">1</span></div>
+    <div class="nav-user" id="navUserBtn" onclick="switchUser()" title="Switch user">
+      <div class="nav-user-avatar" id="navUserAvatar">👤</div>
+      <span id="navUserName">...</span>
+    </div>
+  </div>
 </nav>
 
 <!-- HOME -->
@@ -608,37 +648,114 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 </div>
 
 <script>
+// ── PROFILE SYSTEM ───────────────────────────────────────────
+const DEFAULT_PROFILES = [
+  {id:'olaoye', name:'Olaoye', emoji:'👨‍⚕️', sub:'Sonographer · Ibadan'},
+  {id:'raimat', name:'Raimat', emoji:'👩‍🔬', sub:'MSc Chemistry · Évora'},
+];
+const PROFILE_EMOJIS = ['👨‍⚕️','👩‍🔬','👨‍💻','👩‍💼','🧑‍🎓','👨‍🏫','👩‍🏫','🧑‍💼'];
+
+function getProfiles(){
+  const saved = localStorage.getItem('fpt_profiles');
+  if(!saved) return DEFAULT_PROFILES;
+  return JSON.parse(saved);
+}
+function saveProfiles(profiles){
+  localStorage.setItem('fpt_profiles', JSON.stringify(profiles));
+}
+
+let CURRENT_USER = null; // set at login
+
+// All localStorage keys are prefixed with user ID
+function uk(key){ return `fpt_${CURRENT_USER}_${key}`; }
+
+function renderProfileScreen(){
+  const profiles = getProfiles();
+  const list = document.getElementById('profileList');
+  list.innerHTML = profiles.map(p => {
+    const streak = parseInt(localStorage.getItem(`fpt_${p.id}_streak`)||'0');
+    const words  = parseInt(localStorage.getItem(`fpt_${p.id}_words`)||'0');
+    return `<button class="profile-btn" onclick="selectProfile('${p.id}')">
+      <div class="profile-avatar" style="background:var(--green-light);">${p.emoji}</div>
+      <div class="profile-info" style="flex:1;">
+        <span class="pname">${p.name}</span>
+        <span class="psub">${p.sub||'Language learner'} · ${words} words</span>
+      </div>
+      <span class="profile-streak">${streak>0?'🔥'+streak:''}</span>
+    </button>`;
+  }).join('');
+}
+
+function addProfile(){
+  const input = document.getElementById('newProfileName');
+  const name = input.value.trim();
+  if(!name) return;
+  const profiles = getProfiles();
+  const id = name.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
+  if(profiles.find(p=>p.id===id)){alert('A profile with that name already exists.');return;}
+  const emoji = PROFILE_EMOJIS[profiles.length % PROFILE_EMOJIS.length];
+  profiles.push({id, name, emoji, sub:'Language learner'});
+  saveProfiles(profiles);
+  input.value='';
+  renderProfileScreen();
+}
+
+function selectProfile(id){
+  CURRENT_USER = id;
+  localStorage.setItem('fpt_last_user', id);
+  document.getElementById('profileScreen').classList.add('hidden');
+  const profiles = getProfiles();
+  const p = profiles.find(x=>x.id===id);
+  // Update nav badge
+  document.getElementById('navUserAvatar').textContent = p?.emoji||'👤';
+  document.getElementById('navUserName').textContent = p?.name||id;
+  // Boot the app with this user's data
+  bootApp();
+}
+
+function switchUser(){
+  if(!confirm('Switch user? Your progress is saved.')) return;
+  CURRENT_USER = null;
+  document.getElementById('profileScreen').classList.remove('hidden');
+  renderProfileScreen();
+}
+
 // ── STATE ─────────────────────────────────────────────────────
-const TODAY_KEY = new Date().toISOString().slice(0,10); // e.g. "2026-06-03"
+const TODAY_KEY = new Date().toISOString().slice(0,10);
 const START_DATE = new Date('2026-06-03');
 
-const STATE={
-  streak:     parseInt(localStorage.getItem('fpt_streak')||'0'),
-  wordsLearned:parseInt(localStorage.getItem('fpt_words')||'0'),
-  lastActiveDate: localStorage.getItem('fpt_last_date')||'',
-  completedToday: JSON.parse(localStorage.getItem('fpt_done_'+TODAY_KEY)||'{}'),
-};
+// STATE is rebuilt per user at bootApp()
+let STATE = {};
+
+function loadState(){
+  STATE = {
+    streak:       parseInt(localStorage.getItem(uk('streak'))||'0'),
+    wordsLearned: parseInt(localStorage.getItem(uk('words'))||'0'),
+    lastActiveDate: localStorage.getItem(uk('last_date'))||'',
+    completedToday: JSON.parse(localStorage.getItem(uk('done_'+TODAY_KEY))||'{}'),
+  };
+}
 
 function save(){
-  localStorage.setItem('fpt_streak',      STATE.streak);
-  localStorage.setItem('fpt_words',       STATE.wordsLearned);
-  localStorage.setItem('fpt_last_date',   STATE.lastActiveDate);
-  localStorage.setItem('fpt_done_'+TODAY_KEY, JSON.stringify(STATE.completedToday));
+  localStorage.setItem(uk('streak'),        STATE.streak);
+  localStorage.setItem(uk('words'),         STATE.wordsLearned);
+  localStorage.setItem(uk('last_date'),     STATE.lastActiveDate);
+  localStorage.setItem(uk('done_'+TODAY_KEY), JSON.stringify(STATE.completedToday));
 }
 
 // ── PROGRESS STORE ────────────────────────────────────────────
 function loadProgress(){
-  return JSON.parse(localStorage.getItem('fpt_progress')||JSON.stringify({
-    daysActive:[],          // array of date strings
+  return JSON.parse(localStorage.getItem(uk('progress'))||JSON.stringify({
+    daysActive:[],
     bestStreak:0,
     flashcard:{reviewed:0, correct:0, byDeck:{}},
-    lessons:{completed:[]}, // array of lesson IDs
-    pronun:[],              // [{date,phrase,pct}]
-    quiz:[],                // [{date,score,total}]
+    lessons:{completed:[]},
+    pronun:[],
+    quiz:[],
     chat:{sessions:0},
   }));
 }
-function saveProgress(p){localStorage.setItem('fpt_progress',JSON.stringify(p));}
+function saveProgress(p){localStorage.setItem(uk('progress'),JSON.stringify(p));}
 
 function recordActivity(){
   const p=loadProgress();
@@ -866,7 +983,10 @@ function renderHome(){
   // Greeting by time
   const hr=d.getHours();
   const greeting=hr<12?'Bom dia':hr<19?'Boa tarde':'Boa noite';
-  document.getElementById('homeGreeting').textContent=`${greeting}, Olaoye.`;
+  const profiles=getProfiles();
+  const currentProfile=profiles.find(p=>p.id===CURRENT_USER);
+  const displayName=currentProfile?currentProfile.name:'there';
+  document.getElementById('homeGreeting').textContent=`${greeting}, ${displayName}.`;
 
   // Day counter
   document.getElementById('dayNum').textContent=dayNum;
@@ -1171,7 +1291,8 @@ function renderWeek(){
   for(let i=0;i<7;i++){
     const d=new Date(today);d.setDate(today.getDate()-(todayDow-i));
     const key=d.toISOString().slice(0,10);
-    const isDone=!!localStorage.getItem('fpt_done_'+key) && Object.keys(JSON.parse(localStorage.getItem('fpt_done_'+key)||'{}')).length>0;
+    const doneRaw=localStorage.getItem(uk('done_'+key));
+    const isDone=!!doneRaw&&Object.keys(JSON.parse(doneRaw||'{}')).length>0;
     const isToday=i===todayDow;
     const cls=isToday?'today':(isDone?'done':'off');
     wr.innerHTML+=`<div class="day-dot ${cls}"><div class="d">${DAYS[i]}</div><div class="dot">${cls==='done'?'✓':cls==='today'?'●':''}</div></div>`;
@@ -1985,7 +2106,7 @@ function renderProgress(){
   for(let i=27;i>=0;i--){
     const d=new Date();d.setDate(d.getDate()-i);
     const key=d.toISOString().slice(0,10);
-    const done=localStorage.getItem('fpt_done_'+key);
+    const done=localStorage.getItem(uk('done_'+key));
     const tasks=done?Object.keys(JSON.parse(done)).length:0;
     const lvl=tasks===0?'':tasks===1?'l1':tasks===2?'l2':tasks===3?'l3':'l4';
     cells.push(`<div class="act-cell ${lvl}" title="${key}: ${tasks} tasks"></div>`);
@@ -2023,19 +2144,37 @@ const var_gold='#c8922a';
 const var_red='#c0392b';
 
 function confirmReset(){
-  if(confirm('Reset ALL progress? This cannot be undone.')){
-    localStorage.removeItem('fpt_progress');
-    localStorage.removeItem('fpt_streak');
-    localStorage.removeItem('fpt_words');
-    localStorage.removeItem('fpt_last_date');
-    location.reload();
-  }
+  if(!confirm(`Reset ALL progress for ${CURRENT_USER}? This cannot be undone.`))return;
+  // Clear all keys belonging to this user
+  Object.keys(localStorage).filter(k=>k.startsWith('fpt_'+CURRENT_USER+'_')).forEach(k=>localStorage.removeItem(k));
+  loadState();
+  renderHome();
+  renderProgress();
 }
 
-// ── INIT ──────────────────────────────────────────────────────
-updateStreak();
-renderHome();
-renderLessons();renderDecks();renderPronunDecks();renderScenarios();startQuiz();
+// ── BOOT ─────────────────────────────────────────────────────
+function bootApp(){
+  loadState();
+  updateStreak();
+  renderHome();
+  renderLessons();renderDecks();renderPronunDecks();renderScenarios();startQuiz();
+}
+
+// ── INIT — show profile screen first ─────────────────────────
+renderProfileScreen();
+// Auto-select last user if one exists
+const lastUser = localStorage.getItem('fpt_last_user');
+if(lastUser){
+  const profiles = getProfiles();
+  const p = profiles.find(x=>x.id===lastUser);
+  if(p){
+    CURRENT_USER = lastUser;
+    document.getElementById('navUserAvatar').textContent = p.emoji;
+    document.getElementById('navUserName').textContent = p.name;
+    document.getElementById('profileScreen').classList.add('hidden');
+    bootApp();
+  }
+}
 
 </script>
 </body>
