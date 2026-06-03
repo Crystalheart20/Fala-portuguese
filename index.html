@@ -6,14 +6,14 @@
 <title>FalaPT — Learn European Portuguese</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{--green:#1a6b4a;--green-mid:#2a8f64;--green-light:#e8f5ee;--green-pale:#f2faf6;--gold:#c8922a;--gold-light:#fdf3e0;--red:#c0392b;--red-light:#fdecea;--ink:#1a1a1a;--ink-mid:#3d3d3d;--ink-muted:#7a7a7a;--ink-faint:#b0b0b0;--surface:#fff;--surface-2:#f7f6f2;--surface-3:#eeece6;--border:#e0ded8;--radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);}
+:root{--green:#1a6b4a;--green-mid:#2a8f64;--green-light:#e8f5ee;--green-pale:#f2faf6;--gold:#c8922a;--gold-light:#fdf3e0;--red:#c0392b;--red-light:#fdecea;--blue:#1a5fa8;--blue-light:#e6f1fb;--ink:#1a1a1a;--ink-mid:#3d3d3d;--ink-muted:#7a7a7a;--ink-faint:#b0b0b0;--surface:#fff;--surface-2:#f7f6f2;--surface-3:#eeece6;--border:#e0ded8;--radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--surface-2);color:var(--ink);min-height:100vh;}
 nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
 .nav-brand{font-family:'DM Serif Display',serif;font-size:22px;color:var(--green);letter-spacing:-.5px;flex-shrink:0;}
 .nav-brand span{color:var(--gold);}
 .nav-tabs{display:flex;gap:2px;}
-.nav-tab{background:none;border:none;padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--ink-muted);cursor:pointer;border-radius:var(--radius-sm);transition:all .15s;white-space:nowrap;}
+.nav-tab{background:none;border:none;padding:8px 10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--ink-muted);cursor:pointer;border-radius:var(--radius-sm);transition:all .15s;white-space:nowrap;}
 .nav-tab:hover{background:var(--surface-2);color:var(--ink);}
 .nav-tab.active{background:var(--green-light);color:var(--green);}
 .nav-streak{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--gold);flex-shrink:0;}
@@ -22,12 +22,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 
 /* HOME */
 .greeting{margin-bottom:24px;}
-.greeting h1{font-family:'DM Serif Display',serif;font-size:30px;color:var(--ink);line-height:1.2;margin-bottom:5px;}
+.greeting h1{font-family:'DM Serif Display',serif;font-size:30px;line-height:1.2;margin-bottom:5px;}
 .greeting p{font-size:14px;color:var(--ink-muted);}
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
 .stat-label{font-size:11px;font-weight:600;color:var(--ink-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px;}
-.stat-val{font-size:24px;font-weight:600;color:var(--ink);line-height:1;}
+.stat-val{font-size:24px;font-weight:600;line-height:1;}
 .stat-sub{font-size:11px;color:var(--ink-muted);margin-top:3px;}
 .stat-card.green .stat-val{color:var(--green);}
 .stat-card.gold .stat-val{color:var(--gold);}
@@ -52,7 +52,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .sched-item:hover{border-color:var(--green);}
 .sched-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
 .sched-text{flex:1;}
-.sched-text strong{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px;}
+.sched-text strong{font-size:13px;font-weight:600;display:block;margin-bottom:2px;}
 .sched-text span{font-size:12px;color:var(--ink-muted);}
 .sched-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
 .pill-green{background:var(--green-light);color:var(--green);}
@@ -64,12 +64,16 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .deck-select{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:20px;}
 .deck-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;cursor:pointer;text-align:left;transition:all .15s;font-family:'DM Sans',sans-serif;}
 .deck-btn:hover,.deck-btn.active{border-color:var(--green);background:var(--green-pale);}
-.deck-btn .deck-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.deck-btn .deck-name{font-size:13px;font-weight:600;margin-bottom:2px;}
 .deck-btn .deck-count{font-size:11px;color:var(--ink-muted);}
 .card-arena{display:flex;flex-direction:column;align-items:center;gap:18px;}
-.flashcard{width:100%;max-width:460px;min-height:200px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow);position:relative;}
+.flashcard{width:100%;max-width:460px;min-height:210px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow);position:relative;}
 .flashcard:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.08);}
 .card-tag{position:absolute;top:12px;left:12px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:var(--green-light);color:var(--green);}
+.card-speak-btn{position:absolute;top:10px;right:10px;background:var(--green-light);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s;}
+.card-speak-btn:hover{background:var(--green);color:#fff;}
+.card-speak-btn.speaking{background:var(--green);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
 .card-pt{font-family:'DM Serif Display',serif;font-size:30px;color:var(--green);margin-bottom:7px;line-height:1.2;}
 .card-phonetic{font-size:12px;color:var(--ink-muted);margin-bottom:10px;font-style:italic;}
 .card-en{font-size:15px;color:var(--ink-mid);display:none;}
@@ -84,6 +88,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .btn-action.right:hover{background:var(--green);color:#fff;}
 .btn-action:disabled{opacity:.3;cursor:not-allowed;}
 .card-counter{font-size:12px;color:var(--ink-muted);}
+.audio-toggle{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-muted);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;width:fit-content;margin-bottom:14px;}
+.audio-toggle input{accent-color:var(--green);}
 
 /* LESSONS */
 .phase-nav{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
@@ -93,13 +99,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .lesson-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:border-color .15s;}
 .lesson-row:hover:not(.locked){border-color:var(--green);}
 .lesson-row.locked{opacity:.5;cursor:not-allowed;}
-.lesson-row.done{border-color:var(--green);background:var(--green-pale);}
 .lesson-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
-.lesson-num.done-num{background:var(--green);color:#fff;}
 .lesson-num.active-num{background:var(--gold);color:#fff;}
 .lesson-num.locked-num{background:var(--surface-3);color:var(--ink-faint);}
 .lesson-meta{flex:1;}
-.lesson-meta strong{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px;}
+.lesson-meta strong{font-size:13px;font-weight:600;display:block;margin-bottom:2px;}
 .lesson-meta span{font-size:12px;color:var(--ink-muted);}
 .lesson-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
 .lesson-viewer{display:none;}
@@ -114,7 +118,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .lesson-section h3{font-size:12px;font-weight:700;color:var(--ink-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
 .vocab-table{width:100%;border-collapse:collapse;}
 .vocab-table th{font-size:11px;font-weight:700;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:1px solid var(--border);}
-.vocab-table td{padding:9px;font-size:13px;border-bottom:1px solid var(--border);}
+.vocab-table td{padding:9px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle;}
 .vocab-table td:first-child{font-family:'DM Serif Display',serif;font-size:15px;color:var(--green);}
 .vocab-table td:nth-child(2){color:var(--ink-muted);font-style:italic;font-size:12px;}
 .tip-box{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 14px;margin:14px 0;}
@@ -122,16 +126,19 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .tip-box strong{color:var(--gold);}
 .phrase-list{display:flex;flex-direction:column;gap:7px;}
 .phrase-item{background:var(--surface-2);border-radius:var(--radius-sm);padding:10px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
-.phrase-pt{font-family:'DM Serif Display',serif;font-size:14px;color:var(--green);}
+.phrase-pt{font-family:'DM Serif Display',serif;font-size:14px;color:var(--green);flex:1;}
 .phrase-en{font-size:12px;color:var(--ink-muted);}
+.speak-phrase-btn{background:none;border:1px solid var(--border);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;flex-shrink:0;transition:all .15s;}
+.speak-phrase-btn:hover{background:var(--green-light);border-color:var(--green);}
+.speak-phrase-btn.speaking{background:var(--green);border-color:var(--green);animation:pulse 1s infinite;}
 
 /* QUIZ */
 .practice-wrap{max-width:500px;margin:0 auto;}
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:18px;}
-.quiz-q{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:6px;}
+.quiz-q{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:6px;}
 .quiz-sub{font-size:12px;color:var(--ink-muted);margin-bottom:18px;}
 .quiz-options{display:flex;flex-direction:column;gap:7px;}
-.quiz-opt{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;text-align:left;transition:all .15s;color:var(--ink);}
+.quiz-opt{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;text-align:left;transition:all .15s;}
 .quiz-opt:hover:not(:disabled){border-color:var(--green);background:var(--green-pale);}
 .quiz-opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
 .quiz-opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
@@ -150,14 +157,51 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .btn-green{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;}
 .btn-green:hover{opacity:.88;}
 
+/* PRONUNCIATION PAGE */
+.pronun-header{margin-bottom:22px;}
+.pronun-header h2{font-family:'DM Serif Display',serif;font-size:24px;color:var(--ink);margin-bottom:5px;}
+.pronun-header p{font-size:13px;color:var(--ink-muted);line-height:1.6;}
+.pronun-deck-select{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:22px;}
+.pdeck-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.pdeck-btn:hover,.pdeck-btn.active{border-color:var(--blue);background:var(--blue-light);}
+.pdeck-btn .pdeck-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.pdeck-btn .pdeck-count{font-size:11px;color:var(--ink-muted);}
+.pronun-arena{max-width:500px;margin:0 auto;}
+.target-card{background:var(--surface);border:2px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:18px;position:relative;}
+.target-label{font-size:11px;font-weight:600;color:var(--ink-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+.target-pt{font-family:'DM Serif Display',serif;font-size:34px;color:var(--green);margin-bottom:8px;line-height:1.2;}
+.target-phonetic{font-size:13px;color:var(--ink-muted);font-style:italic;margin-bottom:16px;}
+.target-en{font-size:14px;color:var(--ink-mid);margin-bottom:18px;}
+.listen-btn{background:var(--green-light);border:1px solid var(--green);border-radius:var(--radius-sm);padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--green);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px;}
+.listen-btn:hover{background:var(--green);color:#fff;}
+.listen-btn.speaking{background:var(--green);color:#fff;animation:pulse 1s infinite;}
+.record-section{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:18px;}
+.record-title{font-size:13px;font-weight:600;margin-bottom:14px;}
+.record-btn{width:70px;height:70px;border-radius:50%;border:3px solid var(--red);background:var(--red-light);font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:all .2s;}
+.record-btn:hover{background:var(--red);color:#fff;}
+.record-btn.recording{background:var(--red);color:#fff;animation:pulse 0.8s infinite;border-color:var(--red);}
+.record-status{font-size:12px;color:var(--ink-muted);margin-bottom:8px;min-height:18px;}
+.transcript-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-size:14px;min-height:44px;text-align:left;color:var(--ink-mid);font-style:italic;margin-bottom:12px;}
+.score-section{display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:18px;text-align:center;}
+.score-section.show{display:block;}
+.score-circle{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;}
+.score-circle.great{background:var(--green-light);color:var(--green);border:3px solid var(--green);}
+.score-circle.ok{background:var(--gold-light);color:var(--gold);border:3px solid var(--gold);}
+.score-circle.retry{background:var(--red-light);color:var(--red);border:3px solid var(--red);}
+.score-verdict{font-size:15px;font-weight:600;margin-bottom:6px;}
+.score-detail{font-size:13px;color:var(--ink-muted);line-height:1.6;margin-bottom:14px;}
+.pronun-nav-btns{display:flex;gap:10px;justify-content:center;}
+.pnav-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;}
+.pnav-btn:hover{border-color:var(--green);background:var(--green-pale);}
+.pnav-btn.primary{background:var(--green);color:#fff;border-color:var(--green);}
+.pnav-btn.primary:hover{opacity:.88;}
+.pronun-counter{text-align:center;font-size:12px;color:var(--ink-muted);margin-bottom:14px;}
+.no-speech-msg{background:var(--gold-light);border:1px solid #f0d89a;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;color:var(--ink-mid);line-height:1.6;display:none;margin-bottom:14px;}
+.no-speech-msg.show{display:block;}
+
 /* AI CHAT */
 .chat-page{display:none;flex-direction:column;height:calc(100vh - 56px);max-width:820px;margin:0 auto;}
 .chat-page.active{display:flex;}
-.api-key-bar{padding:10px 20px;background:var(--gold-light);border-bottom:1px solid #f0d89a;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
-.api-key-bar label{font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap;}
-.api-key-input{flex:1;min-width:180px;border:1px solid #f0d89a;border-radius:var(--radius-sm);padding:6px 11px;font-family:'DM Sans',sans-serif;font-size:12px;background:#fff;color:var(--ink);}
-.api-key-input:focus{outline:none;border-color:var(--gold);}
-.api-key-save{background:var(--gold);color:#fff;border:none;border-radius:var(--radius-sm);padding:6px 13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;}
 .scenario-panel{padding:14px 20px;border-bottom:1px solid var(--border);background:var(--surface);}
 .scenario-panel h3{font-size:12px;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;}
 .scenario-scroll{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;scrollbar-width:none;}
@@ -174,6 +218,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .msg-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:2px;}
 .msg.assistant .msg-avatar{background:var(--green-light);}
 .msg.user .msg-avatar{background:var(--gold-light);}
+.msg-speak-btn{background:none;border:none;cursor:pointer;font-size:13px;padding:2px 5px;opacity:.5;transition:opacity .15s;display:inline-block;margin-left:6px;}
+.msg-speak-btn:hover{opacity:1;}
 .correction-box{background:var(--gold-light);border:1px solid #f0d89a;border-radius:var(--radius-sm);padding:9px 13px;margin-top:7px;font-size:12px;color:var(--ink-mid);line-height:1.6;}
 .correction-box strong{color:var(--gold);display:block;margin-bottom:2px;}
 .typing-indicator{display:flex;gap:4px;padding:11px 15px;background:var(--surface);border:1px solid var(--border);border-radius:4px 16px 16px 16px;width:fit-content;}
@@ -184,21 +230,101 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .chat-input-row{padding:12px 20px;border-top:1px solid var(--border);background:var(--surface);display:flex;gap:9px;align-items:flex-end;}
 .chat-input{flex:1;border:1px solid var(--border);border-radius:var(--radius);padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:14px;resize:none;max-height:100px;line-height:1.5;color:var(--ink);background:var(--surface-2);}
 .chat-input:focus{outline:none;border-color:var(--green);background:var(--surface);}
-.chat-send{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .15s;}
+.chat-send{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .15s;}
 .chat-send:hover{opacity:.88;}
 .chat-send:disabled{opacity:.4;cursor:not-allowed;}
 .chat-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:40px 20px;}
 .chat-empty-icon{font-size:38px;}
-.chat-empty h3{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);}
+.chat-empty h3{font-family:'DM Serif Display',serif;font-size:20px;}
 .chat-empty p{font-size:13px;color:var(--ink-muted);max-width:270px;line-height:1.6;}
 
+/* ── PROGRESS DASHBOARD ── */
+.prog-page{padding:24px 20px;max-width:820px;margin:0 auto;}
+.prog-hero{background:var(--green);border-radius:var(--radius);padding:22px 24px;color:#fff;margin-bottom:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.prog-hero-left{flex:1;}
+.prog-hero-left h2{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:4px;}
+.prog-hero-left p{font-size:13px;opacity:.85;}
+.prog-hero-stats{display:flex;gap:16px;flex-wrap:wrap;}
+.prog-hero-stat{text-align:center;}
+.prog-hero-stat .val{font-size:28px;font-weight:700;line-height:1;}
+.prog-hero-stat .lbl{font-size:11px;opacity:.8;margin-top:2px;}
+.prog-section{margin-bottom:26px;}
+.prog-section-title{font-size:12px;font-weight:700;color:var(--ink-muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+.prog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
+.prog-card .pc-icon{font-size:22px;margin-bottom:8px;}
+.prog-card .pc-val{font-size:24px;font-weight:700;color:var(--ink);line-height:1;margin-bottom:3px;}
+.prog-card .pc-label{font-size:11px;color:var(--ink-muted);font-weight:500;}
+.prog-card .pc-sub{font-size:11px;color:var(--ink-faint);margin-top:3px;}
+.prog-card.highlight{border-color:var(--green);background:var(--green-pale);}
+.prog-card.highlight .pc-val{color:var(--green);}
+/* Bar chart */
+.bar-chart{display:flex;flex-direction:column;gap:8px;}
+.bar-row{display:flex;align-items:center;gap:10px;}
+.bar-label{font-size:12px;color:var(--ink-muted);width:90px;flex-shrink:0;text-align:right;}
+.bar-track{flex:1;background:var(--surface-3);border-radius:20px;height:10px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:20px;transition:width .6s ease;}
+.bar-val{font-size:12px;font-weight:600;color:var(--ink-mid);width:36px;text-align:right;flex-shrink:0;}
+/* Activity calendar */
+.activity-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.act-cell{aspect-ratio:1;border-radius:3px;background:var(--surface-3);}
+.act-cell.l1{background:#c8e6d4;}
+.act-cell.l2{background:#7ec8a0;}
+.act-cell.l3{background:#2a8f64;}
+.act-cell.l4{background:#1a6b4a;}
+.act-day{font-size:9px;color:var(--ink-faint);text-align:center;padding:2px 0;}
+/* Lesson checklist */
+.lesson-checklist{display:flex;flex-direction:column;gap:7px;}
+.lc-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);}
+.lc-check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.lc-check.done{background:var(--green);color:#fff;}
+.lc-check.todo{background:var(--surface-3);color:var(--ink-faint);border:1.5px dashed var(--border);}
+.lc-text{flex:1;font-size:13px;font-weight:500;color:var(--ink);}
+.lc-tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;}
+/* Pronun history */
+.pronun-history{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto;}
+.ph-row{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px;}
+.ph-score{font-weight:700;width:36px;flex-shrink:0;text-align:center;}
+.ph-score.great{color:var(--green);}
+.ph-score.ok{color:var(--gold);}
+.ph-score.retry{color:var(--red);}
+.ph-phrase{flex:1;color:var(--ink-mid);}
+.ph-date{color:var(--ink-faint);font-size:11px;flex-shrink:0;}
+.reset-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 14px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink-muted);cursor:pointer;transition:all .15s;}
+.reset-btn:hover{border-color:var(--red);color:var(--red);}
 @media(max-width:600px){
-  .stats-row{grid-template-columns:1fr 1fr;}
+  .prog-hero{flex-direction:column;align-items:flex-start;}
+  .prog-grid{grid-template-columns:1fr 1fr;}
+}
+.say-it-row{width:100%;max-width:460px;margin-top:4px;}
+.say-it-btn{width:100%;padding:11px;border-radius:var(--radius-sm);border:2px solid var(--blue);background:var(--blue-light);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--blue);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .15s;}
+.say-it-btn:hover{background:var(--blue);color:#fff;}
+.say-it-btn.recording{background:var(--red);border-color:var(--red);color:#fff;animation:pulse .8s infinite;}
+.say-it-btn.scoring{background:var(--surface-3);border-color:var(--border);color:var(--ink-muted);cursor:not-allowed;}
+.fc-score-bar{width:100%;max-width:460px;border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;font-weight:500;display:none;align-items:center;gap:10px;margin-top:2px;}
+.fc-score-bar.show{display:flex;}
+.fc-score-bar.great{background:var(--green-light);color:var(--green);border:1px solid var(--green);}
+.fc-score-bar.ok{background:var(--gold-light);color:var(--gold);border:1px solid #f0d89a;}
+.fc-score-bar.retry{background:var(--red-light);color:var(--red);border:1px solid var(--red);}
+.fc-score-bar .replay-btn{margin-left:auto;background:none;border:none;cursor:pointer;font-size:16px;padding:0 2px;}
+/* Chat mic button */
+.chat-mic-btn{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:17px;cursor:pointer;transition:all .15s;flex-shrink:0;}
+.chat-mic-btn:hover{background:var(--green-light);border-color:var(--green);}
+.chat-mic-btn.recording{background:var(--red);border-color:var(--red);animation:pulse .8s infinite;}
+/* Lesson repeat button */
+.repeat-btn{background:none;border:1px solid var(--blue);border-radius:var(--radius-sm);padding:3px 9px;font-size:11px;font-weight:600;color:var(--blue);cursor:pointer;white-space:nowrap;transition:all .15s;margin-left:4px;}
+.repeat-btn:hover{background:var(--blue);color:#fff;}
+.repeat-btn.recording{background:var(--red);border-color:var(--red);color:#fff;animation:pulse .8s infinite;}
+.repeat-feedback{font-size:11px;padding:4px 9px;border-radius:var(--radius-sm);margin-top:4px;display:none;font-weight:500;}
+.repeat-feedback.show{display:inline-block;}
+.repeat-feedback.great{background:var(--green-light);color:var(--green);}
+.repeat-feedback.retry{background:var(--red-light);color:var(--red);}
   .today-card{flex-direction:column;align-items:flex-start;}
-  .nav-tab{padding:8px 7px;font-size:11px;}
+  .nav-tab{padding:8px 6px;font-size:11px;}
   .page{padding:18px 14px;}
   .chat-messages{padding:14px;}
   .chat-input-row{padding:10px 14px;}
+  .pronun-arena{max-width:100%;}
 }
 </style>
 </head>
@@ -210,8 +336,10 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
     <button class="nav-tab active" onclick="showPage('home')">Home</button>
     <button class="nav-tab" onclick="showPage('lessons')">Lessons</button>
     <button class="nav-tab" onclick="showPage('flashcards')">Cards</button>
+    <button class="nav-tab" onclick="showPage('pronun')">🎤 Speak</button>
     <button class="nav-tab" onclick="showPage('practice')">Quiz</button>
     <button class="nav-tab" onclick="showPage('chat')">💬 Chat</button>
+    <button class="nav-tab" onclick="showPage('progress')">📊 Progress</button>
   </div>
   <div class="nav-streak">🔥 <span id="streakNum">1</span></div>
 </nav>
@@ -219,31 +347,43 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="greeting">
-    <h1>Bom dia, Olaoye.</h1>
-    <p>You're on track for December arrival. Keep going.</p>
+    <h1 id="homeGreeting">Bom dia, Olaoye.</h1>
+    <p id="homeSubtitle">You're on track for December arrival. Keep going.</p>
   </div>
   <div class="stats-row">
     <div class="stat-card green"><div class="stat-label">Words learned</div><div class="stat-val" id="wordsLearned">0</div><div class="stat-sub">of 500 target</div></div>
     <div class="stat-card gold"><div class="stat-label">Day streak</div><div class="stat-val" id="streakStat">1</div><div class="stat-sub">days in a row</div></div>
-    <div class="stat-card"><div class="stat-label">Phase</div><div class="stat-val">1</div><div class="stat-sub">Foundations</div></div>
+    <div class="stat-card"><div class="stat-label">Day</div><div class="stat-val" id="dayNum">1</div><div class="stat-sub" id="dayDate">of your journey</div></div>
   </div>
-  <div class="today-card">
+
+  <!-- TODAY'S VOCAB STRIP -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <span style="font-size:12px;font-weight:700;color:var(--ink-muted);letter-spacing:.06em;text-transform:uppercase;">📚 Today's 5 new words</span>
+      <span id="vocabDate" style="font-size:11px;color:var(--ink-faint);"></span>
+    </div>
+    <div id="dailyVocabList" style="display:flex;flex-direction:column;gap:7px;"></div>
+  </div>
+
+  <div class="today-card" id="todayLessonCard">
     <div>
       <h2>Today's lesson</h2>
-      <p>EP Pronunciation: Vowel reduction & the silent -e</p>
-      <button class="btn-white" onclick="showPage('lessons')">Start lesson →</button>
+      <p id="todayLessonTitle">Loading...</p>
+      <button class="btn-white" id="todayLessonBtn" onclick="showPage('lessons')">Start lesson →</button>
     </div>
-    <div class="today-badge"><div class="num">20</div><div class="lbl">min today</div></div>
+    <div class="today-badge"><div class="num" id="todayMins">20</div><div class="lbl">min today</div></div>
   </div>
+
   <p class="section-title">This week</p>
   <div class="week-row" id="weekRow"></div>
+
   <p class="section-title" style="margin-top:20px;">Your daily plan</p>
   <div class="schedule-list">
-    <div class="sched-item" onclick="showPage('flashcards')"><div class="sched-icon" style="background:#e8f5ee;">🃏</div><div class="sched-text"><strong>Vocabulary flashcards</strong><span>10 min · AIMA & survival phrases</span></div><span class="sched-pill pill-green">Daily</span></div>
-    <div class="sched-item" onclick="showPage('lessons')"><div class="sched-icon" style="background:#fdf3e0;">📖</div><div class="sched-text"><strong>Grammar or pronunciation lesson</strong><span>10 min · One lesson per day</span></div><span class="sched-pill pill-gold">Weekdays</span></div>
-    <div class="sched-item" onclick="showPage('chat')"><div class="sched-icon" style="background:#eeedfe;">🤖</div><div class="sched-text"><strong>AI conversation practice</strong><span>Speak with Claude in Portuguese — corrects your grammar live</span></div><span class="sched-pill" style="background:#eeedfe;color:#26215C;">New ✨</span></div>
-    <div class="sched-item" onclick="showPage('practice')"><div class="sched-icon" style="background:#eeedfe;">✍️</div><div class="sched-text"><strong>Quick quiz</strong><span>5 min · Reinforce what you studied</span></div><span class="sched-pill pill-gray">Daily</span></div>
-    <div class="sched-item"><div class="sched-icon" style="background:#fdecea;">🎧</div><div class="sched-text"><strong>Practice Portuguese podcast</strong><span>practiceportuguese.com · On commute</span></div><span class="sched-pill pill-gray">Bonus</span></div>
+    <div class="sched-item" onclick="showPage('flashcards')"><div class="sched-icon" style="background:#e8f5ee;">🃏</div><div class="sched-text"><strong>Vocabulary flashcards</strong><span id="todayDeckLabel">10 min · Audio plays automatically</span></div><span class="sched-pill pill-green" id="taskPill_flashcards">Daily</span></div>
+    <div class="sched-item" onclick="showPage('lessons')"><div class="sched-icon" style="background:#fdf3e0;">📖</div><div class="sched-text"><strong id="todayLessonSched">Today's lesson</strong><span id="todayLessonSchedSub">Tap to begin</span></div><span class="sched-pill pill-gold" id="taskPill_lessons">Lesson</span></div>
+    <div class="sched-item" onclick="showPage('pronun')"><div class="sched-icon" style="background:#e6f1fb;">🎤</div><div class="sched-text"><strong>Pronunciation practice</strong><span id="todayPronunLabel">Speak phrases — get scored instantly</span></div><span class="sched-pill" style="background:#e6f1fb;color:#1a5fa8;" id="taskPill_pronun">Speak</span></div>
+    <div class="sched-item" onclick="showPage('chat')"><div class="sched-icon" style="background:#eeedfe;">🤖</div><div class="sched-text"><strong>AI conversation practice</strong><span id="todayScenarioLabel">Speak with Claude in Portuguese</span></div><span class="sched-pill" style="background:#eeedfe;color:#26215C;" id="taskPill_chat">Chat</span></div>
+    <div class="sched-item" onclick="showPage('practice')"><div class="sched-icon" style="background:#fdf3e0;">✍️</div><div class="sched-text"><strong>Quick quiz</strong><span>5 min · Reinforce what you studied</span></div><span class="sched-pill pill-gray" id="taskPill_practice">Quiz</span></div>
   </div>
 </div>
 
@@ -262,21 +402,71 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 
 <!-- FLASHCARDS -->
 <div class="page" id="page-flashcards">
-  <div class="fc-header"><h2 style="font-family:'DM Serif Display',serif;font-size:22px;">Flashcards</h2><div class="fc-progress" id="fcProgress" style="font-size:13px;color:var(--ink-muted);">Choose a deck</div></div>
+  <div class="fc-header"><h2 style="font-family:'DM Serif Display',serif;font-size:22px;">Flashcards</h2><div id="fcProgress" style="font-size:13px;color:var(--ink-muted);">Choose a deck</div></div>
+  <label class="audio-toggle"><input type="checkbox" id="autoSpeakToggle" checked onchange="toggleAutoSpeak()"> 🔊 Auto-speak Portuguese word</label>
   <div class="deck-select" id="deckSelect"></div>
   <div class="card-arena" id="cardArena" style="display:none;">
     <div class="flashcard" id="flashcard" onclick="revealCard()">
       <span class="card-tag" id="cardTag"></span>
+      <button class="card-speak-btn" id="cardSpeakBtn" onclick="event.stopPropagation();speakText(currentDeck[currentCardIndex].pt,'pt-PT')" title="Hear pronunciation">🔊</button>
       <div class="card-pt" id="cardPt"></div>
       <div class="card-phonetic" id="cardPhonetic"></div>
       <div class="card-en" id="cardEn"></div>
-      <div class="card-hint">Tap to reveal</div>
+      <div class="card-hint">Tap to reveal meaning</div>
     </div>
     <div class="card-actions">
       <button class="btn-action wrong" id="btnWrong" onclick="nextCard(false)" disabled>✗ Again</button>
       <button class="btn-action right" id="btnRight" onclick="nextCard(true)" disabled>✓ Got it</button>
     </div>
+    <div class="say-it-row" id="sayItRow" style="display:none;">
+      <button class="say-it-btn" id="sayItBtn" onclick="toggleCardMic()">🎤 Say it — check my pronunciation</button>
+    </div>
+    <div class="fc-score-bar" id="fcScoreBar">
+      <span id="fcScoreIcon"></span>
+      <span id="fcScoreText"></span>
+      <button class="replay-btn" id="fcReplayBtn" onclick="speakText(currentDeck[currentCardIndex]?.pt,'pt-PT')" title="Hear correct pronunciation">🔊</button>
+    </div>
     <div class="card-counter" id="cardCounter"></div>
+  </div>
+</div>
+
+<!-- PRONUNCIATION PRACTICE -->
+<div class="page" id="page-pronun">
+  <div class="pronun-header">
+    <h2>🎤 Pronunciation practice</h2>
+    <p>Listen to the target phrase, then record yourself saying it. You'll get an instant score.</p>
+  </div>
+  <div class="pronun-deck-select" id="pronunDeckSelect"></div>
+  <div class="pronun-arena" id="pronunArena" style="display:none;">
+    <div class="pronun-counter" id="pronunCounter"></div>
+    <div class="target-card">
+      <div class="target-label">Say this phrase</div>
+      <div class="target-pt" id="targetPt"></div>
+      <div class="target-phonetic" id="targetPhonetic"></div>
+      <div class="target-en" id="targetEn"></div>
+      <button class="listen-btn" id="listenBtn" onclick="listenTarget()">🔊 Hear it first</button>
+    </div>
+    <div class="no-speech-msg" id="noSpeechMsg">
+      ⚠️ <strong>Microphone not supported on this browser.</strong> For pronunciation practice, use Chrome or Edge on Android/desktop. Safari on iOS also works. Make sure you allow microphone access when prompted.
+    </div>
+    <div class="record-section">
+      <div class="record-title">Now you try — tap the mic and speak</div>
+      <button class="record-btn" id="recordBtn" onclick="toggleRecording()">🎤</button>
+      <div class="record-status" id="recordStatus">Tap mic to start</div>
+      <div class="transcript-box" id="transcriptBox">Your spoken words will appear here...</div>
+    </div>
+    <div class="score-section" id="scoreSection">
+      <div class="score-circle" id="scoreCircle"></div>
+      <div class="score-verdict" id="scoreVerdict"></div>
+      <div class="score-detail" id="scoreDetail"></div>
+      <div class="pronun-nav-btns">
+        <button class="pnav-btn" onclick="retryPhrase()">🔄 Try again</button>
+        <button class="pnav-btn primary" onclick="nextPhrase()">Next phrase →</button>
+      </div>
+    </div>
+    <div class="pronun-nav-btns" id="skipBtn" style="justify-content:center;margin-top:10px;">
+      <button class="pnav-btn" onclick="nextPhrase()">Skip →</button>
+    </div>
   </div>
 </div>
 
@@ -299,124 +489,739 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
     <div class="chat-empty" id="chatEmpty">
       <div class="chat-empty-icon">🇵🇹</div>
       <h3>Pronto para praticar?</h3>
-      <p>Pick a scenario above, add your API key, and start speaking Portuguese. Claude replies in EP and gently corrects mistakes.</p>
+      <p>Pick a scenario above and start speaking Portuguese. Claude replies in EP and gently corrects mistakes.</p>
     </div>
   </div>
   <div class="chat-input-row">
-    <textarea class="chat-input" id="chatInput" rows="1" placeholder="Type in Portuguese (or English to start)..." onkeydown="handleChatKey(event)"></textarea>
+    <button class="chat-mic-btn" id="chatMicBtn" onclick="toggleChatMic()" title="Speak your message">🎤</button>
+    <textarea class="chat-input" id="chatInput" rows="1" placeholder="Type or tap 🎤 to speak in Portuguese..." onkeydown="handleChatKey(event)"></textarea>
     <button class="chat-send" id="chatSend" onclick="sendMessage()">Enviar →</button>
   </div>
 </div>
 
+<!-- PROGRESS -->
+<div class="page" id="page-progress">
+  <div class="prog-hero">
+    <div class="prog-hero-left">
+      <h2>Your progress</h2>
+      <p id="progSubtitle">Keep going — December is closer than you think.</p>
+    </div>
+    <div class="prog-hero-stats">
+      <div class="prog-hero-stat"><div class="val" id="ph_streak">0</div><div class="lbl">Day streak</div></div>
+      <div class="prog-hero-stat"><div class="val" id="ph_days">0</div><div class="lbl">Days active</div></div>
+      <div class="prog-hero-stat"><div class="val" id="ph_words">0</div><div class="lbl">Words learned</div></div>
+    </div>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="prog-section">
+    <div class="prog-section-title">Overview</div>
+    <div class="prog-grid">
+      <div class="prog-card highlight">
+        <div class="pc-icon">🃏</div>
+        <div class="pc-val" id="pc_cards">0</div>
+        <div class="pc-label">Cards reviewed</div>
+        <div class="pc-sub" id="pc_cards_acc">— % accuracy</div>
+      </div>
+      <div class="prog-card highlight">
+        <div class="pc-icon">📖</div>
+        <div class="pc-val" id="pc_lessons">0</div>
+        <div class="pc-label">Lessons completed</div>
+        <div class="pc-sub">of 8 total</div>
+      </div>
+      <div class="prog-card highlight">
+        <div class="pc-icon">🎤</div>
+        <div class="pc-val" id="pc_pronun">0</div>
+        <div class="pc-label">Pronunciation drills</div>
+        <div class="pc-sub" id="pc_pronun_avg">— avg score</div>
+      </div>
+      <div class="prog-card highlight">
+        <div class="pc-icon">✍️</div>
+        <div class="pc-val" id="pc_quizzes">0</div>
+        <div class="pc-label">Quizzes taken</div>
+        <div class="pc-sub" id="pc_quiz_avg">— avg score</div>
+      </div>
+      <div class="prog-card">
+        <div class="pc-icon">💬</div>
+        <div class="pc-val" id="pc_chats">0</div>
+        <div class="pc-label">Chat sessions</div>
+        <div class="pc-sub">AI conversations</div>
+      </div>
+      <div class="prog-card">
+        <div class="pc-icon">🔥</div>
+        <div class="pc-val" id="pc_best_streak">0</div>
+        <div class="pc-label">Best streak</div>
+        <div class="pc-sub">days in a row</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flashcard accuracy by deck -->
+  <div class="prog-section">
+    <div class="prog-section-title">Flashcard accuracy by deck</div>
+    <div class="bar-chart" id="deckAccuracyChart"></div>
+  </div>
+
+  <!-- Pronunciation history -->
+  <div class="prog-section">
+    <div class="prog-section-title">Recent pronunciation scores</div>
+    <div class="pronun-history" id="pronunHistory">
+      <p style="font-size:13px;color:var(--ink-muted);padding:8px 0;">No pronunciation drills recorded yet. Go to 🎤 Speak to begin.</p>
+    </div>
+  </div>
+
+  <!-- Lessons checklist -->
+  <div class="prog-section">
+    <div class="prog-section-title">Lessons progress</div>
+    <div class="lesson-checklist" id="lessonChecklist"></div>
+  </div>
+
+  <!-- 28-day activity grid -->
+  <div class="prog-section">
+    <div class="prog-section-title">28-day activity</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;">
+      <div class="act-day">S</div><div class="act-day">M</div><div class="act-day">T</div>
+      <div class="act-day">W</div><div class="act-day">T</div><div class="act-day">F</div><div class="act-day">S</div>
+    </div>
+    <div class="activity-grid" id="activityGrid"></div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--ink-muted);">
+      <span>Less</span>
+      <div style="width:12px;height:12px;border-radius:2px;background:var(--surface-3);"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#c8e6d4;"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#7ec8a0;"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#1a6b4a;"></div>
+      <span>More</span>
+    </div>
+  </div>
+
+  <!-- Quiz history -->
+  <div class="prog-section">
+    <div class="prog-section-title">Quiz history (last 10)</div>
+    <div class="bar-chart" id="quizHistoryChart">
+      <p style="font-size:13px;color:var(--ink-muted);">No quizzes completed yet.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:10px;display:flex;justify-content:flex-end;">
+    <button class="reset-btn" onclick="confirmReset()">🗑 Reset all progress</button>
+  </div>
+</div>
+
 <script>
-// ── STATE ────────────────────────────────────────
-const STATE = {
-  streak: parseInt(localStorage.getItem('fpt_streak')||'1'),
-  wordsLearned: parseInt(localStorage.getItem('fpt_words')||'0'),
-  daysThisWeek: JSON.parse(localStorage.getItem('fpt_days')||'[true,false,false,false,false,false,false]')
+// ── STATE ─────────────────────────────────────────────────────
+const TODAY_KEY = new Date().toISOString().slice(0,10); // e.g. "2026-06-03"
+const START_DATE = new Date('2026-06-03');
+
+const STATE={
+  streak:     parseInt(localStorage.getItem('fpt_streak')||'0'),
+  wordsLearned:parseInt(localStorage.getItem('fpt_words')||'0'),
+  lastActiveDate: localStorage.getItem('fpt_last_date')||'',
+  completedToday: JSON.parse(localStorage.getItem('fpt_done_'+TODAY_KEY)||'{}'),
 };
+
 function save(){
-  localStorage.setItem('fpt_streak', STATE.streak);
-  localStorage.setItem('fpt_words', STATE.wordsLearned);
-  localStorage.setItem('fpt_days', JSON.stringify(STATE.daysThisWeek));
+  localStorage.setItem('fpt_streak',      STATE.streak);
+  localStorage.setItem('fpt_words',       STATE.wordsLearned);
+  localStorage.setItem('fpt_last_date',   STATE.lastActiveDate);
+  localStorage.setItem('fpt_done_'+TODAY_KEY, JSON.stringify(STATE.completedToday));
 }
 
-// ── PAGE NAV ─────────────────────────────────────
-function showPage(id){
-  document.querySelectorAll('.page, .chat-page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  const tabs=['home','lessons','flashcards','practice','chat'];
-  const idx=tabs.indexOf(id);
-  if(idx>-1) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
-  const target=document.getElementById('page-'+id);
-  if(target){
-    target.style.display = id==='chat' ? 'flex' : 'block';
-    target.classList.add('active');
+// ── PROGRESS STORE ────────────────────────────────────────────
+function loadProgress(){
+  return JSON.parse(localStorage.getItem('fpt_progress')||JSON.stringify({
+    daysActive:[],          // array of date strings
+    bestStreak:0,
+    flashcard:{reviewed:0, correct:0, byDeck:{}},
+    lessons:{completed:[]}, // array of lesson IDs
+    pronun:[],              // [{date,phrase,pct}]
+    quiz:[],                // [{date,score,total}]
+    chat:{sessions:0},
+  }));
+}
+function saveProgress(p){localStorage.setItem('fpt_progress',JSON.stringify(p));}
+
+function recordActivity(){
+  const p=loadProgress();
+  if(!p.daysActive.includes(TODAY_KEY)){p.daysActive.push(TODAY_KEY);}
+  if(STATE.streak>p.bestStreak)p.bestStreak=STATE.streak;
+  saveProgress(p);
+}
+
+function recordFlashcardResult(deckKey, correct, total){
+  const p=loadProgress();
+  p.flashcard.reviewed+=(total||1);
+  p.flashcard.correct+=(correct||0);
+  if(!p.flashcard.byDeck[deckKey]){p.flashcard.byDeck[deckKey]={reviewed:0,correct:0};}
+  p.flashcard.byDeck[deckKey].reviewed+=(total||1);
+  p.flashcard.byDeck[deckKey].correct+=(correct||0);
+  saveProgress(p);recordActivity();
+}
+
+function recordLessonComplete(lessonId){
+  const p=loadProgress();
+  if(!p.lessons.completed.includes(lessonId))p.lessons.completed.push(lessonId);
+  saveProgress(p);recordActivity();
+}
+
+function recordPronunScore(phrase, pct){
+  const p=loadProgress();
+  p.pronun.unshift({date:TODAY_KEY,phrase,pct});
+  if(p.pronun.length>50)p.pronun=p.pronun.slice(0,50);
+  saveProgress(p);recordActivity();
+}
+
+function recordQuizResult(score, total){
+  const p=loadProgress();
+  p.quiz.unshift({date:TODAY_KEY,score,total});
+  if(p.quiz.length>30)p.quiz=p.quiz.slice(0,30);
+  saveProgress(p);recordActivity();
+}
+
+function recordChatSession(){
+  const p=loadProgress();
+  p.chat.sessions=(p.chat.sessions||0)+1;
+  saveProgress(p);recordActivity();
+}
+
+// ── STREAK LOGIC ──────────────────────────────────────────────
+function updateStreak(){
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate()-1);
+  const yKey = yesterday.toISOString().slice(0,10);
+  if(STATE.lastActiveDate===TODAY_KEY) return; // already counted today
+  if(STATE.lastActiveDate===yKey){
+    STATE.streak++; // continued streak
+  } else if(STATE.lastActiveDate!==TODAY_KEY && STATE.lastActiveDate!==''){
+    STATE.streak=1;  // broke streak — restart
+  } else if(STATE.streak===0){
+    STATE.streak=1;  // first time ever
   }
+  STATE.lastActiveDate=TODAY_KEY;
+  save();
+  document.getElementById('streakNum').textContent=STATE.streak;
+  document.getElementById('streakStat').textContent=STATE.streak;
 }
 
-// ── HOME ─────────────────────────────────────────
-const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-function renderWeek(){
-  const wr=document.getElementById('weekRow');
-  wr.innerHTML='';
-  const today=new Date().getDay();
-  STATE.daysThisWeek.forEach((done,i)=>{
-    const cls=i<today?(done?'done':''):i===today?'today':'off';
-    wr.innerHTML+=`<div class="day-dot ${cls}"><div class="d">${DAYS[i]}</div><div class="dot">${cls==='done'?'✓':cls==='today'?'●':''}</div></div>`;
-  });
+// Mark a task done for today and update the UI tick
+function markDone(taskId){
+  STATE.completedToday[taskId]=true;
+  save();
+  updateStreak();
+  renderDailyTasks();
+}
+
+// ── DAILY SEED — deterministic shuffle by date ────────────────
+function seededRandom(seed){
+  let s=seed;
+  return function(){s=(s*9301+49297)%233280;return s/233280;};
+}
+function dailyShuffle(arr){
+  const d=new Date(TODAY_KEY);
+  const seed=d.getFullYear()*10000+( d.getMonth()+1)*100+d.getDate();
+  const rng=seededRandom(seed);
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+// ── MASSIVE VOCABULARY BANK (100 words, 5 shown per day) ──────
+const VOCAB_BANK=[
+  {pt:'olá',ph:'oh-LAH',en:'hello',cat:'Basics'},
+  {pt:'obrigado',ph:'oh-bri-GAH-du',en:'thank you (m)',cat:'Basics'},
+  {pt:'obrigada',ph:'oh-bri-GAH-dah',en:'thank you (f)',cat:'Basics'},
+  {pt:'por favor',ph:'pur fah-VOR',en:'please',cat:'Basics'},
+  {pt:'desculpe',ph:'dsh-KULP',en:'excuse me / sorry',cat:'Basics'},
+  {pt:'de nada',ph:'deh NAH-dah',en:"you're welcome",cat:'Basics'},
+  {pt:'bom dia',ph:'bong DEE-ah',en:'good morning',cat:'Greetings'},
+  {pt:'boa tarde',ph:'BOH-ah TARD',en:'good afternoon',cat:'Greetings'},
+  {pt:'boa noite',ph:'BOH-ah NOY-t',en:'good night',cat:'Greetings'},
+  {pt:'até logo',ph:'ah-TEH LOH-gu',en:'see you later',cat:'Greetings'},
+  {pt:'sim',ph:'sing',en:'yes',cat:'Basics'},
+  {pt:'não',ph:'nowng',en:'no',cat:'Basics'},
+  {pt:'ajuda',ph:'ah-ZHOO-dah',en:'help',cat:'Basics'},
+  {pt:'água',ph:'AH-gwah',en:'water',cat:'Food'},
+  {pt:'comida',ph:'ko-MEE-dah',en:'food',cat:'Food'},
+  {pt:'pão',ph:'powng',en:'bread',cat:'Food'},
+  {pt:'café',ph:'kah-FEH',en:'coffee',cat:'Food'},
+  {pt:'leite',ph:'LAYT',en:'milk',cat:'Food'},
+  {pt:'vinho',ph:'VEE-nyu',en:'wine',cat:'Food'},
+  {pt:'frango',ph:'FRAN-gu',en:'chicken',cat:'Food'},
+  {pt:'peixe',ph:'PAY-sh',en:'fish',cat:'Food'},
+  {pt:'fruta',ph:'FROO-tah',en:'fruit',cat:'Food'},
+  {pt:'legumes',ph:'le-GOO-mesh',en:'vegetables',cat:'Food'},
+  {pt:'casa',ph:'KAH-zah',en:'house / home',cat:'Home'},
+  {pt:'porta',ph:'POR-tah',en:'door',cat:'Home'},
+  {pt:'janela',ph:'zhah-NEH-lah',en:'window',cat:'Home'},
+  {pt:'quarto',ph:'KWAR-tu',en:'bedroom',cat:'Home'},
+  {pt:'cozinha',ph:'ku-ZEE-nyah',en:'kitchen',cat:'Home'},
+  {pt:'banheiro',ph:'ban-YAY-ru',en:'bathroom',cat:'Home'},
+  {pt:'rua',ph:'ROO-ah',en:'street',cat:'City'},
+  {pt:'hospital',ph:'osh-pi-TAL',en:'hospital',cat:'City'},
+  {pt:'farmácia',ph:'far-MAH-syah',en:'pharmacy',cat:'City'},
+  {pt:'supermercado',ph:'soo-per-mer-KAH-du',en:'supermarket',cat:'City'},
+  {pt:'banco',ph:'BAN-ku',en:'bank',cat:'City'},
+  {pt:'autocarro',ph:'ow-to-KAH-ru',en:'bus',cat:'Transport'},
+  {pt:'comboio',ph:'kom-BOY-u',en:'train',cat:'Transport'},
+  {pt:'aeroporto',ph:'ah-e-ro-POR-tu',en:'airport',cat:'Transport'},
+  {pt:'táxi',ph:'TAK-si',en:'taxi',cat:'Transport'},
+  {pt:'bilhete',ph:'bi-LYEH-t',en:'ticket',cat:'Transport'},
+  {pt:'médico',ph:'MEH-di-ku',en:'doctor',cat:'Health'},
+  {pt:'enfermeiro',ph:'en-fer-MAY-ru',en:'nurse',cat:'Health'},
+  {pt:'dor',ph:'dor',en:'pain',cat:'Health'},
+  {pt:'febre',ph:'FEB-r',en:'fever',cat:'Health'},
+  {pt:'receita',ph:'re-SAY-tah',en:'prescription',cat:'Health'},
+  {pt:'consulta',ph:'kon-SUL-tah',en:'appointment / consultation',cat:'Health'},
+  {pt:'urgência',ph:'ur-ZHEN-syah',en:'emergency',cat:'Health'},
+  {pt:'marido',ph:'mah-REE-du',en:'husband',cat:'Family'},
+  {pt:'esposa',ph:'esh-POH-zah',en:'wife',cat:'Family'},
+  {pt:'filho',ph:'FEE-lyu',en:'son',cat:'Family'},
+  {pt:'filha',ph:'FEE-lyah',en:'daughter',cat:'Family'},
+  {pt:'escola',ph:'esh-KOH-lah',en:'school',cat:'Family'},
+  {pt:'professor',ph:'pro-feh-SOR',en:'teacher',cat:'Family'},
+  {pt:'trabalho',ph:'trah-BAH-lyu',en:'work / job',cat:'Work'},
+  {pt:'hospital',ph:'osh-pi-TAL',en:'hospital',cat:'Work'},
+  {pt:'reunião',ph:'re-oo-nee-OWNG',en:'meeting',cat:'Work'},
+  {pt:'contrato',ph:'kon-TRAH-tu',en:'contract',cat:'Work'},
+  {pt:'salário',ph:'sah-LAH-ryu',en:'salary',cat:'Work'},
+  {pt:'ecografia',ph:'e-ko-gra-FEE-ah',en:'ultrasound',cat:'Clinical'},
+  {pt:'transdutor',ph:'trans-du-TOR',en:'transducer / probe',cat:'Clinical'},
+  {pt:'útero',ph:'OO-te-ru',en:'uterus',cat:'Clinical'},
+  {pt:'ovários',ph:'o-VAH-ryush',en:'ovaries',cat:'Clinical'},
+  {pt:'placenta',ph:'plah-SEN-tah',en:'placenta',cat:'Clinical'},
+  {pt:'mioma',ph:'myo-MAH',en:'fibroid',cat:'Clinical'},
+  {pt:'endométrio',ph:'en-du-MEH-tryu',en:'endometrium',cat:'Clinical'},
+  {pt:'doppler',ph:'DOP-ler',en:'Doppler',cat:'Clinical'},
+  {pt:'hiperecogénico',ph:'ee-per-e-ko-ZHEH-ni-ku',en:'hyperechoic',cat:'Clinical'},
+  {pt:'hipoecogénico',ph:'ee-po-e-ko-ZHEH-ni-ku',en:'hypoechoic',cat:'Clinical'},
+  {pt:'sombra acústica',ph:'SOM-brah ah-KOOSH-ti-kah',en:'acoustic shadow',cat:'Clinical'},
+  {pt:'autorização',ph:'aw-tu-ri-ZA-sowng',en:'authorisation / permit',cat:'Immigration'},
+  {pt:'residência',ph:'re-zi-DEN-syah',en:'residence',cat:'Immigration'},
+  {pt:'requerimento',ph:'re-keh-ri-MEN-tu',en:'application',cat:'Immigration'},
+  {pt:'comprovativo',ph:'kom-pro-vah-TEE-vu',en:'proof document',cat:'Immigration'},
+  {pt:'prazo',ph:'PRAH-zu',en:'deadline',cat:'Immigration'},
+  {pt:'apostila',ph:'ah-posh-TEE-lah',en:'apostille',cat:'Immigration'},
+  {pt:'finanças',ph:'fi-NAN-sas',en:'tax authority',cat:'Immigration'},
+  {pt:'renda',ph:'REN-dah',en:'rent',cat:'Housing'},
+  {pt:'senhorio',ph:'se-nyo-REE-u',en:'landlord',cat:'Housing'},
+  {pt:'contrato de arrendamento',ph:'ah-ren-dah-MEN-tu',en:'rental contract',cat:'Housing'},
+  {pt:'depósito',ph:'de-POH-zi-tu',en:'deposit',cat:'Housing'},
+  {pt:'recibo',ph:'re-SEE-bu',en:'receipt',cat:'Housing'},
+  {pt:'fatura',ph:'fah-TOO-rah',en:'invoice / bill',cat:'Housing'},
+  {pt:'quanto custa?',ph:'KWAN-tu KOOSH-tah',en:'how much does it cost?',cat:'Shopping'},
+  {pt:'barato',ph:'bah-RAH-tu',en:'cheap',cat:'Shopping'},
+  {pt:'caro',ph:'KAH-ru',en:'expensive',cat:'Shopping'},
+  {pt:'troco',ph:'TROH-ku',en:'change (money)',cat:'Shopping'},
+  {pt:'cartão',ph:'kar-TOWNG',en:'card (payment)',cat:'Shopping'},
+  {pt:'bom',ph:'bong',en:'good (m)',cat:'Adjectives'},
+  {pt:'mau',ph:'mow',en:'bad (m)',cat:'Adjectives'},
+  {pt:'grande',ph:'GRAN-d',en:'big',cat:'Adjectives'},
+  {pt:'pequeno',ph:'pe-KEH-nu',en:'small',cat:'Adjectives'},
+  {pt:'rápido',ph:'RAH-pi-du',en:'fast',cat:'Adjectives'},
+  {pt:'devagar',ph:'de-vah-GAR',en:'slow / slowly',cat:'Adjectives'},
+  {pt:'perto',ph:'PER-tu',en:'near',cat:'Navigation'},
+  {pt:'longe',ph:'LONG-zh',en:'far',cat:'Navigation'},
+  {pt:'esquerda',ph:'esh-KER-dah',en:'left',cat:'Navigation'},
+  {pt:'direita',ph:'di-RAY-tah',en:'right',cat:'Navigation'},
+  {pt:'em frente',ph:'eng FRENT',en:'straight ahead',cat:'Navigation'},
+  {pt:'semáforo',ph:'se-MAH-fo-ru',en:'traffic light',cat:'Navigation'},
+];
+
+// Pick 5 words for today using date seed
+function getTodaysVocab(){
+  const shuffled=dailyShuffle(VOCAB_BANK);
+  return shuffled.slice(0,5);
+}
+
+// ── DAILY SCHEDULE PLAN ───────────────────────────────────────
+const DAILY_PLANS=[
+  {lesson:1, deck:'survival',   pronunDeck:'survival',  scenario:'free',           focus:'Greetings & sounds'},
+  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'cafe',           focus:'Meeting people'},
+  {lesson:3, deck:'numbers',    pronunDeck:'survival',  scenario:'market',         focus:'Numbers & shopping'},
+  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'aima',           focus:'AIMA vocabulary'},
+  {lesson:1, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_ob',focus:'Clinical Portuguese'},
+  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'pharmacy',       focus:'Pharmacy phrases'},
+  {lesson:3, deck:'numbers',    pronunDeck:'aima',      scenario:'landlord',       focus:'Numbers & housing'},
+  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'sono_colleague', focus:'AIMA & clinical'},
+  {lesson:1, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_gyne',      focus:'Clinical scanning'},
+  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'doctor',         focus:'Healthcare vocab'},
+  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'sono_referral',  focus:'Referral & admin'},
+  {lesson:3, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_report',    focus:'Report dictation'},
+  {lesson:1, deck:'numbers',    pronunDeck:'survival',  scenario:'school',         focus:'Family & school'},
+  {lesson:2, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_abd',focus:'Abdominal scanning'},
+];
+
+function getTodaysPlan(){
+  const d=new Date(TODAY_KEY);
+  const dayNum=Math.floor((d-START_DATE)/(1000*60*60*24));
+  return DAILY_PLANS[((dayNum%DAILY_PLANS.length)+DAILY_PLANS.length)%DAILY_PLANS.length];
+}
+
+// ── RENDER HOME PAGE ──────────────────────────────────────────
+function renderHome(){
+  const plan=getTodaysPlan();
+  const vocab=getTodaysVocab();
+  const d=new Date();
+  const dayNum=Math.max(1,Math.floor((d-START_DATE)/(1000*60*60*24))+1);
+
+  // Greeting by time
+  const hr=d.getHours();
+  const greeting=hr<12?'Bom dia':hr<19?'Boa tarde':'Boa noite';
+  document.getElementById('homeGreeting').textContent=`${greeting}, Olaoye.`;
+
+  // Day counter
+  document.getElementById('dayNum').textContent=dayNum;
+  document.getElementById('dayDate').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+
+  // Stats
   document.getElementById('streakNum').textContent=STATE.streak;
   document.getElementById('streakStat').textContent=STATE.streak;
   document.getElementById('wordsLearned').textContent=STATE.wordsLearned;
+
+  // Today's vocab strip
+  const vocabDate=d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+  document.getElementById('vocabDate').textContent=vocabDate;
+  document.getElementById('dailyVocabList').innerHTML=vocab.map(v=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:7px 10px;background:var(--surface-2);border-radius:var(--radius-sm);">
+      <span style="font-family:'DM Serif Display',serif;font-size:15px;color:var(--green);min-width:120px;">${v.pt}</span>
+      <span style="font-size:11px;color:var(--ink-muted);font-style:italic;flex:1;">${v.ph}</span>
+      <span style="font-size:13px;color:var(--ink-mid);">${v.en}</span>
+      <button class="speak-phrase-btn" onclick="speakText('${v.pt}','pt-PT',null,this)">🔊</button>
+    </div>`).join('');
+
+  // Today's lesson card
+  const lesson=LESSONS.find(l=>l.id===plan.lesson)||LESSONS[0];
+  document.getElementById('todayLessonTitle').textContent=lesson.title;
+  document.getElementById('todayMins').textContent=lesson.time.replace(' min','');
+  document.getElementById('todayLessonBtn').onclick=()=>{openLesson(plan.lesson);showPage('lessons');};
+
+  // Schedule labels
+  const deckNames={aima:'AIMA & Immigration',survival:'Survival phrases',numbers:'Numbers & time',sonography:'Sonography clinical'};
+  const scenarioEmojis={free:'💬 Free conversation',aima:'🏛️ AIMA counter',pharmacy:'💊 Pharmacy',market:'🛒 Market',landlord:'🏠 Landlord',cafe:'☕ Café',school:'🎒 School',doctor:'🏥 Health centre',sono_patient_ob:'🤰 OB scan',sono_patient_abd:'🫁 Abdominal scan',sono_colleague:'👨‍⚕️ Case discussion',sono_referral:'📋 Referral',sono_report:'📝 Report dictation',sono_gyne:'🔬 Gynaecology scan'};
+  document.getElementById('todayDeckLabel').textContent=`${deckNames[plan.deck]||plan.deck} · Audio auto-plays`;
+  document.getElementById('todayLessonSched').textContent=lesson.title;
+  document.getElementById('todayLessonSchedSub').textContent=`${lesson.tag} · ${lesson.time}`;
+  document.getElementById('todayPronunLabel').textContent=`${plan.focus} · speak & get scored`;
+  document.getElementById('todayScenarioLabel').textContent=`Today: ${scenarioEmojis[plan.scenario]||plan.scenario}`;
+
+  // Week row
+  renderWeek();
+
+  // Render daily task completion ticks
+  renderDailyTasks();
 }
 
-// ── LESSONS ──────────────────────────────────────
+function renderDailyTasks(){
+  const tasks=['flashcards','lessons','pronun','chat','practice'];
+  tasks.forEach(t=>{
+    const pill=document.getElementById('taskPill_'+t);
+    if(pill){
+      if(STATE.completedToday[t]){
+        pill.textContent='✓ Done';pill.style.background='var(--green-light)';pill.style.color='var(--green)';
+      }
+    }
+  });
+}
+
+// ── PAGE NAV ──────────────────────────────────────────────────
+function showPage(id){
+  document.querySelectorAll('.page,.chat-page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const tabs=['home','lessons','flashcards','pronun','practice','chat','progress'];
+  const idx=tabs.indexOf(id);
+  if(idx>-1)document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  const target=document.getElementById('page-'+id);
+  if(target){
+    target.style.display=id==='chat'?'flex':'block';
+    target.classList.add('active');
+    if(id==='progress')renderProgress();
+  }
+}
+
+// ── SPEECH ENGINE ─────────────────────────────────────────────
+let currentUtterance=null;
+let autoSpeak=true;
+
+function toggleAutoSpeak(){autoSpeak=document.getElementById('autoSpeakToggle').checked;}
+
+function speakText(text, lang='pt-PT', onEnd=null, btn=null){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.lang=lang;
+  utter.rate=0.85;
+  utter.pitch=1;
+  // Try to find a Portuguese voice
+  const voices=window.speechSynthesis.getVoices();
+  const ptVoice=voices.find(v=>v.lang.startsWith('pt-PT'))||voices.find(v=>v.lang.startsWith('pt'));
+  if(ptVoice)utter.voice=ptVoice;
+  if(btn){
+    btn.classList.add('speaking');
+    utter.onend=()=>{btn.classList.remove('speaking');if(onEnd)onEnd();};
+    utter.onerror=()=>{btn.classList.remove('speaking');};
+  } else if(onEnd){
+    utter.onend=onEnd;
+  }
+  window.speechSynthesis.speak(utter);
+  currentUtterance=utter;
+}
+
+// preload voices
+if(window.speechSynthesis){
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
+}
+
+// ── SHARED MIC SCORER ─────────────────────────────────────────
+// Generic: record speech, compare to target, run callback with {pct, transcript}
+function recordAndScore(targetText, onResult, onStart){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert('Speech recognition not supported on this browser. Use Chrome or Edge.');return null;}
+  window.speechSynthesis.cancel();
+  const rec=new SR();
+  rec.lang='pt-PT';
+  rec.interimResults=false;
+  rec.maxAlternatives=3;
+  if(onStart)onStart();
+  let finalTranscript='';
+  rec.onresult=(e)=>{
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal)finalTranscript+=e.results[i][0].transcript;
+    }
+  };
+  rec.onend=()=>{
+    if(!finalTranscript){onResult({pct:0,transcript:''});return;}
+    const norm=(s)=>s.toLowerCase().replace(/[.,!?;:]/g,'').trim();
+    const t=norm(finalTranscript).split(/\s+/);
+    const tgt=norm(targetText).split(/\s+/);
+    let matches=0;
+    tgt.forEach(w=>{if(t.some(tw=>tw===w||tw.includes(w.slice(0,-1))||w.includes(tw.slice(0,-1))))matches++;});
+    const pct=Math.round((matches/tgt.length)*100);
+    onResult({pct,transcript:finalTranscript});
+  };
+  rec.onerror=(e)=>{onResult({pct:-1,transcript:'',error:e.error});};
+  rec.start();
+  return rec;
+}
+
+// ── FLASHCARD MIC ─────────────────────────────────────────────
+let cardRecognition=null;
+let cardRecording=false;
+
+function revealCard(){
+  if(cardRevealed)return;
+  cardRevealed=true;
+  document.getElementById('flashcard').classList.add('revealed');
+  document.getElementById('btnWrong').disabled=false;
+  document.getElementById('btnRight').disabled=false;
+  // Show the Say It button
+  document.getElementById('sayItRow').style.display='block';
+  document.getElementById('fcScoreBar').classList.remove('show');
+}
+
+function toggleCardMic(){
+  if(cardRecording){
+    if(cardRecognition)cardRecognition.stop();
+    return;
+  }
+  const target=currentDeck[currentCardIndex].pt;
+  const btn=document.getElementById('sayItBtn');
+  const bar=document.getElementById('fcScoreBar');
+  bar.classList.remove('show');
+  cardRecording=true;
+  btn.classList.add('recording');
+  btn.textContent='🔴 Listening... speak now';
+  cardRecognition=recordAndScore(target,
+    ({pct,transcript,error})=>{
+      cardRecording=false;
+      btn.classList.remove('recording');
+      btn.innerHTML='🎤 Say it — check my pronunciation';
+      if(error==='not-allowed'){btn.textContent='⚠️ Mic blocked — allow access in browser';return;}
+      if(!transcript){btn.textContent='🎤 Nothing heard — try again';return;}
+      bar.classList.add('show');
+      if(pct>=75){
+        bar.className='fc-score-bar show great';
+        document.getElementById('fcScoreIcon').textContent='✓';
+        document.getElementById('fcScoreText').textContent=`Perfeito! "${transcript}"`;
+      } else if(pct>=40){
+        bar.className='fc-score-bar show ok';
+        document.getElementById('fcScoreIcon').textContent='≈';
+        document.getElementById('fcScoreText').textContent=`Close! You said "${transcript}" — hear correct:`;
+        setTimeout(()=>speakText(target,'pt-PT'),400);
+      } else {
+        bar.className='fc-score-bar show retry';
+        document.getElementById('fcScoreIcon').textContent='✗';
+        document.getElementById('fcScoreText').textContent=`You said "${transcript}" — correct pronunciation:`;
+        setTimeout(()=>speakText(target,'pt-PT'),400);
+      }
+    },
+    null
+  );
+}
+
+// ── LESSON REPEAT-AFTER-ME ────────────────────────────────────
+// Called from inline onclick in lesson content
+function repeatAfterMe(text, btnEl, feedbackId){
+  if(!btnEl)return;
+  // First play the audio, then record after it finishes
+  btnEl.classList.add('recording');
+  btnEl.textContent='▶ Listen...';
+  speakText(text,'pt-PT',()=>{
+    btnEl.textContent='🔴 Now you...';
+    recordAndScore(text,
+      ({pct,transcript,error})=>{
+        btnEl.classList.remove('recording');
+        btnEl.textContent='🎤 Repeat';
+        const fb=document.getElementById(feedbackId);
+        if(!fb)return;
+        if(error||!transcript){fb.textContent='No audio detected';fb.className='repeat-feedback show retry';return;}
+        fb.classList.add('show');
+        if(pct>=75){
+          fb.textContent=`✓ Muito bem! "${transcript}"`;
+          fb.className='repeat-feedback show great';
+        } else {
+          fb.textContent=`Try again — you said "${transcript}"`;
+          fb.className='repeat-feedback show retry';
+          setTimeout(()=>speakText(text,'pt-PT'),500);
+        }
+        setTimeout(()=>fb.classList.remove('show'),4000);
+      },
+      null
+    );
+  });
+}
+
+// ── CHAT MIC INPUT ────────────────────────────────────────────
+let chatRecognition=null;
+let chatRecording=false;
+
+function toggleChatMic(){
+  if(chatRecording){
+    if(chatRecognition)chatRecognition.stop();
+    return;
+  }
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert('Speech recognition not supported. Use Chrome or Edge.');return;}
+  window.speechSynthesis.cancel();
+  const micBtn=document.getElementById('chatMicBtn');
+  const input=document.getElementById('chatInput');
+  chatRecording=true;
+  micBtn.classList.add('recording');
+  micBtn.textContent='🔴';
+  input.placeholder='Listening... speak in Portuguese';
+  chatRecognition=new SR();
+  chatRecognition.lang='pt-PT';
+  chatRecognition.interimResults=true;
+  chatRecognition.maxAlternatives=1;
+  let final='';
+  chatRecognition.onresult=(e)=>{
+    let interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal)final+=e.results[i][0].transcript;
+      else interim+=e.results[i][0].transcript;
+    }
+    input.value=final||interim;
+    input.style.height='auto';
+    input.style.height=Math.min(input.scrollHeight,100)+'px';
+  };
+  chatRecognition.onend=()=>{
+    chatRecording=false;
+    micBtn.classList.remove('recording');
+    micBtn.textContent='🎤';
+    input.placeholder='Type or tap 🎤 to speak in Portuguese...';
+    // Auto-send if something was captured
+    if(input.value.trim())sendMessage();
+  };
+  chatRecognition.onerror=(e)=>{
+    chatRecording=false;
+    micBtn.classList.remove('recording');
+    micBtn.textContent='🎤';
+    input.placeholder='Type or tap 🎤 to speak in Portuguese...';
+    if(e.error==='not-allowed')alert('Microphone access denied. Please allow mic in your browser settings.');
+  };
+  chatRecognition.start();
+}
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function renderWeek(){
+  const wr=document.getElementById('weekRow');wr.innerHTML='';
+  const today=new Date();
+  const todayDow=today.getDay();
+  for(let i=0;i<7;i++){
+    const d=new Date(today);d.setDate(today.getDate()-(todayDow-i));
+    const key=d.toISOString().slice(0,10);
+    const isDone=!!localStorage.getItem('fpt_done_'+key) && Object.keys(JSON.parse(localStorage.getItem('fpt_done_'+key)||'{}')).length>0;
+    const isToday=i===todayDow;
+    const cls=isToday?'today':(isDone?'done':'off');
+    wr.innerHTML+=`<div class="day-dot ${cls}"><div class="d">${DAYS[i]}</div><div class="dot">${cls==='done'?'✓':cls==='today'?'●':''}</div></div>`;
+  }
+}
+
+// ── LESSONS ───────────────────────────────────────────────────
 const LESSONS=[
   {id:1,title:'The EP alphabet & sounds',sub:'Why EP sounds so different from Brazilian',time:'15 min',tag:'Pronunciation',
-   content:`<p class="lesson-intro">European Portuguese is famously tricky because unstressed vowels are reduced or swallowed entirely. Once you understand this, the accent clicks.</p>
+   content:`<p class="lesson-intro">European Portuguese is tricky because unstressed vowels are reduced or swallowed. Once you understand this, the accent clicks.</p>
    <div class="lesson-section"><h3>The key difference: vowel reduction</h3>
-   <div class="tip-box"><p><strong>Golden rule:</strong> In EP, unstressed vowels — especially <em>e</em> and <em>o</em> — are reduced or nearly silent. "Portugal" sounds like <em>Prtugal</em>. "Obrigado" sounds like <em>Obrigadu</em>. Brazilian keeps all vowels open — this is the biggest accent difference.</p></div></div>
+   <div class="tip-box"><p><strong>Golden rule:</strong> In EP, unstressed vowels — especially <em>e</em> and <em>o</em> — are reduced or nearly silent. "Portugal" sounds like <em>Prtugal</em>. "Obrigado" sounds like <em>Obrigadu</em>.</p></div></div>
    <div class="lesson-section"><h3>Key sounds</h3>
-   <table class="vocab-table"><tr><th>Letter</th><th>EP sound</th><th>Example</th></tr>
-   <tr><td>e</td><td>silent when unstressed</td><td>tarde → "tard"</td></tr>
-   <tr><td>o</td><td>"u" sound at end</td><td>porto → "portu"</td></tr>
-   <tr><td>ã / ão</td><td>nasal "ang/owng"</td><td>irmã, irmão</td></tr>
-   <tr><td>lh</td><td>like "ly" in million</td><td>filho → "feelyu"</td></tr>
-   <tr><td>nh</td><td>like "ny" in canyon</td><td>manhã → "manyah"</td></tr>
-   <tr><td>x / ch</td><td>"sh" sound</td><td>chuva → "shoova"</td></tr></table></div>
-   <div class="lesson-section"><h3>Practice words</h3>
+   <table class="vocab-table"><tr><th>Letter</th><th>EP sound</th><th>Example</th><th>Hear</th></tr>
+   <tr><td>e</td><td>silent when unstressed</td><td>tarde → "tard"</td><td><button class="speak-phrase-btn" onclick="speakText('tarde','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>ão</td><td>nasal "owng"</td><td>irmão</td><td><button class="speak-phrase-btn" onclick="speakText('irmão','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>lh</td><td>like "ly" in million</td><td>filho</td><td><button class="speak-phrase-btn" onclick="speakText('filho','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>x/ch</td><td>"sh" sound</td><td>chuva</td><td><button class="speak-phrase-btn" onclick="speakText('chuva','pt-PT',null,this)">🔊</button></td></tr></table></div>
+   <div class="lesson-section"><h3>Practice words — 🔊 hear · 🎤 repeat</h3>
    <div class="phrase-list">
-   <div class="phrase-item"><span class="phrase-pt">obrigado</span><span class="phrase-en">thank you · oh-bree-GAH-du</span></div>
-   <div class="phrase-item"><span class="phrase-pt">bom dia</span><span class="phrase-en">good morning · bong DEE-ah</span></div>
-   <div class="phrase-item"><span class="phrase-pt">por favor</span><span class="phrase-en">please · pur fah-VOR</span></div>
-   <div class="phrase-item"><span class="phrase-pt">desculpe</span><span class="phrase-en">excuse me · dsh-KULP</span></div></div></div>`},
+   <div class="phrase-item"><span class="phrase-pt">obrigado</span><span class="phrase-en">thank you · oh-bree-GAH-du</span><button class="speak-phrase-btn" onclick="speakText('obrigado','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('obrigado',this,'rfb_ob')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_ob"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">bom dia</span><span class="phrase-en">good morning · bong DEE-ah</span><button class="speak-phrase-btn" onclick="speakText('bom dia','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('bom dia',this,'rfb_bd')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_bd"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">por favor</span><span class="phrase-en">please · pur fah-VOR</span><button class="speak-phrase-btn" onclick="speakText('por favor','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('por favor',this,'rfb_pf')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_pf"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">desculpe</span><span class="phrase-en">excuse me · dsh-KULP</span><button class="speak-phrase-btn" onclick="speakText('desculpe','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('desculpe',this,'rfb_ds')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_ds"></span></div>
+   </div></div>`},
   {id:2,title:'Greetings & introductions',sub:'How to meet people in Portugal',time:'15 min',tag:'Survival',
-   content:`<p class="lesson-intro">These are the phrases you will use on Day 1 in Évora — at the university, in shops, and with neighbours.</p>
-   <div class="lesson-section"><h3>Essential greetings</h3>
+   content:`<p class="lesson-intro">These are the phrases you will use on Day 1 in Évora — at the university, in shops, and with neighbours. Tap 🔊 to hear each one.</p>
+   <div class="lesson-section"><h3>Essential greetings — 🔊 hear · 🎤 repeat</h3>
    <div class="phrase-list">
-   <div class="phrase-item"><span class="phrase-pt">Olá</span><span class="phrase-en">Hello (casual)</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Bom dia</span><span class="phrase-en">Good morning (until noon)</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Boa tarde</span><span class="phrase-en">Good afternoon (noon–7pm)</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Boa noite</span><span class="phrase-en">Good evening / Good night</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Tudo bem?</span><span class="phrase-en">Everything okay? (casual "how are you")</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Chamo-me Olaoye.</span><span class="phrase-en">My name is Olaoye.</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Sou de Nigéria.</span><span class="phrase-en">I am from Nigeria.</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Muito prazer.</span><span class="phrase-en">Nice to meet you.</span></div></div></div>
-   <div class="lesson-section"><h3>EP tip: tu vs você</h3>
-   <div class="tip-box"><p><strong>In Portugal</strong>, informal "you" is <em>tu</em>. With strangers use <em>o senhor / a senhora</em>. At AIMA: <em>"O senhor pode ajudar-me?"</em> — Can you help me?</p></div></div>`},
+   <div class="phrase-item"><span class="phrase-pt">Olá</span><span class="phrase-en">Hello (casual)</span><button class="speak-phrase-btn" onclick="speakText('Olá','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Olá',this,'rfb_ola')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_ola"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Bom dia</span><span class="phrase-en">Good morning</span><button class="speak-phrase-btn" onclick="speakText('Bom dia','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Bom dia',this,'rfb_bmd')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_bmd"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Boa tarde</span><span class="phrase-en">Good afternoon</span><button class="speak-phrase-btn" onclick="speakText('Boa tarde','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Boa tarde',this,'rfb_bt')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_bt"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Boa noite</span><span class="phrase-en">Good evening</span><button class="speak-phrase-btn" onclick="speakText('Boa noite','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Boa noite',this,'rfb_bn')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_bn"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tudo bem?</span><span class="phrase-en">How are you?</span><button class="speak-phrase-btn" onclick="speakText('Tudo bem?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tudo bem',this,'rfb_tb')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_tb"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Chamo-me Olaoye.</span><span class="phrase-en">My name is Olaoye.</span><button class="speak-phrase-btn" onclick="speakText('Chamo-me Olaoye.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Chamo-me Olaoye',this,'rfb_cm')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_cm"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Sou de Nigéria.</span><span class="phrase-en">I am from Nigeria.</span><button class="speak-phrase-btn" onclick="speakText('Sou de Nigéria.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Sou de Nigéria',this,'rfb_sn')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_sn"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Muito prazer.</span><span class="phrase-en">Nice to meet you.</span><button class="speak-phrase-btn" onclick="speakText('Muito prazer.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Muito prazer',this,'rfb_mp')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_mp"></span></div>
+   </div></div>
+   <div class="tip-box"><p><strong>In Portugal</strong>, informal "you" is <em>tu</em>. With strangers use <em>o senhor / a senhora</em>.</p></div>`},
   {id:3,title:'Numbers & essential admin',sub:'Counts, dates, phone numbers',time:'20 min',tag:'Practical',
-   content:`<p class="lesson-intro">You will need numbers immediately — for your NIF, AIMA queue ticket, and prices at the market.</p>
-   <div class="lesson-section"><h3>Numbers 0–20</h3>
-   <table class="vocab-table"><tr><th>No.</th><th>Portuguese</th><th>Pronunciation</th></tr>
-   <tr><td>0</td><td>zero</td><td>ZEH-ru</td></tr><tr><td>1</td><td>um / uma</td><td>oong / OO-mah</td></tr>
-   <tr><td>2</td><td>dois / duas</td><td>doysh / DOO-ash</td></tr><tr><td>3</td><td>três</td><td>traysh</td></tr>
-   <tr><td>5</td><td>cinco</td><td>SING-ku</td></tr><tr><td>7</td><td>sete</td><td>SET</td></tr>
-   <tr><td>10</td><td>dez</td><td>desh</td></tr><tr><td>20</td><td>vinte</td><td>VINT</td></tr>
-   <tr><td>100</td><td>cem / cento</td><td>seng / SEN-tu</td></tr></table></div>
-   <div class="lesson-section"><h3>Useful admin phrases</h3>
+   content:`<p class="lesson-intro">You will need numbers immediately — for your NIF, AIMA queue ticket, and market prices. Tap 🔊 on each.</p>
+   <div class="lesson-section"><h3>Numbers</h3>
+   <table class="vocab-table"><tr><th>No.</th><th>Portuguese</th><th>Hear</th></tr>
+   <tr><td>1</td><td>um / uma</td><td><button class="speak-phrase-btn" onclick="speakText('um','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>2</td><td>dois / duas</td><td><button class="speak-phrase-btn" onclick="speakText('dois','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>3</td><td>três</td><td><button class="speak-phrase-btn" onclick="speakText('três','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>5</td><td>cinco</td><td><button class="speak-phrase-btn" onclick="speakText('cinco','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>10</td><td>dez</td><td><button class="speak-phrase-btn" onclick="speakText('dez','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>20</td><td>vinte</td><td><button class="speak-phrase-btn" onclick="speakText('vinte','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>100</td><td>cem</td><td><button class="speak-phrase-btn" onclick="speakText('cem','pt-PT',null,this)">🔊</button></td></tr></table></div>
+   <div class="lesson-section"><h3>Useful phrases — 🔊 hear · 🎤 repeat</h3>
    <div class="phrase-list">
-   <div class="phrase-item"><span class="phrase-pt">Pode repetir, por favor?</span><span class="phrase-en">Can you repeat, please?</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Não entendo.</span><span class="phrase-en">I don't understand.</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Fala inglês?</span><span class="phrase-en">Do you speak English?</span></div></div></div>`},
+   <div class="phrase-item"><span class="phrase-pt">Pode repetir, por favor?</span><span class="phrase-en">Can you repeat, please?</span><button class="speak-phrase-btn" onclick="speakText('Pode repetir, por favor?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Pode repetir, por favor',this,'rfb_pr')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_pr"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Não entendo.</span><span class="phrase-en">I don't understand.</span><button class="speak-phrase-btn" onclick="speakText('Não entendo.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Não entendo',this,'rfb_ne')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_ne"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Fala inglês?</span><span class="phrase-en">Do you speak English?</span><button class="speak-phrase-btn" onclick="speakText('Fala inglês?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Fala inglês',this,'rfb_fi')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_fi"></span></div>
+   </div></div>`},
   {id:4,title:'AIMA & immigration vocabulary',sub:'Every word you need at the bureau',time:'25 min',tag:'Immigration',
-   content:`<p class="lesson-intro">These are the exact words on AIMA forms and at the immigration counter — your most important practical vocabulary.</p>
+   content:`<p class="lesson-intro">These are the exact words on AIMA forms and at the immigration counter. Tap 🔊 to practise each one aloud.</p>
    <div class="lesson-section"><h3>Core vocabulary</h3>
-   <table class="vocab-table"><tr><th>Portuguese</th><th>Pronunciation</th><th>Meaning</th></tr>
-   <tr><td>autorização de residência</td><td>aw-tu-ri-ZA-sowng</td><td>residence permit</td></tr>
-   <tr><td>reagrupamento familiar</td><td>re-ah-groo-pah-MEN-tu</td><td>family reunification</td></tr>
-   <tr><td>requerimento</td><td>re-keh-ri-MEN-tu</td><td>application / request</td></tr>
-   <tr><td>comprovativo</td><td>com-pro-vah-TEE-vu</td><td>proof / supporting document</td></tr>
-   <tr><td>meios de subsistência</td><td>MAY-yush</td><td>means of subsistence</td></tr>
-   <tr><td>balcão de atendimento</td><td>bal-SOWNG</td><td>service counter</td></tr>
-   <tr><td>NIF</td><td>niff</td><td>tax identification number</td></tr>
-   <tr><td>NISS</td><td>niss</td><td>social security number</td></tr>
-   <tr><td>apostila</td><td>ah-posh-TEE-lah</td><td>apostille</td></tr>
-   <tr><td>prazo</td><td>PRAH-zu</td><td>deadline</td></tr></table></div>
-   <div class="lesson-section"><h3>Phrases for the counter</h3>
+   <table class="vocab-table"><tr><th>Portuguese</th><th>Meaning</th><th>Hear</th></tr>
+   <tr><td>autorização de residência</td><td>residence permit</td><td><button class="speak-phrase-btn" onclick="speakText('autorização de residência','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>reagrupamento familiar</td><td>family reunification</td><td><button class="speak-phrase-btn" onclick="speakText('reagrupamento familiar','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>requerimento</td><td>application</td><td><button class="speak-phrase-btn" onclick="speakText('requerimento','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>comprovativo</td><td>proof / document</td><td><button class="speak-phrase-btn" onclick="speakText('comprovativo','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>prazo</td><td>deadline</td><td><button class="speak-phrase-btn" onclick="speakText('prazo','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>NIF</td><td>tax ID number</td><td><button class="speak-phrase-btn" onclick="speakText('número de identificação fiscal','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>apostila</td><td>apostille</td><td><button class="speak-phrase-btn" onclick="speakText('apostila','pt-PT',null,this)">🔊</button></td></tr></table></div>
+   <div class="lesson-section"><h3>Phrases for the counter — 🔊 hear · 🎤 repeat</h3>
    <div class="phrase-list">
-   <div class="phrase-item"><span class="phrase-pt">Vim pedir uma autorização.</span><span class="phrase-en">I came to request a permit.</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Tenho todos os documentos.</span><span class="phrase-en">I have all the documents.</span></div>
-   <div class="phrase-item"><span class="phrase-pt">Qual é o prazo de resposta?</span><span class="phrase-en">What is the response deadline?</span></div></div></div>`},
+   <div class="phrase-item"><span class="phrase-pt">Vim pedir uma autorização.</span><span class="phrase-en">I came to request a permit.</span><button class="speak-phrase-btn" onclick="speakText('Vim pedir uma autorização.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Vim pedir uma autorização',this,'rfb_vp')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_vp"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tenho todos os documentos.</span><span class="phrase-en">I have all the documents.</span><button class="speak-phrase-btn" onclick="speakText('Tenho todos os documentos.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho todos os documentos',this,'rfb_tt')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_tt"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Qual é o prazo de resposta?</span><span class="phrase-en">What is the response deadline?</span><button class="speak-phrase-btn" onclick="speakText('Qual é o prazo de resposta?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Qual é o prazo de resposta',this,'rfb_qp')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_qp"></span></div>
+   </div></div>`},
   {id:5,title:'Present tense verbs',sub:'Ser, estar, ter, ir — the big four',time:'20 min',tag:'Grammar',locked:true},
   {id:6,title:'Asking for directions',sub:'Navigating Évora and Lisbon',time:'15 min',tag:'Practical',locked:true},
   {id:7,title:'At the supermarket',sub:'Food, prices, polite requests',time:'15 min',tag:'Everyday',locked:true},
@@ -427,29 +1232,27 @@ function renderLessons(){
   const grid=document.getElementById('lessonGrid');
   const tagColors={Pronunciation:'#e8f5ee:#085041',Survival:'#fdf3e0:#412402',Practical:'#e6f1fb:#042C53',Immigration:'#faeeda:#412402',Grammar:'#eeedfe:#26215C',Everyday:'#fdecea:#501313',Healthcare:'#eaf3de:#173404'};
   grid.innerHTML=LESSONS.map(l=>{
-    const [bg,tc]=(tagColors[l.tag]||'#f1efe8:#2c2c2a').split(':');
+    const[bg,tc]=(tagColors[l.tag]||'#f1efe8:#2c2c2a').split(':');
     const numCls=l.locked?'locked-num':'active-num';
     const rowCls=l.locked?'lesson-row locked':'lesson-row';
-    const onclick=l.locked?'':'onclick="openLesson('+l.id+')"';
-    return `<div class="${rowCls}" ${onclick}>
-      <div class="lesson-num ${numCls}">${l.id}</div>
-      <div class="lesson-meta"><strong>${l.title}</strong><span>${l.sub} · ${l.time}</span></div>
-      <span class="lesson-tag" style="background:${bg};color:${tc};">${l.tag}</span></div>`;
+    const oc=l.locked?'':'onclick="openLesson('+l.id+')"';
+    return `<div class="${rowCls}" ${oc}><div class="lesson-num ${numCls}">${l.id}</div><div class="lesson-meta"><strong>${l.title}</strong><span>${l.sub} · ${l.time}</span></div><span class="lesson-tag" style="background:${bg};color:${tc};">${l.tag}</span></div>`;
   }).join('');
 }
 function openLesson(id){
-  const l=LESSONS.find(x=>x.id===id);
-  if(!l||l.locked)return;
+  const l=LESSONS.find(x=>x.id===id);if(!l||l.locked)return;
   document.getElementById('lessonList').classList.add('hidden');
   document.getElementById('lessonViewer').classList.add('active');
   document.getElementById('lessonContent').innerHTML=`<h2>${l.title}</h2>${l.content||'<p style="color:var(--ink-muted)">Coming soon.</p>'}`;
+  recordLessonComplete(id);
+  markDone('lessons');
 }
 function closeLessonViewer(){
   document.getElementById('lessonList').classList.remove('hidden');
   document.getElementById('lessonViewer').classList.remove('active');
 }
 
-// ── FLASHCARDS ───────────────────────────────────
+// ── FLASHCARDS ────────────────────────────────────────────────
 const DECKS={
   aima:{name:'AIMA & Immigration',count:20,cards:[
     {pt:'autorização de residência',ph:'aw-tu-ri-ZA-sowng',en:'residence permit',tag:'AIMA'},
@@ -471,14 +1274,14 @@ const DECKS={
     {pt:'Junta de Freguesia',ph:'ZHOON-tah',en:'local parish council',tag:'Admin'},
     {pt:'Câmara Municipal',ph:'KA-mah-rah',en:'city council / town hall',tag:'Admin'},
     {pt:'SNS',ph:'ess-en-ess',en:'National Health Service',tag:'Healthcare'},
-    {pt:'Centro de Saúde',ph:'SEN-tru de sah-OO-d',en:'health centre / GP surgery',tag:'Healthcare'},
+    {pt:'Centro de Saúde',ph:'SEN-tru de sah-OO-d',en:'health centre',tag:'Healthcare'},
   ]},
   sonography:{name:'Sonography clinical',count:30,cards:[
     {pt:'ecografia',ph:'e-ko-gra-FEE-ah',en:'ultrasound / sonography',tag:'General'},
-    {pt:'ecografista / sonografista',ph:'e-ko-gra-FEESH-tah',en:'sonographer',tag:'General'},
+    {pt:'ecografista',ph:'e-ko-gra-FEESH-tah',en:'sonographer',tag:'General'},
     {pt:'transdutor',ph:'trans-du-TOR',en:'transducer / probe',tag:'Equipment'},
     {pt:'gel de ecografia',ph:'zhel',en:'ultrasound gel',tag:'Equipment'},
-    {pt:'modo B',ph:'MOH-du BEH',en:'B-mode (brightness mode)',tag:'Technique'},
+    {pt:'modo B',ph:'MOH-du BEH',en:'B-mode',tag:'Technique'},
     {pt:'doppler colorido',ph:'DOP-ler ko-lo-REE-du',en:'colour Doppler',tag:'Technique'},
     {pt:'doppler pulsado',ph:'pul-SAH-du',en:'pulsed wave Doppler',tag:'Technique'},
     {pt:'ecogenicidade',ph:'e-ko-zhe-ni-si-DAD',en:'echogenicity',tag:'Findings'},
@@ -486,18 +1289,18 @@ const DECKS={
     {pt:'hipoecogénico',ph:'ee-po-e-ko-ZHEH-ni-ku',en:'hypoechoic',tag:'Findings'},
     {pt:'anecoico',ph:'ah-ne-ko-EE-ku',en:'anechoic',tag:'Findings'},
     {pt:'sombra acústica',ph:'SOM-brah ah-KOOSH-ti-kah',en:'acoustic shadow',tag:'Findings'},
-    {pt:'reforço posterior',ph:'re-FOR-su',en:'posterior acoustic enhancement',tag:'Findings'},
+    {pt:'reforço posterior',ph:'re-FOR-su',en:'posterior enhancement',tag:'Findings'},
     {pt:'lesão focal',ph:'le-ZOWNG fo-KAL',en:'focal lesion',tag:'Findings'},
     {pt:'útero',ph:'OO-te-ru',en:'uterus',tag:'Gynaecology'},
     {pt:'endométrio',ph:'en-du-MEH-tryu',en:'endometrium',tag:'Gynaecology'},
     {pt:'ovários',ph:'o-VAH-ryush',en:'ovaries',tag:'Gynaecology'},
-    {pt:'mioma / leiomioma',ph:'myo-MAH',en:'fibroid / leiomyoma',tag:'Gynaecology'},
+    {pt:'mioma',ph:'myo-MAH',en:'fibroid / leiomyoma',tag:'Gynaecology'},
     {pt:'adenomiose',ph:'ah-de-no-myo-Z',en:'adenomyosis',tag:'Gynaecology'},
     {pt:'eco endometrial',ph:'EH-ku',en:'endometrial echo',tag:'Gynaecology'},
-    {pt:'batimento cardíaco fetal',ph:'bah-ti-MEN-tu kar-DEE-ah-ku',en:'fetal heart rate',tag:'Obstetrics'},
-    {pt:'líquido amniótico',ph:'LEE-kwi-du am-nyo-TI-ku',en:'amniotic fluid',tag:'Obstetrics'},
+    {pt:'batimento cardíaco fetal',ph:'bah-ti-MEN-tu',en:'fetal heart rate',tag:'Obstetrics'},
+    {pt:'líquido amniótico',ph:'LEE-kwi-du',en:'amniotic fluid',tag:'Obstetrics'},
     {pt:'placenta',ph:'plah-SEN-tah',en:'placenta',tag:'Obstetrics'},
-    {pt:'comprimento crânio-caudal',ph:'kom-pri-MEN-tu',en:'crown-rump length (CRL)',tag:'Obstetrics'},
+    {pt:'comprimento crânio-caudal',ph:'kom-pri-MEN-tu',en:'crown-rump length',tag:'Obstetrics'},
     {pt:'apresentação cefálica',ph:'ah-pre-zen-tah-SOWNG',en:'cephalic presentation',tag:'Obstetrics'},
     {pt:'vesícula biliar',ph:'ve-ZEE-ku-lah bi-LYAR',en:'gallbladder',tag:'Abdominal'},
     {pt:'parênquima hepático',ph:'pah-REN-ki-mah',en:'liver parenchyma',tag:'Abdominal'},
@@ -509,7 +1312,7 @@ const DECKS={
     {pt:'Bom dia',ph:'bong DEE-ah',en:'Good morning',tag:'Greeting'},
     {pt:'Boa tarde',ph:'BOH-ah TARD',en:'Good afternoon',tag:'Greeting'},
     {pt:'Boa noite',ph:'BOH-ah NOY-t',en:'Good night',tag:'Greeting'},
-    {pt:'Obrigado / Obrigada',ph:'oh-bri-GAH-du / -dah',en:'Thank you (m/f speaker)',tag:'Polite'},
+    {pt:'Obrigado / Obrigada',ph:'oh-bri-GAH-du / -dah',en:'Thank you (m/f)',tag:'Polite'},
     {pt:'Por favor',ph:'pur fah-VOR',en:'Please',tag:'Polite'},
     {pt:'Desculpe',ph:'dsh-KULP',en:'Sorry / Excuse me',tag:'Polite'},
     {pt:'De nada',ph:'deh NAH-dah',en:"You're welcome",tag:'Polite'},
@@ -546,7 +1349,7 @@ const DECKS={
   ]}
 };
 
-let currentDeck=null,currentCardIndex=0,cardRevealed=false,deckRight=0;
+let currentDeck=null,currentDeckKey=null,currentCardIndex=0,cardRevealed=false,deckRight=0;
 
 function renderDecks(){
   document.getElementById('deckSelect').innerHTML=Object.entries(DECKS).map(([k,d])=>
@@ -554,6 +1357,7 @@ function renderDecks(){
 }
 function startDeck(key,btn){
   currentDeck=[...DECKS[key].cards].sort(()=>Math.random()-.5);
+  currentDeckKey=key;
   currentCardIndex=0;deckRight=0;
   document.querySelectorAll('.deck-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -565,7 +1369,10 @@ function showCard(){
     STATE.wordsLearned=Math.min(500,STATE.wordsLearned+deckRight);save();
     document.getElementById('wordsLearned').textContent=STATE.wordsLearned;
     document.getElementById('fcProgress').textContent=`Done! ${deckRight}/${currentDeck.length} correct`;
-    document.getElementById('cardArena').style.display='none';return;
+    document.getElementById('cardArena').style.display='none';
+    recordFlashcardResult(currentDeckKey, deckRight, currentDeck.length);
+    markDone('flashcards');
+    return;
   }
   const c=currentDeck[currentCardIndex];
   document.getElementById('cardPt').textContent=c.pt;
@@ -575,14 +1382,189 @@ function showCard(){
   document.getElementById('flashcard').classList.remove('revealed');
   document.getElementById('btnWrong').disabled=true;
   document.getElementById('btnRight').disabled=true;
+  document.getElementById('sayItRow').style.display='none';
+  document.getElementById('fcScoreBar').classList.remove('show');
   cardRevealed=false;
   document.getElementById('cardCounter').textContent=`${currentCardIndex+1} / ${currentDeck.length}`;
   document.getElementById('fcProgress').textContent=`${currentCardIndex+1} of ${currentDeck.length}`;
+  // Auto-speak
+  if(autoSpeak){
+    const btn=document.getElementById('cardSpeakBtn');
+    setTimeout(()=>speakText(c.pt,'pt-PT',null,btn),300);
+  }
 }
-function revealCard(){if(cardRevealed)return;cardRevealed=true;document.getElementById('flashcard').classList.add('revealed');document.getElementById('btnWrong').disabled=false;document.getElementById('btnRight').disabled=false;}
 function nextCard(correct){if(correct)deckRight++;currentCardIndex++;showCard();}
 
-// ── QUIZ ─────────────────────────────────────────
+// ── PRONUNCIATION PRACTICE ────────────────────────────────────
+const PRONUN_DECKS={
+  survival:{name:'Survival phrases',phrases:[
+    {pt:'Bom dia',ph:'bong DEE-ah',en:'Good morning'},
+    {pt:'Obrigado',ph:'oh-bri-GAH-du',en:'Thank you'},
+    {pt:'Por favor',ph:'pur fah-VOR',en:'Please'},
+    {pt:'Desculpe',ph:'dsh-KULP',en:'Excuse me'},
+    {pt:'Não entendo',ph:'nowng en-TEN-du',en:"I don't understand"},
+    {pt:'Tudo bem?',ph:'TOO-du beng',en:'How are you?'},
+    {pt:'Muito prazer',ph:'MWEE-tu prah-ZER',en:'Nice to meet you'},
+    {pt:'Até logo',ph:'ah-TEH LOH-gu',en:'See you later'},
+  ]},
+  aima:{name:'AIMA phrases',phrases:[
+    {pt:'Vim pedir uma autorização.',ph:'veem pe-DEER',en:'I came to request a permit.'},
+    {pt:'Tenho todos os documentos.',ph:'TEN-yu TOH-dush',en:'I have all the documents.'},
+    {pt:'Qual é o prazo de resposta?',ph:'kwal eh u PRAH-zu',en:'What is the response deadline?'},
+    {pt:'Pode ajudar-me?',ph:'POD ah-zhoo-DAR-meh',en:'Can you help me?'},
+    {pt:'Não compreendo.',ph:'nowng kom-pre-EN-du',en:"I don't understand."},
+    {pt:'Obrigado pela ajuda.',ph:'oh-bri-GAH-du',en:'Thank you for the help.'},
+  ]},
+  clinical:{name:'Clinical phrases',phrases:[
+    {pt:'Respire fundo e prenda.',ph:'resh-PEER fUN-du e PREN-dah',en:'Breathe in and hold.'},
+    {pt:'Pode relaxar agora.',ph:'POD re-lah-SHAR',en:'You can relax now.'},
+    {pt:'Vai sentir um pouco de pressão.',ph:'vai sen-TEER',en:"You'll feel a little pressure."},
+    {pt:'Deite-se de lado.',ph:'DAY-te-se de LAH-du',en:'Lie on your side.'},
+    {pt:'Preciso de aplicar o gel.',ph:'pre-SEE-zu',en:'I need to apply the gel.'},
+    {pt:'Fique quieto, por favor.',ph:'FEE-ke kee-EH-tu',en:'Please stay still.'},
+    {pt:'O exame está a terminar.',ph:'u e-ZA-me',en:'The exam is finishing.'},
+    {pt:'Tem alguma dor aqui?',ph:'teng al-GOO-mah dor',en:'Do you have any pain here?'},
+  ]},
+};
+
+let pronunDeck=null,pronunIndex=0;
+let recognition=null,isRecording=false;
+
+function renderPronunDecks(){
+  document.getElementById('pronunDeckSelect').innerHTML=Object.entries(PRONUN_DECKS).map(([k,d])=>
+    `<button class="pdeck-btn" onclick="startPronunDeck('${k}',this)"><div class="pdeck-name">${d.name}</div><div class="pdeck-count">${d.phrases.length} phrases</div></button>`).join('');
+}
+
+function startPronunDeck(key,btn){
+  pronunDeck=[...PRONUN_DECKS[key].phrases].sort(()=>Math.random()-.5);
+  pronunIndex=0;
+  document.querySelectorAll('.pdeck-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pronunArena').style.display='block';
+  showPronunPhrase();
+}
+
+function showPronunPhrase(){
+  if(pronunIndex>=pronunDeck.length){pronunIndex=0;}
+  const p=pronunDeck[pronunIndex];
+  document.getElementById('targetPt').textContent=p.pt;
+  document.getElementById('targetPhonetic').textContent=p.ph;
+  document.getElementById('targetEn').textContent=p.en;
+  document.getElementById('transcriptBox').textContent='Your spoken words will appear here...';
+  document.getElementById('transcriptBox').style.color='var(--ink-faint)';
+  document.getElementById('scoreSection').classList.remove('show');
+  document.getElementById('recordStatus').textContent='Tap mic to start';
+  document.getElementById('recordBtn').classList.remove('recording');
+  document.getElementById('listenBtn').classList.remove('speaking');
+  document.getElementById('pronunCounter').textContent=`Phrase ${pronunIndex+1} of ${pronunDeck.length}`;
+  // Check speech recognition support
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){document.getElementById('noSpeechMsg').classList.add('show');}
+  else{document.getElementById('noSpeechMsg').classList.remove('show');}
+}
+
+function listenTarget(){
+  const p=pronunDeck[pronunIndex];
+  const btn=document.getElementById('listenBtn');
+  speakText(p.pt,'pt-PT',()=>btn.classList.remove('speaking'),btn);
+  btn.classList.add('speaking');
+}
+
+function toggleRecording(){
+  if(isRecording){stopRecording();}
+  else{startRecording();}
+}
+
+function startRecording(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){document.getElementById('noSpeechMsg').classList.add('show');return;}
+  window.speechSynthesis.cancel();
+  recognition=new SR();
+  recognition.lang='pt-PT';
+  recognition.interimResults=true;
+  recognition.maxAlternatives=3;
+  isRecording=true;
+  document.getElementById('recordBtn').classList.add('recording');
+  document.getElementById('recordStatus').textContent='Listening... speak now';
+  document.getElementById('scoreSection').classList.remove('show');
+  let finalTranscript='';
+  recognition.onresult=(e)=>{
+    let interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal){finalTranscript+=e.results[i][0].transcript;}
+      else{interim+=e.results[i][0].transcript;}
+    }
+    const display=finalTranscript||interim;
+    document.getElementById('transcriptBox').textContent=display||'...';
+    document.getElementById('transcriptBox').style.color='var(--ink)';
+  };
+  recognition.onend=()=>{
+    isRecording=false;
+    document.getElementById('recordBtn').classList.remove('recording');
+    document.getElementById('recordStatus').textContent='Done — see your score below';
+    if(finalTranscript)scorePronunciation(finalTranscript);
+  };
+  recognition.onerror=(e)=>{
+    isRecording=false;
+    document.getElementById('recordBtn').classList.remove('recording');
+    if(e.error==='not-allowed'){
+      document.getElementById('recordStatus').textContent='Microphone access denied. Please allow mic in browser settings.';
+    } else if(e.error==='no-speech'){
+      document.getElementById('recordStatus').textContent='No speech detected. Try again.';
+    } else {
+      document.getElementById('recordStatus').textContent='Error: '+e.error;
+    }
+  };
+  recognition.start();
+}
+
+function stopRecording(){if(recognition){recognition.stop();}}
+
+function scorePronunciation(transcript){
+  const target=pronunDeck[pronunIndex].pt;
+  // Normalise: lowercase, remove punctuation, trim
+  const norm=(s)=>s.toLowerCase().replace(/[.,!?;:]/g,'').trim();
+  const t=norm(transcript);
+  const tgt=norm(target);
+  const tWords=t.split(/\s+/);
+  const tgtWords=tgt.split(/\s+/);
+  // Count matching words (order-independent, allowing partial)
+  let matches=0;
+  tgtWords.forEach(w=>{
+    if(tWords.some(tw=>tw===w||tw.includes(w.slice(0,-1))||w.includes(tw.slice(0,-1))))matches++;
+  });
+  const pct=Math.round((matches/tgtWords.length)*100);
+  const sec=document.getElementById('scoreSection');
+  const circle=document.getElementById('scoreCircle');
+  const verdict=document.getElementById('scoreVerdict');
+  const detail=document.getElementById('scoreDetail');
+  sec.classList.add('show');
+  markDone('pronun');
+  recordPronunScore(pronunDeck[pronunIndex].pt, pct);
+  if(pct>=80){
+    circle.className='score-circle great';circle.textContent=pct+'%';
+    verdict.textContent='Excelente! 🎉';
+    detail.textContent=`You said: "${transcript}"\nTarget: "${target}"\n\nGreat pronunciation! The rhythm and sounds were spot on.`;
+  } else if(pct>=50){
+    circle.className='score-circle ok';circle.textContent=pct+'%';
+    verdict.textContent='Bom trabalho! 👍';
+    detail.textContent=`You said: "${transcript}"\nTarget: "${target}"\n\nGood attempt! Listen once more and try again — focus on the stressed syllables.`;
+  } else {
+    circle.className='score-circle retry';circle.textContent=pct+'%';
+    verdict.textContent='Tente outra vez 🔄';
+    detail.textContent=`You said: "${transcript}"\nTarget: "${target}"\n\nNo worries — tap 🔊 to hear it again, then try once more slowly.`;
+  }
+}
+
+function retryPhrase(){
+  document.getElementById('scoreSection').classList.remove('show');
+  document.getElementById('transcriptBox').textContent='Your spoken words will appear here...';
+  document.getElementById('transcriptBox').style.color='var(--ink-faint)';
+  document.getElementById('recordStatus').textContent='Tap mic to start';
+}
+function nextPhrase(){pronunIndex++;showPronunPhrase();}
+
+// ── QUIZ ──────────────────────────────────────────────────────
 const QUIZ_QUESTIONS=[
   {q:'What does "obrigado" mean?',opts:['Please','Thank you','Sorry','Goodbye'],ans:1},
   {q:'How do you say "Good morning" in EP?',opts:['Boa tarde','Boa noite','Bom dia','Olá'],ans:2},
@@ -594,10 +1576,14 @@ const QUIZ_QUESTIONS=[
   {q:'What does "comprovativo" mean?',opts:['Application','Deadline','Proof / supporting document','Certificate'],ans:2},
   {q:'How do you say "Where is...?"',opts:['Quanto é...?','Quando é...?','Onde é...?','Como é...?'],ans:2},
   {q:'What is "NIF"?',opts:['Social security number','Residence permit','Tax identification number','National ID'],ans:2},
+  {q:'What does "ecografia" mean?',opts:['X-ray','Ultrasound','MRI','CT scan'],ans:1},
+  {q:'"Respire fundo e prenda" means...',opts:['Lie on your side','You can relax','Breathe in and hold','Feel any pain?'],ans:2},
+  {q:'What is "mioma"?',opts:['Adenomyosis','Ovarian cyst','Fibroid','Placenta'],ans:2},
+  {q:'What does "doppler colorido" mean?',opts:['B-mode ultrasound','Colour Doppler','Pulsed wave Doppler','M-mode'],ans:1},
 ];
 let quizQ=[],quizIndex=0,quizScore=0,answered=false;
 function startQuiz(){
-  quizQ=[...QUIZ_QUESTIONS].sort(()=>Math.random()-.5).slice(0,6);
+  quizQ=[...QUIZ_QUESTIONS].sort(()=>Math.random()-.5).slice(0,7);
   quizIndex=0;quizScore=0;
   document.getElementById('quizScore').classList.remove('show');
   showQuestion();
@@ -608,11 +1594,13 @@ function showQuestion(){
     document.getElementById('quizScore').classList.add('show');
     const pct=Math.round((quizScore/quizQ.length)*100);
     document.getElementById('scoreNum').textContent=`${quizScore}/${quizQ.length}`;
-    document.getElementById('scoreLabel').textContent=pct>=80?'Excelente! Great work.':pct>=50?'Bom trabalho! Keep going.':'Keep practising — you\'ll get there.';
+    document.getElementById('scoreLabel').textContent=pct>=80?'Excelente! Great work.':pct>=50?'Bom trabalho! Keep going.':"Keep practising — you'll get there.";
+    recordQuizResult(quizScore, quizQ.length);
+    markDone('practice');
     return;
   }
   const q=quizQ[quizIndex];answered=false;
-  document.getElementById('quizArea').innerHTML=`<div class="quiz-card"><div class="quiz-q">${q.q}</div><div class="quiz-sub">Question ${quizIndex+1} of ${quizQ.length}</div><div class="quiz-options">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQ(${i})">${o}</button>`).join('')}</div><div class="quiz-feedback" id="qfb"></div><button class="btn-next" id="btnNext" onclick="nextQ()">Next question →</button></div>`;
+  document.getElementById('quizArea').innerHTML=`<div class="quiz-card"><div class="quiz-q">${q.q}</div><div class="quiz-sub">Question ${quizIndex+1} of ${quizQ.length}</div><div class="quiz-options">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQ(${i})">${o}</button>`).join('')}</div><div class="quiz-feedback" id="qfb"></div><button class="btn-next" id="btnNext" onclick="nextQ()">Next →</button></div>`;
 }
 function answerQ(i){
   if(answered)return;answered=true;
@@ -626,29 +1614,22 @@ function answerQ(i){
 }
 function nextQ(){quizIndex++;showQuestion();}
 
-// ── AI CHAT ──────────────────────────────────────
+// ── AI CHAT ───────────────────────────────────────────────────
 const SCENARIOS=[
-  {id:'free',label:'Free conversation',emoji:'💬',system:`You are a friendly European Portuguese tutor chatting with Olaoye, a Nigerian professional moving to Évora, Portugal in December 2026. Speak primarily in European Portuguese (NOT Brazilian Portuguese). Keep sentences natural and accessible for a beginner-intermediate learner. After each reply, if the user made a grammar or vocabulary error, add a short "📝 Correction:" section in English explaining the mistake kindly and showing the correct form. If they write in English, gently encourage Portuguese and model the sentence they were trying to say.`},
-  {id:'aima',label:'At the AIMA counter',emoji:'🏛️',system:`You are a polite AIMA immigration officer in Lisbon. Olaoye has arrived to submit documents for family reunification under Lei 61/2025. Conduct the interaction in European Portuguese, asking for documents one at a time in a realistic way. After each exchange add a "📝 Correction:" note in English if the user made a Portuguese mistake. Keep vocabulary authentic — use real AIMA terminology.`},
-  {id:'pharmacy',label:'At the pharmacy',emoji:'💊',system:`You are a helpful pharmacist in Évora, Portugal. Speak European Portuguese throughout. The customer (Olaoye) needs medication or wants to describe symptoms. After each reply add a "📝 Correction:" note for any Portuguese errors. Use practical medical and pharmacy vocabulary. If they write in English, model the Portuguese phrase for them.`},
-  {id:'market',label:'At the market',emoji:'🛒',system:`You are a friendly vendor at Évora's Mercado Municipal. Speak natural European Portuguese. Discuss produce, prices, and quantities. After each reply add a "📝 Correction:" section in English for errors. Use numbers, quantities, and market vocabulary naturally.`},
-  {id:'landlord',label:'Talking to landlord',emoji:'🏠',system:`You are Olaoye's landlord in Évora calling about the rental apartment. Speak semi-formal European Portuguese as a Portuguese landlord would. Discuss rent, maintenance, or lease questions. After each reply add a "📝 Correction:" note in English if needed.`},
-  {id:'cafe',label:'Ordering at a café',emoji:'☕',system:`You are a waiter at a traditional Portuguese pastelaria in Évora. Speak natural, slightly fast European Portuguese. Take orders for coffee and food. After each reply add a "📝 Correction:" note for mistakes. Introduce real Portuguese café culture: bica, meia de leite, pastel de nata, etc.`},
-  {id:'school',label:"Child's school",emoji:'🎒',system:`You are a teacher or secretary at a Portuguese primary school in Évora. Olaoye is picking up their child or asking about school matters. Speak European Portuguese. After each reply add a "📝 Correction:" note if needed. Use school and family vocabulary.`},
-  {id:'doctor',label:'At the health centre',emoji:'🏥',system:`You are a doctor or receptionist at a Centro de Saúde in Portugal. Olaoye needs to register with the SNS or describe a health issue. Speak European Portuguese. After each reply add a "📝 Correction:" note for any errors. Include SNS registration and healthcare vocabulary.`},
-
-  // ── SONOGRAPHY / CLINICAL ──────────────────────
-  {id:'sono_patient_ob',label:'OB scan — patient prep',emoji:'🤰',system:`You are a pregnant Portuguese patient (28 weeks) attending your obstetric ultrasound appointment at a hospital in Portugal. Olaoye is the sonographer. You speak only European Portuguese and understand little English. You are slightly anxious about the scan. Olaoye must communicate with you in Portuguese — explaining the procedure, asking you to lie down, apply gel, asking about your last menstrual period, previous scans, and any symptoms. After each of Olaoye's messages, add a "📝 Correction:" note in English if there were any Portuguese errors — correcting clinical phrasing, grammar, or vocabulary. If Olaoye writes in English, show them the correct Portuguese phrasing a sonographer would use. Use authentic Portuguese maternity and obstetric vocabulary: útero, placenta, líquido amniótico, batimento cardíaco fetal, apresentação, comprimento crânio-caudal, etc.`},
-
-  {id:'sono_patient_abd',label:'Abdominal scan — patient',emoji:'🫁',system:`You are a Portuguese patient referred for an upper abdominal ultrasound (fígado, vesícula biliar, pâncreas, rins, baço). You speak European Portuguese only. You have some right upper quadrant pain and were asked to fast. Olaoye is the sonographer. They must explain the exam, position you, and ask about symptoms and history. After each message add a "📝 Correction:" note in English for any Portuguese errors. Teach correct sonography phrases: "Respire fundo e prenda a respiração" (breathe in and hold), "Deite-se de lado" (lie on your side), "Vai sentir um pouco de pressão" (you'll feel a little pressure). Use authentic abdominal ultrasound vocabulary.`},
-
-  {id:'sono_colleague',label:'Discussing a case — colleague',emoji:'👨‍⚕️',system:`You are a Portuguese radiologist or senior sonographer at a hospital in Portugal. Olaoye is a Nigerian sonographer colleague who has just completed a scan and wants to discuss findings. Speak European Portuguese throughout. Discuss findings like fibroid characterisation, echogenicity, vascularity on Doppler, measurement technique, differential diagnosis. After each message add a "📝 Correction:" note in English for Portuguese errors. Use authentic radiology and sonography terminology in Portuguese: ecogenicidade, vascularização, sombra acústica, doppler colorido, modo B, lesão focal, mioma, adenomiose, derrame, etc. If Olaoye uses English medical terms, teach the Portuguese equivalents.`},
-
-  {id:'sono_referral',label:'Receiving a referral — clerk',emoji:'📋',system:`You are a hospital administrative clerk (auxiliar administrativo) at the Imagiologia department of a Portuguese hospital. Olaoye is a sonographer receiving a patient referral for an ultrasound exam. Speak European Portuguese. The interaction covers: reading the referral (pedido de exame), checking the patient's insurance or SNS number, scheduling, and explaining preparation instructions to the patient. After each message add a "📝 Correction:" note for any Portuguese errors. Use hospital administrative vocabulary: consulta, exame, marcação, convenção, ADSE, SNS, pedido médico, preparação, jejum, bexiga cheia, etc.`},
-
-  {id:'sono_report',label:'Dictating a scan report',emoji:'📝',system:`You are a European Portuguese voice-to-text assistant helping Olaoye, a sonographer, practise dictating ultrasound reports in Portuguese. When Olaoye dictates findings (in either English or Portuguese), you: (1) write out the correctly structured Portuguese report paragraph, (2) read it back naturally as it would appear in a Portuguese hospital report, and (3) add a "📝 Correction:" note highlighting any Portuguese errors or better clinical phrasing. Cover modalities Olaoye works with: obstetrics, gynaecology (útero, ovários, miomas), abdominal, vascular (doppler venoso e arterial), small parts (tiróide, mama, testículo). Use formal Portuguese medical report style: "O útero apresenta-se...", "Visualiza-se...", "Não se identificam...", "Conclusão:".`},
-
-  {id:'sono_gyne',label:'Gynaecology scan — patient',emoji:'🔬',system:`You are a Portuguese female patient referred for a pelvic/gynaecological ultrasound. You speak only European Portuguese. You are attending for evaluation of abnormal uterine bleeding (hemorragia uterina anormal). Olaoye is the sonographer. They must explain whether the scan is transabdominal or transvaginal, obtain consent, take a brief history, and guide you through the procedure. After each message add a "📝 Correction:" note for any Portuguese errors. Use authentic gynaecology vocabulary: útero, endométrio, ovários, mioma, adenomiose, cisto, eco endometrial, canal cervical, via transvaginal, consentimento informado. Respond realistically — ask questions a real patient would ask.`},
+  {id:'free',label:'Free conversation',emoji:'💬',system:`You are a friendly European Portuguese tutor chatting with Olaoye, a Nigerian sonographer moving to Évora, Portugal in December 2026. Speak in European Portuguese (NOT Brazilian). Keep sentences natural for a beginner-intermediate learner. After each reply, if the user made an error, add a "📝 Correction:" section in English explaining it kindly. If they write in English, encourage Portuguese and model the sentence.`},
+  {id:'aima',label:'At the AIMA counter',emoji:'🏛️',system:`You are a polite AIMA immigration officer in Lisbon. Olaoye has arrived to submit documents for family reunification under Lei 61/2025. Speak European Portuguese, ask for documents one at a time. After each exchange add a "📝 Correction:" note for any Portuguese mistakes.`},
+  {id:'pharmacy',label:'At the pharmacy',emoji:'💊',system:`You are a helpful pharmacist in Évora, Portugal. Speak European Portuguese. After each reply add a "📝 Correction:" note for errors. Use practical medical vocabulary.`},
+  {id:'market',label:'At the market',emoji:'🛒',system:`You are a vendor at Évora's Mercado Municipal. Speak natural European Portuguese. After each reply add a "📝 Correction:" section for errors. Use numbers and market vocabulary.`},
+  {id:'landlord',label:'Talking to landlord',emoji:'🏠',system:`You are Olaoye's landlord in Évora. Speak semi-formal European Portuguese. Discuss rent or maintenance. After each reply add a "📝 Correction:" note if needed.`},
+  {id:'cafe',label:'Ordering at a café',emoji:'☕',system:`You are a waiter at a traditional pastelaria in Évora. Speak natural European Portuguese. After each reply add a "📝 Correction:" note. Introduce real café culture: bica, meia de leite, pastel de nata.`},
+  {id:'school',label:"Child's school",emoji:'🎒',system:`You are a teacher at a Portuguese primary school. Speak European Portuguese. After each reply add a "📝 Correction:" note if needed.`},
+  {id:'doctor',label:'At the health centre',emoji:'🏥',system:`You are a doctor at a Centro de Saúde in Portugal. Speak European Portuguese. After each reply add a "📝 Correction:" note. Include SNS and healthcare vocabulary.`},
+  {id:'sono_patient_ob',label:'OB scan — patient',emoji:'🤰',system:`You are a pregnant Portuguese patient (28 weeks) attending an obstetric ultrasound. Speak only European Portuguese. You are slightly anxious. Olaoye is the sonographer — they must communicate the procedure, positioning, gel application, LMP questions in Portuguese. After each message add a "📝 Correction:" note for Portuguese errors. Use authentic obstetric vocabulary: útero, placenta, líquido amniótico, batimento cardíaco fetal, comprimento crânio-caudal.`},
+  {id:'sono_patient_abd',label:'Abdominal scan — patient',emoji:'🫁',system:`You are a Portuguese patient referred for abdominal ultrasound with right upper quadrant pain, fasting. Speak only European Portuguese. Olaoye is the sonographer. They must explain the exam and give instructions in Portuguese. After each message add a "📝 Correction:" note. Teach phrases: "Respire fundo e prenda a respiração", "Deite-se de lado", "Vai sentir um pouco de pressão".`},
+  {id:'sono_colleague',label:'Discussing a case',emoji:'👨‍⚕️',system:`You are a Portuguese radiologist colleague. Speak European Portuguese. Discuss ultrasound findings: echogenicity, Doppler, leiomyoma, adenomyosis. After each message add a "📝 Correction:" note. Use: ecogenicidade, vascularização, sombra acústica, doppler colorido, mioma, adenomiose.`},
+  {id:'sono_referral',label:'Receiving a referral',emoji:'📋',system:`You are a hospital administrative clerk at an Imagiologia department. Speak European Portuguese. Cover: pedido de exame, SNS number, scheduling, preparation instructions. After each message add a "📝 Correction:" note. Use: consulta, marcação, pedido médico, jejum, bexiga cheia.`},
+  {id:'sono_report',label:'Dictating a scan report',emoji:'📝',system:`You help Olaoye practise dictating ultrasound reports in Portuguese. When they dictate findings, write the correctly structured Portuguese report paragraph, then add a "📝 Correction:" note. Use formal report style: "O útero apresenta-se...", "Visualiza-se...", "Não se identificam...", "Conclusão:".`},
+  {id:'sono_gyne',label:'Gynaecology scan — patient',emoji:'🔬',system:`You are a Portuguese patient referred for pelvic ultrasound for abnormal uterine bleeding. Speak only European Portuguese. Olaoye must explain the procedure, obtain consent, take history. After each message add a "📝 Correction:" note. Use: útero, endométrio, ovários, mioma, adenomiose, via transvaginal, consentimento informado.`},
 ];
 
 let currentScenario=null,chatHistory=[],isTyping=false;
@@ -663,8 +1644,7 @@ function selectScenario(id){
   chatHistory=[];
   document.querySelectorAll('.scenario-chip').forEach(c=>c.classList.remove('active'));
   document.getElementById('chip-'+id).classList.add('active');
-  const msgs=document.getElementById('chatMessages');
-  msgs.innerHTML='';
+  document.getElementById('chatMessages').innerHTML='';
   const openers={
     free:'Olá Olaoye! Bem-vindo à nossa conversa. Como está hoje? 😊\n\n*(Pode responder em português ou inglês — eu ajudo!)*',
     aima:'Bom dia. Seja bem-vindo ao balcão de atendimento da AIMA. Em que posso ajudá-lo?',
@@ -677,16 +1657,16 @@ function selectScenario(id){
     sono_patient_ob:'Bom dia. Sou a dona Maria, tenho consulta de ecografia às dez horas. Estou um pouco nervosa, é o meu primeiro filho...',
     sono_patient_abd:'Boa tarde. Vim fazer uma ecografia abdominal. O médico pediu-me para vir em jejum. Tenho tido dores aqui do lado direito...',
     sono_colleague:'Olá colega! Então, como correu o exame? Tinha alguma coisa de interesse nos achados?',
-    sono_referral:'Bom dia. Tenho aqui um pedido de ecografia para a senhora Silva. Pode verificar se está tudo em ordem no sistema?',
-    sono_report:'Olá! Estou pronto para ajudá-lo a ditar o relatório em português. Qual é o exame — obstetrícia, ginecologia, abdominal ou outro?',
-    sono_gyne:'Boa tarde. Vim fazer a ecografia ginecológica. A minha médica pediu por causa de hemorragias irregulares. Posso entrar?',
+    sono_referral:'Bom dia. Tenho aqui um pedido de ecografia para a senhora Silva. Pode verificar se está tudo em ordem?',
+    sono_report:'Olá! Estou pronto para ajudá-lo a ditar o relatório em português. Qual é o exame?',
+    sono_gyne:'Boa tarde. Vim fazer a ecografia ginecológica. A minha médica pediu por causa de hemorragias irregulares.',
   };
   const opener=openers[id]||'Olá! Vamos começar.';
-  appendMsg('assistant',opener);
+  appendMsg('assistant',opener,true);
   chatHistory.push({role:'assistant',content:opener});
 }
 
-function appendMsg(role,text){
+function appendMsg(role,text,autoPlay=false){
   const msgs=document.getElementById('chatMessages');
   const empty=document.getElementById('chatEmpty');
   if(empty)empty.remove();
@@ -694,9 +1674,19 @@ function appendMsg(role,text){
   const ci=text.indexOf('📝 Correction');
   if(ci>-1){main=text.slice(0,ci).trim();correction=text.slice(ci).trim();}
   const avatar=role==='assistant'?'🇵🇹':'🇳🇬';
-  const corrHTML=correction?`<div class="correction-box"><strong>📝 Correction</strong>${correction.replace(/^📝 Correction[:\s]*/,'')}</div>`:'';
-  msgs.innerHTML+=`<div class="msg ${role}"><div class="msg-avatar">${avatar}</div><div><div class="msg-bubble">${main.replace(/\n/g,'<br>')}</div>${corrHTML}</div></div>`;
+  const safeText=main.replace(/"/g,'&quot;').replace(/<br>/g,' ');
+  const speakBtnHTML=role==='assistant'
+    ?`<button class="msg-speak-btn" onclick="speakText(this.getAttribute('data-text'),'pt-PT')" data-text="${safeText}" title="Hear this">🔊</button>`
+    :'';
+  const corrHTML=correction
+    ?`<div class="correction-box"><strong>📝 Correction</strong>${correction.replace(/^📝 Correction[:\s]*/,'')}</div>`
+    :'';
+  msgs.innerHTML+=`<div class="msg ${role}"><div class="msg-avatar">${avatar}</div><div><div class="msg-bubble">${main.replace(/\n/g,'<br>')}${speakBtnHTML}</div>${corrHTML}</div></div>`;
   msgs.scrollTop=msgs.scrollHeight;
+  // Auto-speak assistant Portuguese reply
+  if(autoPlay && role==='assistant' && main.trim()){
+    setTimeout(()=>speakText(main,'pt-PT'),350);
+  }
 }
 
 function showTyping(){
@@ -714,21 +1704,19 @@ async function sendMessage(){
   input.value='';input.style.height='auto';
   appendMsg('user',text);
   chatHistory.push({role:'user',content:text});
+  markDone('chat');
+  recordChatSession();
   isTyping=true;document.getElementById('chatSend').disabled=true;
   showTyping();
   try{
-    const res=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system: currentScenario.system,
-        messages: chatHistory.slice(-14)
-      })
-    });
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:currentScenario.system,messages:chatHistory.slice(-14)})});
     const data=await res.json();
     removeTyping();
     if(data.error){appendMsg('assistant',`⚠️ Error: ${data.error}`);}
-    else{chatHistory.push({role:'assistant',content:data.reply});appendMsg('assistant',data.reply);}
+    else{
+      chatHistory.push({role:'assistant',content:data.reply});
+      appendMsg('assistant',data.reply,true);
+    }
   }catch(err){removeTyping();appendMsg('assistant','⚠️ Connection error. Please try again.');}
   isTyping=false;document.getElementById('chatSend').disabled=false;input.focus();
 }
@@ -739,8 +1727,293 @@ function handleChatKey(e){
   ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,100)+'px';
 }
 
-// ── INIT ─────────────────────────────────────────
-renderWeek();renderLessons();renderDecks();renderScenarios();startQuiz();
+// ── DAILY ROTATION ENGINE ─────────────────────────────────────
+
+// Master vocabulary pool — 100 words, 5 shown per day = 20 unique days before cycling
+const VOCAB_POOL = [
+  // Survival
+  {pt:'obrigado',ph:'oh-bri-GAH-du',en:'thank you (male speaker)',cat:'Survival'},
+  {pt:'obrigada',ph:'oh-bri-GAH-dah',en:'thank you (female speaker)',cat:'Survival'},
+  {pt:'por favor',ph:'pur fah-VOR',en:'please',cat:'Survival'},
+  {pt:'desculpe',ph:'dsh-KULP',en:'excuse me / sorry',cat:'Survival'},
+  {pt:'de nada',ph:'deh NAH-dah',en:"you're welcome",cat:'Survival'},
+  {pt:'com licença',ph:'kong li-SEN-sah',en:'excuse me (passing)',cat:'Survival'},
+  {pt:'ajuda',ph:'ah-ZHOO-dah',en:'help',cat:'Survival'},
+  {pt:'preciso de ajuda',ph:'pre-SEE-zu',en:'I need help',cat:'Survival'},
+  {pt:'quanto custa?',ph:'KWAN-tu KOOSH-tah',en:'how much does it cost?',cat:'Survival'},
+  {pt:'onde fica?',ph:'OND FEE-kah',en:'where is it?',cat:'Survival'},
+  // Greetings
+  {pt:'bom dia',ph:'bong DEE-ah',en:'good morning',cat:'Greetings'},
+  {pt:'boa tarde',ph:'BOH-ah TARD',en:'good afternoon',cat:'Greetings'},
+  {pt:'boa noite',ph:'BOH-ah NOY-t',en:'good evening',cat:'Greetings'},
+  {pt:'tudo bem?',ph:'TOO-du beng',en:'how are you?',cat:'Greetings'},
+  {pt:'como está?',ph:'KOH-mu esh-TAH',en:'how are you? (formal)',cat:'Greetings'},
+  {pt:'até logo',ph:'ah-TEH LOH-gu',en:'see you later',cat:'Greetings'},
+  {pt:'até amanhã',ph:'ah-TEH ah-mah-NYAH',en:'see you tomorrow',cat:'Greetings'},
+  {pt:'boa sorte',ph:'BOH-ah SORT',en:'good luck',cat:'Greetings'},
+  // AIMA / Admin
+  {pt:'autorização',ph:'aw-tu-ri-ZA-sowng',en:'authorisation / permit',cat:'Admin'},
+  {pt:'residência',ph:'re-zi-DEN-syah',en:'residence',cat:'Admin'},
+  {pt:'requerimento',ph:'re-keh-ri-MEN-tu',en:'application / request',cat:'Admin'},
+  {pt:'comprovativo',ph:'com-pro-vah-TEE-vu',en:'proof / document',cat:'Admin'},
+  {pt:'prazo',ph:'PRAH-zu',en:'deadline',cat:'Admin'},
+  {pt:'processo',ph:'pro-SES-su',en:'case / process',cat:'Admin'},
+  {pt:'atendimento',ph:'ah-ten-di-MEN-tu',en:'service / assistance',cat:'Admin'},
+  {pt:'agendamento',ph:'ah-zhen-dah-MEN-tu',en:'scheduling / booking',cat:'Admin'},
+  {pt:'pedido',ph:'pe-DEE-du',en:'request / order',cat:'Admin'},
+  {pt:'formulário',ph:'for-mu-LAH-ryu',en:'form',cat:'Admin'},
+  {pt:'assinatura',ph:'ah-si-nah-TOO-rah',en:'signature',cat:'Admin'},
+  // Numbers & time
+  {pt:'ontem',ph:'ON-teng',en:'yesterday',cat:'Time'},
+  {pt:'hoje',ph:'OH-zheh',en:'today',cat:'Time'},
+  {pt:'amanhã',ph:'ah-mah-NYAH',en:'tomorrow',cat:'Time'},
+  {pt:'semana',ph:'se-MAH-nah',en:'week',cat:'Time'},
+  {pt:'mês',ph:'mesh',en:'month',cat:'Time'},
+  {pt:'ano',ph:'AH-nu',en:'year',cat:'Time'},
+  {pt:'manhã',ph:'mah-NYAH',en:'morning',cat:'Time'},
+  {pt:'tarde',ph:'TARD',en:'afternoon / late',cat:'Time'},
+  {pt:'noite',ph:'NOY-t',en:'night / evening',cat:'Time'},
+  {pt:'hora',ph:'OH-rah',en:'hour / time',cat:'Time'},
+  // Family
+  {pt:'marido',ph:'mah-REE-du',en:'husband',cat:'Family'},
+  {pt:'esposa',ph:'esh-POH-zah',en:'wife',cat:'Family'},
+  {pt:'filho',ph:'FEE-lyu',en:'son / child (m)',cat:'Family'},
+  {pt:'filha',ph:'FEE-lyah',en:'daughter / child (f)',cat:'Family'},
+  {pt:'família',ph:'fah-MEE-lyah',en:'family',cat:'Family'},
+  {pt:'reagrupamento',ph:'re-ah-groo-pah-MEN-tu',en:'reunification',cat:'Family'},
+  {pt:'dependente',ph:'de-pen-DEN-te',en:'dependent',cat:'Family'},
+  // Food & shopping
+  {pt:'mercado',ph:'mer-KAH-du',en:'market',cat:'Shopping'},
+  {pt:'supermercado',ph:'soo-per-mer-KAH-du',en:'supermarket',cat:'Shopping'},
+  {pt:'padaria',ph:'pah-dah-REE-ah',en:'bakery',cat:'Shopping'},
+  {pt:'farmácia',ph:'far-MAH-syah',en:'pharmacy',cat:'Shopping'},
+  {pt:'pão',ph:'powng',en:'bread',cat:'Food'},
+  {pt:'água',ph:'AH-gwah',en:'water',cat:'Food'},
+  {pt:'leite',ph:'LAY-t',en:'milk',cat:'Food'},
+  {pt:'café',ph:'kah-FEH',en:'coffee',cat:'Food'},
+  {pt:'bica',ph:'BEE-kah',en:'espresso (EP term)',cat:'Food'},
+  {pt:'pastel de nata',ph:'pash-TEL de NAH-tah',en:'custard tart (iconic EP pastry)',cat:'Food'},
+  // Healthcare
+  {pt:'médico',ph:'MEH-di-ku',en:'doctor',cat:'Healthcare'},
+  {pt:'enfermeiro',ph:'en-fer-MAY-ru',en:'nurse',cat:'Healthcare'},
+  {pt:'consulta',ph:'kon-SUL-tah',en:'appointment / consultation',cat:'Healthcare'},
+  {pt:'receita',ph:'re-SAY-tah',en:'prescription',cat:'Healthcare'},
+  {pt:'dor',ph:'dor',en:'pain',cat:'Healthcare'},
+  {pt:'febre',ph:'FEH-bre',en:'fever',cat:'Healthcare'},
+  {pt:'Centro de Saúde',ph:'SEN-tru de sah-OO-d',en:'health centre',cat:'Healthcare'},
+  {pt:'urgência',ph:'ur-ZHEN-syah',en:'emergency / A&E',cat:'Healthcare'},
+  // Sonography
+  {pt:'ecografia',ph:'e-ko-gra-FEE-ah',en:'ultrasound / sonography',cat:'Clinical'},
+  {pt:'transdutor',ph:'trans-du-TOR',en:'transducer / probe',cat:'Clinical'},
+  {pt:'útero',ph:'OO-te-ru',en:'uterus',cat:'Clinical'},
+  {pt:'ovário',ph:'o-VAH-ryu',en:'ovary',cat:'Clinical'},
+  {pt:'mioma',ph:'myo-MAH',en:'fibroid',cat:'Clinical'},
+  {pt:'endométrio',ph:'en-du-MEH-tryu',en:'endometrium',cat:'Clinical'},
+  {pt:'placenta',ph:'plah-SEN-tah',en:'placenta',cat:'Clinical'},
+  {pt:'feto',ph:'FEH-tu',en:'fetus',cat:'Clinical'},
+  {pt:'doppler',ph:'DOP-ler',en:'Doppler (ultrasound mode)',cat:'Clinical'},
+  {pt:'ecogenicidade',ph:'e-ko-zhe-ni-si-DAD',en:'echogenicity',cat:'Clinical'},
+  {pt:'vesícula biliar',ph:'ve-ZEE-ku-lah bi-LYAR',en:'gallbladder',cat:'Clinical'},
+  {pt:'rim',ph:'reeng',en:'kidney',cat:'Clinical'},
+  {pt:'fígado',ph:'FEE-gah-du',en:'liver',cat:'Clinical'},
+  {pt:'baço',ph:'BAH-su',en:'spleen',cat:'Clinical'},
+  {pt:'tiróide',ph:'ti-ROY-de',en:'thyroid',cat:'Clinical'},
+  {pt:'mama',ph:'MAH-mah',en:'breast',cat:'Clinical'},
+  // Transport / city
+  {pt:'autocarro',ph:'aw-tu-KAH-ru',en:'bus (EP term)',cat:'Transport'},
+  {pt:'comboio',ph:'kom-BOY-u',en:'train (EP term)',cat:'Transport'},
+  {pt:'estação',ph:'esh-tah-SOWNG',en:'station',cat:'Transport'},
+  {pt:'paragem',ph:'pah-RAH-zheng',en:'bus stop',cat:'Transport'},
+  {pt:'bilhete',ph:'bi-LYET',en:'ticket',cat:'Transport'},
+  {pt:'táxi',ph:'TAK-si',en:'taxi',cat:'Transport'},
+  // Housing
+  {pt:'renda',ph:'REN-dah',en:'rent',cat:'Housing'},
+  {pt:'contrato',ph:'kon-TRAH-tu',en:'contract / lease',tag:'Housing'},
+  {pt:'senhorio',ph:'sen-yo-REE-u',en:'landlord',cat:'Housing'},
+  {pt:'condomínio',ph:'kon-du-MEE-nyu',en:'building / condo',cat:'Housing'},
+  {pt:'chave',ph:'SHAHV',en:'key',cat:'Housing'},
+  // Verbs
+  {pt:'falar',ph:'fah-LAR',en:'to speak',cat:'Verbs'},
+  {pt:'entender',ph:'en-ten-DER',en:'to understand',cat:'Verbs'},
+  {pt:'precisar',ph:'pre-si-ZAR',en:'to need',cat:'Verbs'},
+  {pt:'querer',ph:'ke-RER',en:'to want',cat:'Verbs'},
+  {pt:'poder',ph:'pu-DER',en:'to be able to / can',cat:'Verbs'},
+  {pt:'ter',ph:'ter',en:'to have',cat:'Verbs'},
+  {pt:'ir',ph:'eer',en:'to go',cat:'Verbs'},
+  {pt:'vir',ph:'veer',en:'to come',cat:'Verbs'},
+  {pt:'ficar',ph:'fi-KAR',en:'to stay / to be (location)',cat:'Verbs'},
+  {pt:'trazer',ph:'trah-ZER',en:'to bring',cat:'Verbs'},
+];
+
+// Daily schedule rotation
+const DAILY_LESSONS = [
+  {id:1,title:'EP Pronunciation: Vowel reduction',sub:'The silent-e and nasal sounds',mins:15},
+  {id:2,title:'Greetings & introductions',sub:'Day 1 phrases for Évora',mins:15},
+  {id:3,title:'Numbers & admin vocabulary',sub:'NIF, queue tickets, prices',mins:20},
+  {id:4,title:'AIMA & immigration vocabulary',sub:'Every word for the bureau',mins:25},
+  {id:1,title:'Pronunciation review',sub:'Revisit EP sounds with confidence',mins:15},
+  {id:2,title:'Greetings deep dive',sub:'Formal vs informal register',mins:15},
+  {id:3,title:'Numbers in context',sub:'Telling time, giving your number',mins:20},
+  {id:4,title:'AIMA phrases practice',sub:'Sentences you will actually say',mins:20},
+];
+
+const DAILY_DECKS = ['aima','sonography','survival','numbers','aima','survival','sonography','numbers'];
+const DAILY_PRONUN = ['survival','aima','clinical','survival','clinical','aima','survival','clinical'];
+const DAILY_SCENARIOS = ['free','aima','sono_gyne','sono_patient_ob','sono_colleague','sono_patient_abd','cafe','doctor','sono_referral','sono_report','landlord','market','school','pharmacy'];
+
+function getDayIndex(){
+  // Days since app launch date (June 3 2026) — cycles through content
+  const launch = new Date('2026-06-03');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  launch.setHours(0,0,0,0);
+  const diff = Math.floor((today - launch) / 86400000);
+  return Math.max(0, diff);
+}
+
+function getDailyVocab(dayIdx){
+  // 5 words per day, cycling through the pool
+  const start = (dayIdx * 5) % VOCAB_POOL.length;
+  const words = [];
+  for(let i=0;i<5;i++){
+    words.push(VOCAB_POOL[(start+i) % VOCAB_POOL.length]);
+  }
+  return words;
+}
+
+function renderProgress(){
+  const p=loadProgress();
+  const prog=loadProgress();
+
+  // Hero stats
+  document.getElementById('ph_streak').textContent=STATE.streak;
+  document.getElementById('ph_days').textContent=p.daysActive.length;
+  document.getElementById('ph_words').textContent=STATE.wordsLearned;
+
+  // Best streak
+  if(STATE.streak>(p.bestStreak||0)){p.bestStreak=STATE.streak;saveProgress(p);}
+  document.getElementById('pc_best_streak').textContent=p.bestStreak||STATE.streak;
+
+  // Cards
+  document.getElementById('pc_cards').textContent=p.flashcard.reviewed||0;
+  const acc=p.flashcard.reviewed>0?Math.round((p.flashcard.correct/p.flashcard.reviewed)*100):0;
+  document.getElementById('pc_cards_acc').textContent=p.flashcard.reviewed>0?`${acc}% accuracy`:'No cards yet';
+
+  // Lessons
+  document.getElementById('pc_lessons').textContent=p.lessons.completed.length;
+
+  // Pronun
+  document.getElementById('pc_pronun').textContent=p.pronun.length;
+  const avgP=p.pronun.length>0?Math.round(p.pronun.reduce((s,r)=>s+r.pct,0)/p.pronun.length):0;
+  document.getElementById('pc_pronun_avg').textContent=p.pronun.length>0?`${avgP}% avg score`:'No drills yet';
+
+  // Quiz
+  document.getElementById('pc_quizzes').textContent=p.quiz.length;
+  const avgQ=p.quiz.length>0?Math.round(p.quiz.reduce((s,r)=>s+(r.score/r.total)*100,0)/p.quiz.length):0;
+  document.getElementById('pc_quiz_avg').textContent=p.quiz.length>0?`${avgQ}% avg score`:'No quizzes yet';
+
+  // Chat
+  document.getElementById('pc_chats').textContent=p.chat.sessions||0;
+
+  // Deck accuracy bar chart
+  const deckNames={aima:'AIMA',sonography:'Clinical',survival:'Survival',numbers:'Numbers'};
+  const deckColors={aima:var_green,sonography:var_blue,survival:var_gold,numbers:'#993556'};
+  const chart=document.getElementById('deckAccuracyChart');
+  const deckKeys=Object.keys(deckNames);
+  chart.innerHTML=deckKeys.map(k=>{
+    const d=p.flashcard.byDeck[k];
+    const pct=d&&d.reviewed>0?Math.round((d.correct/d.reviewed)*100):0;
+    const color=deckColors[k]||var_green;
+    return `<div class="bar-row">
+      <span class="bar-label">${deckNames[k]}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color};"></div></div>
+      <span class="bar-val">${d&&d.reviewed>0?pct+'%':'—'}</span>
+    </div>`;
+  }).join('');
+
+  // Pronun history list
+  const ph=document.getElementById('pronunHistory');
+  if(p.pronun.length===0){
+    ph.innerHTML='<p style="font-size:13px;color:var(--ink-muted);padding:8px 0;">No pronunciation drills recorded yet. Go to 🎤 Speak to begin.</p>';
+  } else {
+    ph.innerHTML=p.pronun.slice(0,15).map(r=>{
+      const cls=r.pct>=75?'great':r.pct>=40?'ok':'retry';
+      const d=new Date(r.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      return `<div class="ph-row"><span class="ph-score ${cls}">${r.pct}%</span><span class="ph-phrase">${r.phrase}</span><span class="ph-date">${d}</span></div>`;
+    }).join('');
+  }
+
+  // Lesson checklist
+  const lc=document.getElementById('lessonChecklist');
+  lc.innerHTML=LESSONS.map(l=>{
+    const done=p.lessons.completed.includes(l.id);
+    const tagColors={Pronunciation:'#e8f5ee:#085041',Survival:'#fdf3e0:#412402',Practical:'#e6f1fb:#042C53',Immigration:'#faeeda:#412402',Grammar:'#eeedfe:#26215C',Everyday:'#fdecea:#501313',Healthcare:'#eaf3de:#173404'};
+    const [bg,tc]=(tagColors[l.tag]||'#f1efe8:#2c2c2a').split(':');
+    return `<div class="lc-row">
+      <div class="lc-check ${done?'done':'todo'}">${done?'✓':l.id}</div>
+      <span class="lc-text">${l.title}</span>
+      <span class="lc-tag" style="background:${bg};color:${tc};">${l.tag}</span>
+    </div>`;
+  }).join('');
+
+  // 28-day activity grid
+  const grid=document.getElementById('activityGrid');
+  const cells=[];
+  for(let i=27;i>=0;i--){
+    const d=new Date();d.setDate(d.getDate()-i);
+    const key=d.toISOString().slice(0,10);
+    const done=localStorage.getItem('fpt_done_'+key);
+    const tasks=done?Object.keys(JSON.parse(done)).length:0;
+    const lvl=tasks===0?'':tasks===1?'l1':tasks===2?'l2':tasks===3?'l3':'l4';
+    cells.push(`<div class="act-cell ${lvl}" title="${key}: ${tasks} tasks"></div>`);
+  }
+  grid.innerHTML=cells.join('');
+
+  // Quiz history bar chart
+  const qc=document.getElementById('quizHistoryChart');
+  if(p.quiz.length===0){
+    qc.innerHTML='<p style="font-size:13px;color:var(--ink-muted);">No quizzes completed yet.</p>';
+  } else {
+    qc.innerHTML=p.quiz.slice(0,10).reverse().map((r,i)=>{
+      const pct=Math.round((r.score/r.total)*100);
+      const color=pct>=80?var_green:pct>=50?var_gold:var_red;
+      const d=new Date(r.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      return `<div class="bar-row">
+        <span class="bar-label">${d}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color};"></div></div>
+        <span class="bar-val">${r.score}/${r.total}</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Days to December
+  const dec=new Date('2026-12-01');
+  const now=new Date();
+  const daysLeft=Math.max(0,Math.ceil((dec-now)/(1000*60*60*24)));
+  document.getElementById('progSubtitle').textContent=`${daysLeft} days until December arrival. ${p.daysActive.length} days active so far.`;
+}
+
+// CSS variable values for JS use
+const var_green='#1a6b4a';
+const var_blue='#1a5fa8';
+const var_gold='#c8922a';
+const var_red='#c0392b';
+
+function confirmReset(){
+  if(confirm('Reset ALL progress? This cannot be undone.')){
+    localStorage.removeItem('fpt_progress');
+    localStorage.removeItem('fpt_streak');
+    localStorage.removeItem('fpt_words');
+    localStorage.removeItem('fpt_last_date');
+    location.reload();
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+updateStreak();
+renderHome();
+renderLessons();renderDecks();renderPronunDecks();renderScenarios();startQuiz();
+
 </script>
 </body>
 </html>
