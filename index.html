@@ -1027,66 +1027,89 @@ function toggleCardMic(){
   const btn=document.getElementById('sayItBtn');
   const bar=document.getElementById('fcScoreBar');
   bar.classList.remove('show');
-  cardRecording=true;
-  btn.classList.add('recording');
-  btn.textContent='🔴 Listening... speak now';
-  cardRecognition=recordAndScore(target,
-    ({pct,transcript,error})=>{
-      cardRecording=false;
-      btn.classList.remove('recording');
-      btn.innerHTML='🎤 Say it — check my pronunciation';
-      if(error==='not-allowed'){btn.textContent='⚠️ Mic blocked — allow access in browser';return;}
-      if(!transcript){btn.textContent='🎤 Nothing heard — try again';return;}
-      bar.classList.add('show');
-      if(pct>=75){
-        bar.className='fc-score-bar show great';
-        document.getElementById('fcScoreIcon').textContent='✓';
-        document.getElementById('fcScoreText').textContent=`Perfeito! "${transcript}"`;
-      } else if(pct>=40){
-        bar.className='fc-score-bar show ok';
-        document.getElementById('fcScoreIcon').textContent='≈';
-        document.getElementById('fcScoreText').textContent=`Close! You said "${transcript}" — hear correct:`;
-        setTimeout(()=>speakText(target,'pt-PT'),400);
-      } else {
-        bar.className='fc-score-bar show retry';
-        document.getElementById('fcScoreIcon').textContent='✗';
-        document.getElementById('fcScoreText').textContent=`You said "${transcript}" — correct pronunciation:`;
-        setTimeout(()=>speakText(target,'pt-PT'),400);
-      }
-    },
-    null
-  );
+  // Cancel any playing audio first, then wait for it to clear
+  window.speechSynthesis.cancel();
+  setTimeout(()=>{
+    cardRecording=true;
+    btn.classList.add('recording');
+    btn.textContent='🔴 Listening... speak now';
+    cardRecognition=recordAndScore(target,
+      ({pct,transcript,error})=>{
+        cardRecording=false;
+        btn.classList.remove('recording');
+        btn.innerHTML='🎤 Say it — check my pronunciation';
+        if(error==='not-allowed'){btn.textContent='⚠️ Mic blocked — allow access in browser';return;}
+        if(!transcript){btn.textContent='🎤 Nothing heard — try again';return;}
+        bar.classList.add('show');
+        if(pct>=75){
+          bar.className='fc-score-bar show great';
+          document.getElementById('fcScoreIcon').textContent='✓';
+          document.getElementById('fcScoreText').textContent=`Perfeito! "${transcript}"`;
+        } else if(pct>=40){
+          bar.className='fc-score-bar show ok';
+          document.getElementById('fcScoreIcon').textContent='≈';
+          document.getElementById('fcScoreText').textContent=`Close! You said "${transcript}" — hear correct:`;
+          setTimeout(()=>speakText(target,'pt-PT'),600);
+        } else {
+          bar.className='fc-score-bar show retry';
+          document.getElementById('fcScoreIcon').textContent='✗';
+          document.getElementById('fcScoreText').textContent=`You said "${transcript}" — correct pronunciation:`;
+          setTimeout(()=>speakText(target,'pt-PT'),600);
+        }
+      },
+      null
+    );
+  }, 300);
 }
 
 // ── LESSON REPEAT-AFTER-ME ────────────────────────────────────
 // Called from inline onclick in lesson content
 function repeatAfterMe(text, btnEl, feedbackId){
   if(!btnEl)return;
-  // First play the audio, then record after it finishes
-  btnEl.classList.add('recording');
+  // Step 1 — play audio first
   btnEl.textContent='▶ Listen...';
+  btnEl.disabled=true;
   speakText(text,'pt-PT',()=>{
-    btnEl.textContent='🔴 Now you...';
-    recordAndScore(text,
-      ({pct,transcript,error})=>{
-        btnEl.classList.remove('recording');
-        btnEl.textContent='🎤 Repeat';
-        const fb=document.getElementById(feedbackId);
-        if(!fb)return;
-        if(error||!transcript){fb.textContent='No audio detected';fb.className='repeat-feedback show retry';return;}
-        fb.classList.add('show');
-        if(pct>=75){
-          fb.textContent=`✓ Muito bem! "${transcript}"`;
-          fb.className='repeat-feedback show great';
-        } else {
-          fb.textContent=`Try again — you said "${transcript}"`;
-          fb.className='repeat-feedback show retry';
-          setTimeout(()=>speakText(text,'pt-PT'),500);
-        }
-        setTimeout(()=>fb.classList.remove('show'),4000);
-      },
-      null
-    );
+    // Step 2 — audio fully finished, now wait 600ms silence buffer then record
+    btnEl.textContent='⏳ Get ready...';
+    setTimeout(()=>{
+      btnEl.classList.add('recording');
+      btnEl.textContent='🔴 Speak now';
+      btnEl.disabled=false;
+      recordAndScore(text,
+        ({pct,transcript,error})=>{
+          btnEl.classList.remove('recording');
+          btnEl.textContent='🎤 Repeat';
+          btnEl.disabled=false;
+          const fb=document.getElementById(feedbackId);
+          if(!fb)return;
+          if(error==='not-allowed'){
+            fb.textContent='Mic blocked — allow access in settings';
+            fb.className='repeat-feedback show retry';
+            setTimeout(()=>fb.classList.remove('show'),4000);
+            return;
+          }
+          if(!transcript){
+            fb.textContent='Nothing heard — tap again to retry';
+            fb.className='repeat-feedback show retry';
+            setTimeout(()=>fb.classList.remove('show'),4000);
+            return;
+          }
+          fb.classList.add('show');
+          if(pct>=75){
+            fb.textContent=`✓ Muito bem! "${transcript}"`;
+            fb.className='repeat-feedback show great';
+          } else {
+            fb.textContent=`Try again — you said "${transcript}"`;
+            fb.className='repeat-feedback show retry';
+            // Play correct pronunciation AFTER scoring, not during recording
+            setTimeout(()=>speakText(text,'pt-PT'),600);
+          }
+          setTimeout(()=>fb.classList.remove('show'),5000);
+        },
+        null
+      );
+    }, 600);
   });
 }
 
