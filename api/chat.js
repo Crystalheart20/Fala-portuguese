@@ -21,8 +21,8 @@ export default async function handler(req, res) {
     // The last message is the current user turn
     const lastMessage = messages[messages.length - 1];
 
-    // Gemini API endpoint — gemini-1.5-flash is free tier
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Gemini API endpoint — gemini-2.5-flash is current free tier model
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     const response = await fetch(url, {
       method: 'POST',
