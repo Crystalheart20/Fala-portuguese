@@ -952,20 +952,38 @@ function getTodaysVocab(){
 
 // ── DAILY SCHEDULE PLAN ───────────────────────────────────────
 const DAILY_PLANS=[
-  {lesson:1, deck:'survival',   pronunDeck:'survival',  scenario:'free',           focus:'Greetings & sounds'},
-  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'cafe',           focus:'Meeting people'},
-  {lesson:3, deck:'numbers',    pronunDeck:'survival',  scenario:'market',         focus:'Numbers & shopping'},
-  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'aima',           focus:'AIMA vocabulary'},
-  {lesson:1, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_ob',focus:'Clinical Portuguese'},
-  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'pharmacy',       focus:'Pharmacy phrases'},
-  {lesson:3, deck:'numbers',    pronunDeck:'aima',      scenario:'landlord',       focus:'Numbers & housing'},
-  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'sono_colleague', focus:'AIMA & clinical'},
-  {lesson:1, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_gyne',      focus:'Clinical scanning'},
-  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'doctor',         focus:'Healthcare vocab'},
-  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'sono_referral',  focus:'Referral & admin'},
-  {lesson:3, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_report',    focus:'Report dictation'},
-  {lesson:1, deck:'numbers',    pronunDeck:'survival',  scenario:'school',         focus:'Family & school'},
-  {lesson:2, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_abd',focus:'Abdominal scanning'},
+  // Week 1 — Foundations
+  {lesson:1, deck:'survival',   pronunDeck:'survival',  scenario:'free',            focus:'Greetings & sounds'},
+  {lesson:2, deck:'survival',   pronunDeck:'survival',  scenario:'cafe',            focus:'Meeting people'},
+  {lesson:3, deck:'numbers',    pronunDeck:'survival',  scenario:'market',          focus:'Numbers & shopping'},
+  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'aima',            focus:'AIMA vocabulary'},
+  {lesson:5, deck:'survival',   pronunDeck:'survival',  scenario:'free',            focus:'Verb practice'},
+  {lesson:6, deck:'numbers',    pronunDeck:'survival',  scenario:'landlord',        focus:'Directions & housing'},
+  {lesson:7, deck:'survival',   pronunDeck:'survival',  scenario:'market',          focus:'Shopping phrases'},
+  // Week 2 — Clinical focus
+  {lesson:8, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_ob', focus:'Healthcare & OB scan'},
+  {lesson:1, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_gyne',       focus:'Clinical pronunciation'},
+  {lesson:2, deck:'aima',       pronunDeck:'aima',      scenario:'sono_referral',   focus:'Admin & referrals'},
+  {lesson:3, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_colleague',  focus:'Clinical discussion'},
+  {lesson:4, deck:'aima',       pronunDeck:'aima',      scenario:'sono_report',     focus:'Report dictation'},
+  {lesson:5, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_abd',focus:'Abdominal scanning'},
+  {lesson:6, deck:'numbers',    pronunDeck:'aima',      scenario:'doctor',          focus:'Healthcare numbers'},
+  // Week 3 — Mixed review
+  {lesson:7, deck:'survival',   pronunDeck:'survival',  scenario:'pharmacy',        focus:'Pharmacy vocab'},
+  {lesson:8, deck:'aima',       pronunDeck:'aima',      scenario:'aima',            focus:'AIMA review'},
+  {lesson:1, deck:'numbers',    pronunDeck:'survival',  scenario:'school',          focus:'Numbers & family'},
+  {lesson:2, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_ob', focus:'OB scan phrases'},
+  {lesson:3, deck:'survival',   pronunDeck:'survival',  scenario:'cafe',            focus:'Café & daily life'},
+  {lesson:4, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_gyne',       focus:'Gynaecology vocab'},
+  {lesson:5, deck:'aima',       pronunDeck:'aima',      scenario:'landlord',        focus:'Housing & admin'},
+  // Week 4 — Advanced practice
+  {lesson:6, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_colleague',  focus:'Clinical Portuguese'},
+  {lesson:7, deck:'numbers',    pronunDeck:'survival',  scenario:'market',          focus:'Shopping mastery'},
+  {lesson:8, deck:'survival',   pronunDeck:'survival',  scenario:'doctor',          focus:'Healthcare fluency'},
+  {lesson:1, deck:'aima',       pronunDeck:'aima',      scenario:'sono_referral',   focus:'Full immersion'},
+  {lesson:2, deck:'sonography', pronunDeck:'clinical',  scenario:'sono_patient_abd',focus:'Scanning vocab'},
+  {lesson:3, deck:'aima',       pronunDeck:'aima',      scenario:'sono_report',     focus:'Report Portuguese'},
+  {lesson:4, deck:'survival',   pronunDeck:'survival',  scenario:'free',            focus:'Free practice'},
 ];
 
 function getTodaysPlan(){
@@ -1677,11 +1695,22 @@ const DECKS={
 let currentDeck=null,currentDeckKey=null,currentCardIndex=0,cardRevealed=false,deckRight=0;
 
 function renderDecks(){
-  document.getElementById('deckSelect').innerHTML=Object.entries(DECKS).map(([k,d])=>
-    `<button class="deck-btn" onclick="startDeck('${k}',this)"><div class="deck-name">${d.name}</div><div class="deck-count">${d.count} cards</div></button>`).join('');
+  const todayDeck=getTodaysPlan().deck;
+  document.getElementById('deckSelect').innerHTML=Object.entries(DECKS).map(([k,d])=>{
+    const isToday=k===todayDeck;
+    const todayBadge=isToday?`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--gold);color:#fff;display:inline-block;margin-top:4px;">Today's deck</span>`:'';
+    return `<button class="deck-btn ${isToday?'active':''}" id="deckBtn_${k}" onclick="startDeck('${k}',this)" style="${isToday?'border-color:var(--gold);background:var(--gold-light);':''}">
+      <div class="deck-name">${d.name}</div>
+      <div class="deck-count">${d.cards.length} cards</div>
+      ${todayBadge}
+    </button>`;
+  }).join('');
+  // Auto-start today's deck
+  const todayBtn=document.getElementById('deckBtn_'+todayDeck);
+  if(todayBtn) startDeck(todayDeck, todayBtn);
 }
 function startDeck(key,btn){
-  currentDeck=[...DECKS[key].cards].sort(()=>Math.random()-.5);
+  currentDeck=dailyShuffle([...DECKS[key].cards]);
   currentDeckKey=key;
   currentCardIndex=0;deckRight=0;
   document.querySelectorAll('.deck-btn').forEach(b=>b.classList.remove('active'));
@@ -1761,7 +1790,7 @@ function renderPronunDecks(){
 }
 
 function startPronunDeck(key,btn){
-  pronunDeck=[...PRONUN_DECKS[key].phrases].sort(()=>Math.random()-.5);
+  pronunDeck=dailyShuffle([...PRONUN_DECKS[key].phrases]);
   pronunIndex=0;
   document.querySelectorAll('.pdeck-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -1915,7 +1944,7 @@ const QUIZ_QUESTIONS=[
 ];
 let quizQ=[],quizIndex=0,quizScore=0,answered=false;
 function startQuiz(){
-  quizQ=[...QUIZ_QUESTIONS].sort(()=>Math.random()-.5).slice(0,7);
+  quizQ=dailyShuffle([...QUIZ_QUESTIONS]).slice(0,7);
   quizIndex=0;quizScore=0;
   document.getElementById('quizScore').classList.remove('show');
   showQuestion();
