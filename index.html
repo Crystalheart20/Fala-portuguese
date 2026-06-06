@@ -101,6 +101,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .lesson-row.locked{opacity:.5;cursor:not-allowed;}
 .lesson-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
 .lesson-num.active-num{background:var(--gold);color:#fff;}
+.lesson-num.done-num{background:var(--green);color:#fff;}
 .lesson-num.locked-num{background:var(--surface-3);color:var(--ink-faint);}
 .lesson-meta{flex:1;}
 .lesson-meta strong{font-size:13px;font-weight:600;display:block;margin-bottom:2px;}
@@ -1366,25 +1367,205 @@ const LESSONS=[
    <div class="phrase-item"><span class="phrase-pt">Tenho todos os documentos.</span><span class="phrase-en">I have all the documents.</span><button class="speak-phrase-btn" onclick="speakText('Tenho todos os documentos.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho todos os documentos',this,'rfb_tt')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_tt"></span></div>
    <div class="phrase-item"><span class="phrase-pt">Qual é o prazo de resposta?</span><span class="phrase-en">What is the response deadline?</span><button class="speak-phrase-btn" onclick="speakText('Qual é o prazo de resposta?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Qual é o prazo de resposta',this,'rfb_qp')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_qp"></span></div>
    </div></div>`},
-  {id:5,title:'Present tense verbs',sub:'Ser, estar, ter, ir — the big four',time:'20 min',tag:'Grammar',locked:true},
-  {id:6,title:'Asking for directions',sub:'Navigating Évora and Lisbon',time:'15 min',tag:'Practical',locked:true},
-  {id:7,title:'At the supermarket',sub:'Food, prices, polite requests',time:'15 min',tag:'Everyday',locked:true},
-  {id:8,title:'Healthcare & pharmacy',sub:'Explaining symptoms, getting medication',time:'20 min',tag:'Healthcare',locked:true},
+  {id:5,title:'Present tense verbs',sub:'Ser, estar, ter, ir — the big four',time:'20 min',tag:'Grammar',
+   content:`<p class="lesson-intro">These four verbs are the backbone of Portuguese. Master them and you can build hundreds of sentences immediately. EP uses them slightly differently from Brazilian — pay close attention to the conjugations.</p>
+
+   <div class="lesson-section"><h3>SER — to be (permanent)</h3>
+   <div class="tip-box"><p><strong>Use SER for</strong> identity, nationality, profession, and permanent characteristics. "I am a doctor." "She is Portuguese."</p></div>
+   <table class="vocab-table"><tr><th>Person</th><th>Portuguese</th><th>Hear</th></tr>
+   <tr><td>I am</td><td>eu sou</td><td><button class="speak-phrase-btn" onclick="speakText('eu sou','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>You are</td><td>tu és / o senhor é</td><td><button class="speak-phrase-btn" onclick="speakText('tu és','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>He/She is</td><td>ele/ela é</td><td><button class="speak-phrase-btn" onclick="speakText('ele é','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>We are</td><td>nós somos</td><td><button class="speak-phrase-btn" onclick="speakText('nós somos','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>They are</td><td>eles/elas são</td><td><button class="speak-phrase-btn" onclick="speakText('eles são','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="lesson-section"><h3>ESTAR — to be (temporary)</h3>
+   <div class="tip-box"><p><strong>Use ESTAR for</strong> feelings, locations, and temporary states. "I am tired." "She is in Portugal." "He is sick."</p></div>
+   <table class="vocab-table"><tr><th>Person</th><th>Portuguese</th><th>Hear</th></tr>
+   <tr><td>I am</td><td>eu estou</td><td><button class="speak-phrase-btn" onclick="speakText('eu estou','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>You are</td><td>tu estás</td><td><button class="speak-phrase-btn" onclick="speakText('tu estás','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>He/She is</td><td>ele/ela está</td><td><button class="speak-phrase-btn" onclick="speakText('ele está','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>We are</td><td>nós estamos</td><td><button class="speak-phrase-btn" onclick="speakText('nós estamos','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>They are</td><td>eles estão</td><td><button class="speak-phrase-btn" onclick="speakText('eles estão','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="lesson-section"><h3>TER — to have</h3>
+   <table class="vocab-table"><tr><th>Person</th><th>Portuguese</th><th>Hear</th></tr>
+   <tr><td>I have</td><td>eu tenho</td><td><button class="speak-phrase-btn" onclick="speakText('eu tenho','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>You have</td><td>tu tens</td><td><button class="speak-phrase-btn" onclick="speakText('tu tens','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>He/She has</td><td>ele/ela tem</td><td><button class="speak-phrase-btn" onclick="speakText('ele tem','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>We have</td><td>nós temos</td><td><button class="speak-phrase-btn" onclick="speakText('nós temos','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>They have</td><td>eles têm</td><td><button class="speak-phrase-btn" onclick="speakText('eles têm','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="lesson-section"><h3>IR — to go</h3>
+   <table class="vocab-table"><tr><th>Person</th><th>Portuguese</th><th>Hear</th></tr>
+   <tr><td>I go</td><td>eu vou</td><td><button class="speak-phrase-btn" onclick="speakText('eu vou','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>You go</td><td>tu vais</td><td><button class="speak-phrase-btn" onclick="speakText('tu vais','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>He/She goes</td><td>ele/ela vai</td><td><button class="speak-phrase-btn" onclick="speakText('ele vai','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>We go</td><td>nós vamos</td><td><button class="speak-phrase-btn" onclick="speakText('nós vamos','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>They go</td><td>eles vão</td><td><button class="speak-phrase-btn" onclick="speakText('eles vão','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="lesson-section"><h3>Practice sentences — 🔊 hear · 🎤 repeat</h3>
+   <div class="phrase-list">
+   <div class="phrase-item"><span class="phrase-pt">Eu sou sonografista.</span><span class="phrase-en">I am a sonographer.</span><button class="speak-phrase-btn" onclick="speakText('Eu sou sonografista.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Eu sou sonografista',this,'rfb_v1')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_v1"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Estou em Portugal.</span><span class="phrase-en">I am in Portugal.</span><button class="speak-phrase-btn" onclick="speakText('Estou em Portugal.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Estou em Portugal',this,'rfb_v2')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_v2"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tenho dois filhos.</span><span class="phrase-en">I have two children.</span><button class="speak-phrase-btn" onclick="speakText('Tenho dois filhos.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho dois filhos',this,'rfb_v3')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_v3"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Vou ao hospital.</span><span class="phrase-en">I am going to the hospital.</span><button class="speak-phrase-btn" onclick="speakText('Vou ao hospital.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Vou ao hospital',this,'rfb_v4')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_v4"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">A minha esposa está em Évora.</span><span class="phrase-en">My wife is in Évora.</span><button class="speak-phrase-btn" onclick="speakText('A minha esposa está em Évora.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('A minha esposa está em Évora',this,'rfb_v5')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_v5"></span></div>
+   </div></div>`},
+
+  {id:6,title:'Asking for directions',sub:'Navigating Évora and Lisbon',time:'15 min',tag:'Practical',
+   content:`<p class="lesson-intro">Évora is a small, walkable city — but you will need to ask for directions, especially to key places like AIMA, the hospital, the university, and the market. These phrases will get you everywhere.</p>
+
+   <div class="lesson-section"><h3>Key direction phrases — 🔊 hear · 🎤 repeat</h3>
+   <div class="phrase-list">
+   <div class="phrase-item"><span class="phrase-pt">Onde é o hospital?</span><span class="phrase-en">Where is the hospital?</span><button class="speak-phrase-btn" onclick="speakText('Onde é o hospital?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Onde é o hospital',this,'rfb_d1')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d1"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Como chego à universidade?</span><span class="phrase-en">How do I get to the university?</span><button class="speak-phrase-btn" onclick="speakText('Como chego à universidade?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Como chego à universidade',this,'rfb_d2')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d2"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">É longe daqui?</span><span class="phrase-en">Is it far from here?</span><button class="speak-phrase-btn" onclick="speakText('É longe daqui?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('É longe daqui',this,'rfb_d3')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d3"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Pode repetir mais devagar?</span><span class="phrase-en">Can you repeat more slowly?</span><button class="speak-phrase-btn" onclick="speakText('Pode repetir mais devagar?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Pode repetir mais devagar',this,'rfb_d4')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d4"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Vire à esquerda.</span><span class="phrase-en">Turn left.</span><button class="speak-phrase-btn" onclick="speakText('Vire à esquerda.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Vire à esquerda',this,'rfb_d5')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d5"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Vire à direita.</span><span class="phrase-en">Turn right.</span><button class="speak-phrase-btn" onclick="speakText('Vire à direita.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Vire à direita',this,'rfb_d6')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d6"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Siga em frente.</span><span class="phrase-en">Go straight ahead.</span><button class="speak-phrase-btn" onclick="speakText('Siga em frente.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Siga em frente',this,'rfb_d7')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d7"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">É ali mesmo.</span><span class="phrase-en">It's right there.</span><button class="speak-phrase-btn" onclick="speakText('É ali mesmo.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('É ali mesmo',this,'rfb_d8')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_d8"></span></div>
+   </div></div>
+
+   <div class="lesson-section"><h3>Key places vocabulary</h3>
+   <table class="vocab-table"><tr><th>Portuguese</th><th>English</th><th>Hear</th></tr>
+   <tr><td>o hospital</td><td>the hospital</td><td><button class="speak-phrase-btn" onclick="speakText('o hospital','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a farmácia</td><td>the pharmacy</td><td><button class="speak-phrase-btn" onclick="speakText('a farmácia','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a escola</td><td>the school</td><td><button class="speak-phrase-btn" onclick="speakText('a escola','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o supermercado</td><td>the supermarket</td><td><button class="speak-phrase-btn" onclick="speakText('o supermercado','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a câmara municipal</td><td>the town hall</td><td><button class="speak-phrase-btn" onclick="speakText('a câmara municipal','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a paragem de autocarro</td><td>the bus stop</td><td><button class="speak-phrase-btn" onclick="speakText('a paragem de autocarro','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o centro de saúde</td><td>the health centre</td><td><button class="speak-phrase-btn" onclick="speakText('o centro de saúde','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="tip-box"><p><strong>EP tip:</strong> In Portugal you ask "Onde é...?" (Where is...?) for buildings and "Como chego a...?" (How do I get to...?) when you need directions. Both are equally natural.</p></div>`},
+
+  {id:7,title:'At the supermarket',sub:'Food, prices, polite requests',time:'15 min',tag:'Everyday',
+   content:`<p class="lesson-intro">Shopping at Continente, Pingo Doce, or Évora's Mercado Municipal will be part of your daily life. These phrases cover everything from finding items to paying at the till.</p>
+
+   <div class="lesson-section"><h3>Shopping phrases — 🔊 hear · 🎤 repeat</h3>
+   <div class="phrase-list">
+   <div class="phrase-item"><span class="phrase-pt">Onde estão os legumes?</span><span class="phrase-en">Where are the vegetables?</span><button class="speak-phrase-btn" onclick="speakText('Onde estão os legumes?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Onde estão os legumes',this,'rfb_s1')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s1"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Quanto custa isto?</span><span class="phrase-en">How much does this cost?</span><button class="speak-phrase-btn" onclick="speakText('Quanto custa isto?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Quanto custa isto',this,'rfb_s2')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s2"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tem saco, por favor?</span><span class="phrase-en">Do you have a bag, please?</span><button class="speak-phrase-btn" onclick="speakText('Tem saco, por favor?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tem saco, por favor',this,'rfb_s3')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s3"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Pago com cartão.</span><span class="phrase-en">I'm paying by card.</span><button class="speak-phrase-btn" onclick="speakText('Pago com cartão.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Pago com cartão',this,'rfb_s4')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s4"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tem troco para vinte euros?</span><span class="phrase-en">Do you have change for twenty euros?</span><button class="speak-phrase-btn" onclick="speakText('Tem troco para vinte euros?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tem troco para vinte euros',this,'rfb_s5')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s5"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Pode passar recibo, por favor?</span><span class="phrase-en">Can you give me a receipt, please?</span><button class="speak-phrase-btn" onclick="speakText('Pode passar recibo, por favor?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Pode passar recibo, por favor',this,'rfb_s6')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_s6"></span></div>
+   </div></div>
+
+   <div class="lesson-section"><h3>Essential food vocabulary</h3>
+   <table class="vocab-table"><tr><th>Portuguese</th><th>English</th><th>Hear</th></tr>
+   <tr><td>o pão</td><td>bread</td><td><button class="speak-phrase-btn" onclick="speakText('o pão','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o leite</td><td>milk</td><td><button class="speak-phrase-btn" onclick="speakText('o leite','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>os ovos</td><td>eggs</td><td><button class="speak-phrase-btn" onclick="speakText('os ovos','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o frango</td><td>chicken</td><td><button class="speak-phrase-btn" onclick="speakText('o frango','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o arroz</td><td>rice</td><td><button class="speak-phrase-btn" onclick="speakText('o arroz','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o azeite</td><td>olive oil</td><td><button class="speak-phrase-btn" onclick="speakText('o azeite','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a fruta</td><td>fruit</td><td><button class="speak-phrase-btn" onclick="speakText('a fruta','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>os legumes</td><td>vegetables</td><td><button class="speak-phrase-btn" onclick="speakText('os legumes','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="tip-box"><p><strong>Portuguese supermarkets:</strong> The main chains in Évora are <em>Pingo Doce</em> and <em>Continente</em>. You will need to bring or buy bags — they charge for them at the till. Most accept contactless payment.</p></div>`},
+
+  {id:8,title:'Healthcare & pharmacy',sub:'Explaining symptoms, getting medication',time:'20 min',tag:'Healthcare',
+   content:`<p class="lesson-intro">As a healthcare professional yourself, this vocabulary will feel familiar — but knowing it in Portuguese is critical both for your own family's healthcare needs and for your clinical work at a Portuguese hospital.</p>
+
+   <div class="lesson-section"><h3>Describing symptoms — 🔊 hear · 🎤 repeat</h3>
+   <div class="phrase-list">
+   <div class="phrase-item"><span class="phrase-pt">Não me sinto bem.</span><span class="phrase-en">I don't feel well.</span><button class="speak-phrase-btn" onclick="speakText('Não me sinto bem.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Não me sinto bem',this,'rfb_h1')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h1"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tenho dores de cabeça.</span><span class="phrase-en">I have a headache.</span><button class="speak-phrase-btn" onclick="speakText('Tenho dores de cabeça.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho dores de cabeça',this,'rfb_h2')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h2"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tenho febre.</span><span class="phrase-en">I have a fever.</span><button class="speak-phrase-btn" onclick="speakText('Tenho febre.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho febre',this,'rfb_h3')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h3"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Preciso de um médico.</span><span class="phrase-en">I need a doctor.</span><button class="speak-phrase-btn" onclick="speakText('Preciso de um médico.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Preciso de um médico',this,'rfb_h4')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h4"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Sou alérgico a penicilina.</span><span class="phrase-en">I am allergic to penicillin.</span><button class="speak-phrase-btn" onclick="speakText('Sou alérgico a penicilina.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Sou alérgico a penicilina',this,'rfb_h5')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h5"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Onde é a urgência?</span><span class="phrase-en">Where is the emergency department?</span><button class="speak-phrase-btn" onclick="speakText('Onde é a urgência?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Onde é a urgência',this,'rfb_h6')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h6"></span></div>
+   </div></div>
+
+   <div class="lesson-section"><h3>At the pharmacy</h3>
+   <div class="phrase-list">
+   <div class="phrase-item"><span class="phrase-pt">Tem algo para a dor?</span><span class="phrase-en">Do you have something for pain?</span><button class="speak-phrase-btn" onclick="speakText('Tem algo para a dor?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tem algo para a dor',this,'rfb_h7')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h7"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Tenho receita médica.</span><span class="phrase-en">I have a prescription.</span><button class="speak-phrase-btn" onclick="speakText('Tenho receita médica.','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Tenho receita médica',this,'rfb_h8')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h8"></span></div>
+   <div class="phrase-item"><span class="phrase-pt">Quantas vezes por dia?</span><span class="phrase-en">How many times per day?</span><button class="speak-phrase-btn" onclick="speakText('Quantas vezes por dia?','pt-PT',null,this)">🔊</button><button class="repeat-btn" onclick="repeatAfterMe('Quantas vezes por dia',this,'rfb_h9')">🎤 Repeat</button><span class="repeat-feedback" id="rfb_h9"></span></div>
+   </div></div>
+
+   <div class="lesson-section"><h3>Healthcare vocabulary</h3>
+   <table class="vocab-table"><tr><th>Portuguese</th><th>English</th><th>Hear</th></tr>
+   <tr><td>o médico / a médica</td><td>doctor (m/f)</td><td><button class="speak-phrase-btn" onclick="speakText('o médico','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o enfermeiro</td><td>nurse</td><td><button class="speak-phrase-btn" onclick="speakText('o enfermeiro','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a consulta</td><td>appointment</td><td><button class="speak-phrase-btn" onclick="speakText('a consulta','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a receita</td><td>prescription</td><td><button class="speak-phrase-btn" onclick="speakText('a receita','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o comprimido</td><td>tablet / pill</td><td><button class="speak-phrase-btn" onclick="speakText('o comprimido','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>a urgência</td><td>emergency / A&E</td><td><button class="speak-phrase-btn" onclick="speakText('a urgência','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o SNS</td><td>National Health Service</td><td><button class="speak-phrase-btn" onclick="speakText('o SNS','pt-PT',null,this)">🔊</button></td></tr>
+   <tr><td>o número de utente</td><td>patient number (NHS)</td><td><button class="speak-phrase-btn" onclick="speakText('o número de utente','pt-PT',null,this)">🔊</button></td></tr>
+   </table></div>
+
+   <div class="tip-box"><p><strong>SNS registration:</strong> When you arrive in Portugal, register at your local <em>Centro de Saúde</em> to get your <em>número de utente</em> — your NHS patient number. This is essential for free or subsidised healthcare. Bring your residency permit and NIF.</p></div>`},
 ];
+
+function getDayIndex(){
+  const d=new Date(TODAY_KEY);
+  const diff=Math.floor((d-START_DATE)/(1000*60*60*24));
+  return Math.max(0,diff);
+}
+
+// Which lesson is scheduled for today
+function getTodaysLessonId(){
+  return getTodaysPlan().lesson;
+}
+
+// A lesson is unlocked if it has been the "lesson of the day" at some point
+// i.e. its id appeared in any past or present daily plan up to today
+function getUnlockedLessons(){
+  const dayIdx=getDayIndex();
+  const unlocked=new Set();
+  for(let i=0;i<=dayIdx;i++){
+    const plan=DAILY_PLANS[((i%DAILY_PLANS.length)+DAILY_PLANS.length)%DAILY_PLANS.length];
+    unlocked.add(plan.lesson);
+  }
+  return unlocked;
+}
 
 function renderLessons(){
   const grid=document.getElementById('lessonGrid');
   const tagColors={Pronunciation:'#e8f5ee:#085041',Survival:'#fdf3e0:#412402',Practical:'#e6f1fb:#042C53',Immigration:'#faeeda:#412402',Grammar:'#eeedfe:#26215C',Everyday:'#fdecea:#501313',Healthcare:'#eaf3de:#173404'};
+  const unlocked=getUnlockedLessons();
+  const todayId=getTodaysLessonId();
+  const p=loadProgress();
+
   grid.innerHTML=LESSONS.map(l=>{
-    const[bg,tc]=(tagColors[l.tag]||'#f1efe8:#2c2c2a').split(':');
-    const numCls=l.locked?'locked-num':'active-num';
-    const rowCls=l.locked?'lesson-row locked':'lesson-row';
-    const oc=l.locked?'':'onclick="openLesson('+l.id+')"';
-    return `<div class="${rowCls}" ${oc}><div class="lesson-num ${numCls}">${l.id}</div><div class="lesson-meta"><strong>${l.title}</strong><span>${l.sub} · ${l.time}</span></div><span class="lesson-tag" style="background:${bg};color:${tc};">${l.tag}</span></div>`;
+    const isUnlocked=unlocked.has(l.id);
+    const isToday=l.id===todayId;
+    const isDone=p.lessons.completed.includes(l.id);
+    const [bg,tc]=(tagColors[l.tag]||'#f1efe8:#2c2c2a').split(':');
+
+    let numCls, rowCls, oc, badge='';
+    if(!isUnlocked){
+      numCls='locked-num'; rowCls='lesson-row locked'; oc='';
+    } else if(isToday){
+      numCls='active-num'; rowCls='lesson-row'; oc=`onclick="openLesson(${l.id})"`;
+      badge=`<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--gold);color:#fff;margin-right:4px;">Today</span>`;
+    } else {
+      numCls=isDone?'done-num':'active-num'; rowCls='lesson-row'; oc=`onclick="openLesson(${l.id})"`;
+    }
+
+    const checkmark=isDone?'✓':l.id;
+    return `<div class="${rowCls}" ${oc} style="${isToday?'border-color:var(--gold);background:var(--gold-light);':''}">
+      <div class="lesson-num ${numCls}">${checkmark}</div>
+      <div class="lesson-meta"><strong>${l.title}</strong><span>${l.sub} · ${l.time}</span></div>
+      ${badge}<span class="lesson-tag" style="background:${bg};color:${tc};">${l.tag}</span>
+    </div>`;
   }).join('');
 }
 function openLesson(id){
-  const l=LESSONS.find(x=>x.id===id);if(!l||l.locked)return;
+  const l=LESSONS.find(x=>x.id===id);
+  if(!l)return;
+  const unlocked=getUnlockedLessons();
+  if(!unlocked.has(l.id)){return;}
   document.getElementById('lessonList').classList.add('hidden');
   document.getElementById('lessonViewer').classList.add('active');
   document.getElementById('lessonContent').innerHTML=`<h2>${l.title}</h2>${l.content||'<p style="color:var(--ink-muted)">Coming soon.</p>'}`;
@@ -1720,7 +1901,14 @@ const QUIZ_QUESTIONS=[
   {q:'What does "comprovativo" mean?',opts:['Application','Deadline','Proof / supporting document','Certificate'],ans:2},
   {q:'How do you say "Where is...?"',opts:['Quanto é...?','Quando é...?','Onde é...?','Como é...?'],ans:2},
   {q:'What is "NIF"?',opts:['Social security number','Residence permit','Tax identification number','National ID'],ans:2},
-  {q:'What does "ecografia" mean?',opts:['X-ray','Ultrasound','MRI','CT scan'],ans:1},
+  {q:'What does "eu estou" mean?',opts:['I am (permanent)','I have','I go','I am (temporary)'],ans:3},
+  {q:'"Vire à esquerda" means...',opts:['Go straight','Turn right','Turn left','Stop here'],ans:2},
+  {q:'How do you say "I need a doctor"?',opts:['Quero um médico','Preciso de um médico','Tenho um médico','Vou ao médico'],ans:1},
+  {q:'What is "o número de utente"?',opts:['Tax number','Passport number','NHS patient number','Phone number'],ans:2},
+  {q:'"Quanto custa isto?" means...',opts:['Where is this?','What is this?','How much does this cost?','Can I have this?'],ans:2},
+  {q:'What does "eu tenho" mean?',opts:['I go','I am','I have','I want'],ans:2},
+  {q:'"Siga em frente" means...',opts:['Turn left','Turn right','Go back','Go straight ahead'],ans:3},
+  {q:'What is "a receita" in a pharmacy context?',opts:['Receipt','Prescription','Medicine','Appointment'],ans:1},
   {q:'"Respire fundo e prenda" means...',opts:['Lie on your side','You can relax','Breathe in and hold','Feel any pain?'],ans:2},
   {q:'What is "mioma"?',opts:['Adenomyosis','Ovarian cyst','Fibroid','Placenta'],ans:2},
   {q:'What does "doppler colorido" mean?',opts:['B-mode ultrasound','Colour Doppler','Pulsed wave Doppler','M-mode'],ans:1},
