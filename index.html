@@ -345,7 +345,28 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
 .add-profile-input:focus{outline:none;border-color:var(--green);}
 .add-profile-btn{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
 .add-profile-btn:hover{opacity:.88;}
-.nav-user{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--ink-mid);cursor:pointer;background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:4px 10px 4px 6px;transition:all .15s;flex-shrink:0;}
+/* ── VOICE SETTINGS ── */
+.voice-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998;display:flex;align-items:center;justify-content:center;padding:20px;}
+.voice-modal.hidden{display:none;}
+.voice-box{background:var(--surface);border-radius:16px;padding:28px 24px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.12);}
+.voice-box h3{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:6px;}
+.voice-box p{font-size:13px;color:var(--ink-muted);margin-bottom:18px;line-height:1.5;}
+.voice-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;margin-bottom:18px;}
+.voice-opt{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;text-align:left;font-family:'DM Sans',sans-serif;width:100%;}
+.voice-opt:hover{border-color:var(--green);background:var(--green-pale);}
+.voice-opt.selected{border-color:var(--green);background:var(--green-pale);}
+.voice-opt .vo-name{font-size:13px;font-weight:600;color:var(--ink);flex:1;}
+.voice-opt .vo-lang{font-size:11px;color:var(--ink-muted);}
+.voice-opt .vo-gender{font-size:16px;flex-shrink:0;}
+.voice-preview-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px 8px;font-size:12px;cursor:pointer;color:var(--ink-muted);transition:all .15s;margin-left:4px;}
+.voice-preview-btn:hover{border-color:var(--green);color:var(--green);}
+.voice-modal-btns{display:flex;gap:8px;justify-content:flex-end;}
+.voice-modal-btns button{padding:9px 20px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;}
+.voice-cancel-btn{background:none;border:1px solid var(--border);color:var(--ink-muted);}
+.voice-cancel-btn:hover{border-color:var(--red);color:var(--red);}
+.voice-save-btn{background:var(--green);border:none;color:#fff;}
+.voice-save-btn:hover{opacity:.88;}
+.no-voices-msg{font-size:13px;color:var(--ink-muted);padding:12px;text-align:center;background:var(--surface-2);border-radius:var(--radius-sm);}font-size:12px;font-weight:600;color:var(--ink-mid);cursor:pointer;background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:4px 10px 4px 6px;transition:all .15s;flex-shrink:0;}
 .nav-user:hover{border-color:var(--green);color:var(--green);}
 .nav-user-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
 </style>
@@ -376,8 +397,9 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
     <button class="nav-tab" onclick="showPage('chat')">💬 Chat</button>
     <button class="nav-tab" onclick="showPage('progress')">📊 Progress</button>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+  <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
     <div class="nav-streak">🔥 <span id="streakNum">1</span></div>
+    <button onclick="openVoiceModal()" title="Voice settings" style="background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--ink-muted);transition:all .15s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">🔊 Voice</button>
     <div class="nav-user" id="navUserBtn" onclick="switchUser()" title="Switch user">
       <div class="nav-user-avatar" id="navUserAvatar">👤</div>
       <span id="navUserName">...</span>
@@ -648,6 +670,19 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20
   </div>
 </div>
 
+<!-- VOICE SETTINGS MODAL -->
+<div class="voice-modal hidden" id="voiceModal">
+  <div class="voice-box">
+    <h3>🔊 Choose your voice</h3>
+    <p>Pick the Portuguese voice that works best for you. Each user profile remembers their own choice.</p>
+    <div class="voice-list" id="voiceList"></div>
+    <div class="voice-modal-btns">
+      <button class="voice-cancel-btn" onclick="closeVoiceModal()">Cancel</button>
+      <button class="voice-save-btn" onclick="saveVoiceChoice()">Save voice</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── PROFILE SYSTEM ───────────────────────────────────────────
 const DEFAULT_PROFILES = [
@@ -707,10 +742,8 @@ function selectProfile(id){
   document.getElementById('profileScreen').classList.add('hidden');
   const profiles = getProfiles();
   const p = profiles.find(x=>x.id===id);
-  // Update nav badge
   document.getElementById('navUserAvatar').textContent = p?.emoji||'👤';
   document.getElementById('navUserName').textContent = p?.name||id;
-  // Boot the app with this user's data
   bootApp();
 }
 
@@ -756,7 +789,113 @@ function loadProgress(){
     chat:{sessions:0},
   }));
 }
-function saveProgress(p){localStorage.setItem(uk('progress'),JSON.stringify(p));}
+
+function saveProgress(p){
+  localStorage.setItem(uk('progress'),JSON.stringify(p));
+  syncToCloud(p).catch(()=>{});
+}
+
+// ── CLOUD SYNC ────────────────────────────────────────────────
+let syncTimeout=null;
+
+async function syncToCloud(progress){
+  clearTimeout(syncTimeout);
+  return new Promise((resolve)=>{
+    syncTimeout=setTimeout(async ()=>{
+      try{
+        await fetch('/api/sync',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            userId:CURRENT_USER,
+            progress:{
+              ...progress,
+              streak:STATE.streak,
+              wordsLearned:STATE.wordsLearned,
+              lastActiveDate:STATE.lastActiveDate,
+              completedDays:getAllCompletedDays(),
+            }
+          })
+        });
+        showSyncBadge('✓ Synced');
+      }catch(e){
+        showSyncBadge('⚠ Offline');
+      }
+      resolve();
+    },2000);
+  });
+}
+
+async function loadFromCloud(){
+  try{
+    const res=await fetch(`/api/sync?userId=${encodeURIComponent(CURRENT_USER)}`);
+    const data=await res.json();
+    if(!data.found)return false;
+    const cloud=data.progress;
+    const local=loadProgress();
+    const merged={
+      ...local,...cloud,
+      bestStreak:Math.max(local.bestStreak||0,cloud.bestStreak||0),
+      flashcard:{
+        reviewed:Math.max(local.flashcard?.reviewed||0,cloud.flashcard?.reviewed||0),
+        correct:Math.max(local.flashcard?.correct||0,cloud.flashcard?.correct||0),
+        byDeck:mergeByDeck(local.flashcard?.byDeck||{},cloud.flashcard?.byDeck||{}),
+      },
+      lessons:{completed:[...new Set([...(local.lessons?.completed||[]),(cloud.lessons?.completed||[])])]},
+      pronun:mergePronun(local.pronun||[],cloud.pronun||[]),
+      quiz:mergeQuiz(local.quiz||[],cloud.quiz||[]),
+      chat:{sessions:Math.max(local.chat?.sessions||0,cloud.chat?.sessions||0)},
+      daysActive:[...new Set([...(local.daysActive||[]),(cloud.daysActive||[])])],
+    };
+    localStorage.setItem(uk('progress'),JSON.stringify(merged));
+    if((cloud.streak||0)>STATE.streak){STATE.streak=cloud.streak;localStorage.setItem(uk('streak'),STATE.streak);}
+    if((cloud.wordsLearned||0)>STATE.wordsLearned){STATE.wordsLearned=cloud.wordsLearned;localStorage.setItem(uk('words'),STATE.wordsLearned);}
+    if(cloud.completedDays){
+      cloud.completedDays.forEach(day=>{
+        const key=uk('done_'+day);
+        if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify({synced:true}));
+      });
+    }
+    return true;
+  }catch(e){return false;}
+}
+
+function getAllCompletedDays(){
+  return Object.keys(localStorage)
+    .filter(k=>k.startsWith('fpt_'+CURRENT_USER+'_done_'))
+    .map(k=>k.replace('fpt_'+CURRENT_USER+'_done_',''))
+    .filter(d=>d.match(/^\d{4}-\d{2}-\d{2}$/));
+}
+
+function mergeByDeck(a,b){
+  const r={...a};
+  Object.keys(b).forEach(k=>{r[k]={reviewed:Math.max(a[k]?.reviewed||0,b[k]?.reviewed||0),correct:Math.max(a[k]?.correct||0,b[k]?.correct||0)};});
+  return r;
+}
+
+function mergePronun(a,b){
+  const seen=new Set();
+  return [...a,...b].filter(r=>{const k=r.date+'_'+r.phrase;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,50);
+}
+
+function mergeQuiz(a,b){
+  const seen=new Set();
+  return [...a,...b].filter(r=>{const k=r.date+'_'+r.score+'_'+r.total;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,30);
+}
+
+let syncBadgeTimeout=null;
+function showSyncBadge(msg){
+  let badge=document.getElementById('syncBadge');
+  if(!badge){
+    badge=document.createElement('div');
+    badge.id='syncBadge';
+    badge.style.cssText='position:fixed;bottom:16px;right:16px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--ink-muted);box-shadow:var(--shadow);z-index:500;transition:opacity .3s;';
+    document.body.appendChild(badge);
+  }
+  badge.textContent=msg;badge.style.opacity='1';
+  clearTimeout(syncBadgeTimeout);
+  syncBadgeTimeout=setTimeout(()=>{badge.style.opacity='0';},3000);
+}
 
 function recordActivity(){
   const p=loadProgress();
@@ -1082,6 +1221,109 @@ let autoSpeak=true;
 
 function toggleAutoSpeak(){autoSpeak=document.getElementById('autoSpeakToggle').checked;}
 
+// ── VOICE MANAGEMENT ─────────────────────────────────────────
+function getVoiceKey(){ return uk('voice'); }
+
+function getSavedVoiceName(){
+  return localStorage.getItem(getVoiceKey())||null;
+}
+
+function getAllVoices(){
+  return window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+}
+
+function getPortugueseVoices(){
+  const all = getAllVoices();
+  const pt = all.filter(v=>v.lang.startsWith('pt'));
+  return pt.length > 0 ? pt : all; // fall back to all voices if no PT found
+}
+
+function getUserVoice(){
+  const saved = getSavedVoiceName();
+  const voices = getAllVoices();
+  if(saved){
+    const match = voices.find(v=>v.name===saved);
+    if(match) return match;
+  }
+  // Default: first pt-PT voice, then any pt voice
+  return voices.find(v=>v.lang.startsWith('pt-PT'))
+      || voices.find(v=>v.lang.startsWith('pt'))
+      || null;
+}
+
+function guessGender(voice){
+  const n=voice.name.toLowerCase();
+  if(/female|woman|girl|lucia|ines|inês|ana|sofia|sara|catarina|monica|joana|alice|amelie|karen|samantha|victoria|fiona|moira|tessa|veena|zira|linda|susan|helen/i.test(n)) return '👩';
+  if(/male|man|boy|jorge|carlos|antonio|rafael|miguel|daniel|diego|enrique|luca|reed|tom|alex|fred|bruce|daniel/i.test(n)) return '👨';
+  return '🎙️';
+}
+
+// ── VOICE MODAL ───────────────────────────────────────────────
+let selectedVoiceName = null;
+
+function openVoiceModal(){
+  selectedVoiceName = getSavedVoiceName();
+  renderVoiceList();
+  document.getElementById('voiceModal').classList.remove('hidden');
+}
+
+function closeVoiceModal(){
+  document.getElementById('voiceModal').classList.add('hidden');
+}
+
+function renderVoiceList(){
+  const list = document.getElementById('voiceList');
+  const voices = getPortugueseVoices();
+
+  if(voices.length===0){
+    list.innerHTML=`<div class="no-voices-msg">No voices found on this device.<br>Try on Chrome (Android/desktop) or Safari (iOS) for the best selection.</div>`;
+    return;
+  }
+
+  list.innerHTML = voices.map(v=>{
+    const gender = guessGender(v);
+    const isSelected = (selectedVoiceName===v.name) || (!selectedVoiceName && v===getUserVoice());
+    const isPt = v.lang.startsWith('pt');
+    const langBadge = v.lang.startsWith('pt-PT') ? '🇵🇹 EP'
+                    : v.lang.startsWith('pt-BR') ? '🇧🇷 BR'
+                    : v.lang.startsWith('pt') ? '🇵🇹 PT'
+                    : v.lang;
+    return `<button class="voice-opt ${isSelected?'selected':''}" id="vopt_${v.name.replace(/\s/g,'_')}" onclick="selectVoiceOpt('${v.name.replace(/'/g,"\\'")}')">
+      <span class="vo-gender">${gender}</span>
+      <span class="vo-name">${v.name}</span>
+      <span class="vo-lang">${langBadge}</span>
+      <button class="voice-preview-btn" onclick="event.stopPropagation();previewVoice('${v.name.replace(/'/g,"\\'")}')">▶ Test</button>
+    </button>`;
+  }).join('');
+}
+
+function selectVoiceOpt(name){
+  selectedVoiceName = name;
+  document.querySelectorAll('.voice-opt').forEach(b=>b.classList.remove('selected'));
+  const btn = document.getElementById('vopt_'+name.replace(/\s/g,'_'));
+  if(btn) btn.classList.add('selected');
+}
+
+function previewVoice(name){
+  const voices = getAllVoices();
+  const voice = voices.find(v=>v.name===name);
+  if(!voice) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance('Olá! Como está hoje?');
+  utter.voice = voice;
+  utter.lang = voice.lang;
+  utter.rate = 0.85;
+  window.speechSynthesis.speak(utter);
+}
+
+function saveVoiceChoice(){
+  if(selectedVoiceName){
+    localStorage.setItem(getVoiceKey(), selectedVoiceName);
+  }
+  closeVoiceModal();
+}
+
+// ── SPEAK TEXT (updated to use saved voice) ───────────────────
 function speakText(text, lang='pt-PT', onEnd=null, btn=null){
   if(!window.speechSynthesis)return;
   window.speechSynthesis.cancel();
@@ -1089,10 +1331,9 @@ function speakText(text, lang='pt-PT', onEnd=null, btn=null){
   utter.lang=lang;
   utter.rate=0.85;
   utter.pitch=1;
-  // Try to find a Portuguese voice
-  const voices=window.speechSynthesis.getVoices();
-  const ptVoice=voices.find(v=>v.lang.startsWith('pt-PT'))||voices.find(v=>v.lang.startsWith('pt'));
-  if(ptVoice)utter.voice=ptVoice;
+  // Use the user's saved voice choice
+  const voice = getUserVoice();
+  if(voice) utter.voice=voice;
   if(btn){
     btn.classList.add('speaking');
     utter.onend=()=>{btn.classList.remove('speaking');if(onEnd)onEnd();};
@@ -1104,10 +1345,12 @@ function speakText(text, lang='pt-PT', onEnd=null, btn=null){
   currentUtterance=utter;
 }
 
-// preload voices
+// preload voices — voices load async on some browsers
 if(window.speechSynthesis){
   window.speechSynthesis.getVoices();
-  window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged=()=>{
+    window.speechSynthesis.getVoices();
+  };
 }
 
 // ── SHARED MIC SCORER ─────────────────────────────────────────
@@ -2536,8 +2779,20 @@ function confirmReset(){
 }
 
 // ── BOOT ─────────────────────────────────────────────────────
-function bootApp(){
+async function bootApp(){
   loadState();
+  // Try to pull latest progress from cloud (non-blocking — shows app immediately)
+  showSyncBadge('⟳ Syncing...');
+  loadFromCloud().then(found=>{
+    if(found){
+      // Reload state after cloud merge
+      loadState();
+      updateStreak();
+      renderHome();
+      showSyncBadge('✓ Synced');
+    }
+  });
+  // Render immediately with local data while cloud loads
   updateStreak();
   renderHome();
   renderLessons();renderDecks();renderPronunDecks();renderScenarios();startQuiz();
